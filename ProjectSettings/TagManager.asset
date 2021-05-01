@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 475111929
+    locked: 0
+  - name: Midground
+    uniqueID: 1954799545
+    locked: 0
+  - name: Level
+    uniqueID: 4068636879
+    locked: 0
+  - name: Player
+    uniqueID: 72440171
+    locked: 0
+  - name: Particles
+    uniqueID: 2874890571
+    locked: 0
