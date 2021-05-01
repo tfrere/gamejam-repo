@@ -19,8 +19,9 @@ public class BaseMovement : MonoBehaviour
     // GameObject Internals
     private Rigidbody2D rbody;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
-    
+
 
 
     // PRIVATE COOKING
@@ -35,6 +36,7 @@ public class BaseMovement : MonoBehaviour
     {
         rbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
 
         _defaultMass = rbody.mass;
     }
@@ -78,6 +80,9 @@ public class BaseMovement : MonoBehaviour
         {
             rbody.mass = _defaultMass;
         }
+
+        // ANIMATOR
+        animator.SetFloat("Speed", Mathf.Abs(rbody.velocity.x));
     }
 
     void OnCollisionEnter2D(Collision2D collision)
