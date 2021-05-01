@@ -9,6 +9,8 @@ public class Levitate : MonoBehaviour {
 	public float frequency = 0.7f;
 	public int _scaleMultiplier = 10;
 
+	public bool isHorizontal = false;
+
 	Vector3 posOffset = new Vector3 ();
 	Vector3 tempPos = new Vector3 ();
 
@@ -19,7 +21,12 @@ public class Levitate : MonoBehaviour {
 	void Update () {
 
 		tempPos = posOffset;
-		tempPos.y += Mathf.Sin (Time.fixedTime * Mathf.PI * frequency) * amplitude;
+		if(isHorizontal){
+			tempPos.x += Mathf.Sin (Time.fixedTime * Mathf.PI * frequency) * amplitude;
+		}
+		else {
+			tempPos.y += Mathf.Sin (Time.fixedTime * Mathf.PI * frequency) * amplitude;
+		}
 		transform.position = tempPos;
 	}
 
