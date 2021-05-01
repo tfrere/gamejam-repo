@@ -1,12 +1,16 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1462269770303891649
+--- !u!1001 &6628995609571779277
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4165121505645880804, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: efa73f6a402b7434c845abaa8e88cbe1, type: 2}
     - target: {fileID: 4165121505645880809, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -51,13 +55,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4165121505645880810, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165121505645880810, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4165121505645880811, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3083089168873209362, guid: 04a2c36f206b2455bbb6c88a293f44be, type: 3}
+      objectReference: {fileID: 21300000, guid: 469868244a39c4223be6f92d0a9076fe, type: 3}
     - target: {fileID: 4165121505645880814, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
       propertyPath: m_Name
-      value: Baby
+      value: Monk
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
