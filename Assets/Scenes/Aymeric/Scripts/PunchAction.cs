@@ -30,6 +30,8 @@ public class PunchAction : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player") {
             Debug.Log("DownKick  Player");
+            Destroy(collision.gameObject, 0f);
+            Destroy(this.gameObject, 0f);
         }
 
         if (collision.gameObject.tag == "Ground") {
@@ -39,7 +41,7 @@ public class PunchAction : MonoBehaviour
 
     IEnumerator launchPunch() 
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(.5f);
         Destroy(this.gameObject);
     }
 
