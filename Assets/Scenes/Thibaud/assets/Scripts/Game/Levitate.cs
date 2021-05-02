@@ -21,11 +21,13 @@ public class Levitate : MonoBehaviour {
 	void Update () {
 
 		tempPos = posOffset;
+		float value = Mathf.Sin (Time.fixedTime * Mathf.PI * frequency) * amplitude;
+		float clampedValue = Mathf.Clamp(value, -2, 2);
 		if(isHorizontal){
-			tempPos.x += Mathf.Sin (Time.fixedTime * Mathf.PI * frequency) * amplitude;
+			tempPos.x += clampedValue;
 		}
 		else {
-			tempPos.y += Mathf.Sin (Time.fixedTime * Mathf.PI * frequency) * amplitude;
+			tempPos.y += clampedValue;
 		}
 		transform.position = tempPos;
 	}
