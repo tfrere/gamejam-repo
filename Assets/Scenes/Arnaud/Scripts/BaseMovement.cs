@@ -95,7 +95,7 @@ public class BaseMovement : MonoBehaviour
     
     void OnCollisionStay2D(Collision2D collision)
     {
-        print("OnCollisionStay2D - " + collision.gameObject.tag);
+        // print("OnCollisionStay2D - " + collision.gameObject.tag);
         // Enter -> So if tag is present, that's good
         isGrounded = collision.gameObject.tag == "Ground";
         isOnWall = collision.gameObject.tag == "Wall";
