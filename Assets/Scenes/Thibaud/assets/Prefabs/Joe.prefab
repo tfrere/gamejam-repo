@@ -120,7 +120,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.023595907, y: -0.0745682}
+  m_Offset: {x: -0.03172657, y: -0.14367878}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -131,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15257308, y: 0.45086363}
+  m_Size: {x: 0.5536856, y: 0.71917534}
   m_EdgeRadius: 0
 --- !u!95 &4165121505645880804
 Animator:
@@ -164,13 +164,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59149dd6f15e149a4a498fa84646ce2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftInput: q
+  leftInput: a
   rightInput: d
-  topInput: z
+  topInput: w
   bottomInput: s
   m_speed: 5
-  m_jump: 10
-  m_fall: 20
+  m_jump: 6
+  m_fall: 13
   collisionTags:
   - Wall
   - Ground

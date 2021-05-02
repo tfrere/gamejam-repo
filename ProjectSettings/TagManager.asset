@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Ground
+  - Death
+  - Borders
   layers:
   - Default
   - TransparentFX
@@ -13,6 +15,32 @@ TagManager:
   - Wall
   - Water
   - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
