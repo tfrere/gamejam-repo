@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Thibaud/assets/Scenes/UI/LevelChoosingMenu.unity
     guid: bbdc9388f8fa042418fd602e0fd23673
+  - enabled: 1
+    path: Assets/Scenes/Thibaud/assets/Scenes/UI/LoadingScene.unity
+    guid: 7916381c68f7b0f448db93904e62f14c
   m_configObjects: {}

@@ -511,6 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b884d37d7464ab2ae294c542114af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetScene: LevelChoosingMenu
 --- !u!4 &603609168
 Transform:
   m_ObjectHideFlags: 0

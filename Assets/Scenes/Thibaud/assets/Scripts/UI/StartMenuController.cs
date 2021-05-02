@@ -5,22 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class StartMenuController : MonoBehaviour
 {
+
+  public string targetScene;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey("space")) {
-            AsyncOperation loadingOperation = SceneManager.LoadSceneAsync("LevelChoosingMenu");
-            float loadProgress = loadingOperation.progress;
-            if(loadingOperation.isDone)
-            {
-                print("toto");
-            }
-        }
+      if(Input.GetKey("space")) {
+        LoadingData.sceneToLoad = targetScene;
+        SceneManager.LoadScene("LoadingScene");
+      }
+        // if(Input.GetKey("space")) {
+        //     AsyncOperation loadingOperation = SceneManager.LoadSceneAsync("LevelChoosingMenu");
+        //     float loadProgress = loadingOperation.progress;
+        //     if(loadingOperation.isDone)
+        //     {
+        //         print("toto");
+        //     }
+        // }
     }
 }
