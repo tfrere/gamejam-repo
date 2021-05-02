@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2053462132035560200}
   - component: {fileID: 2053462132035560201}
   - component: {fileID: 1122762358815975750}
-  - component: {fileID: 2716276529031763901}
+  - component: {fileID: 4165121506319746976}
   m_Layer: 0
   m_Name: Joe - Punchy
   m_TagString: Untagged
@@ -193,7 +193,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.44583118}
   serializedVersion: 2
   m_Radius: 0.05416882
---- !u!114 &2716276529031763901
+--- !u!114 &4165121506319746976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,10 +202,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2053462132035560194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa7542bbde74b45fdb162f0ba8854685, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ae53112d8ab24f2aa6eca1f94d02457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchAnchor: {fileID: 2716276530051389165}
+  actionsAnchor: {fileID: 2716276530051389165}
+  actionPrefab: {fileID: 5893188956245164120, guid: 88d26bbb4c13b404a9a787984b8c3b9e, type: 3}
 --- !u!1 &2716276530051389165
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2716276530051389164}
   m_Layer: 0
-  m_Name: Punch_Anchor
+  m_Name: Actions_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
