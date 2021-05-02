@@ -1,4 +1,9 @@
 # This .gitignore file should be placed at the root of your Unity project directory
+
+# Gamejam 2021
+# Remove propject settings from repo
+ProjectVersion.txt
+
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
