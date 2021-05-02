@@ -87,7 +87,7 @@ public class BaseMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        print("OnCollisionEnter2D - " + collision.gameObject.tag);
+        // print("OnCollisionEnter2D - " + collision.gameObject.tag);
         // Enter -> So if tag is present, that's good
         isGrounded = collision.gameObject.tag == "Ground";
         isOnWall = collision.gameObject.tag == "Wall";
@@ -103,7 +103,7 @@ public class BaseMovement : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        print("OnCollisionExit2D - " + collision.gameObject.tag);
+        // print("OnCollisionExit2D - " + collision.gameObject.tag);
         // Exit -> So if value was previsouly set and current collision tag if present, reset the value, else keep it like it is
         isGrounded = isGrounded && collision.gameObject.tag == "Ground" ? false : isGrounded;
         isOnWall = isOnWall && collision.gameObject.tag == "Wall" ? false : isOnWall;
