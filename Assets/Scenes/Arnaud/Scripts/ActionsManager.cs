@@ -24,7 +24,7 @@ public class ActionsManager : MonoBehaviour
     void Update()
     {
         // Get direction of current RigidBody (ie player)
-        float direction = rbody.velocity.x > 0 ? 1 : -1;
+        float direction = rbody.velocity.x >= 0 ? 1 : -1;
 
         // Spawn actionPrefab on Fire1 (ie 'click')
         if (Input.GetButtonDown("Fire1"))
