@@ -31,7 +31,9 @@ public class ActionsManager : MonoBehaviour
         {
             ResetPrefabInstance(actionPrefabInstance);
             actionPrefabInstance = GameObject.Instantiate(actionPrefab);
-            actionPrefabInstance.transform.position = new Vector2(actionsAnchor.transform.position.x + direction * 2, actionsAnchor.transform.position.y);
+            actionPrefabInstance.transform.position = new Vector2(actionsAnchor.transform.position.x + direction * 0.5f, actionsAnchor.transform.position.y);
+            actionPrefabInstance.SendMessage("SetDirection", direction);
+
         }
     }
 
