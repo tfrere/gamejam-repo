@@ -4,8 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(GameObject))]
 public class ActionsManager : MonoBehaviour
 {
-
-
     public GameObject actionsAnchor;
     public GameObject actionPrefab;
     private GameObject actionPrefabInstance;

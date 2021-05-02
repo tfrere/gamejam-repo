@@ -9,35 +9,30 @@ using TMPro;
 public class TeleType : MonoBehaviour {
 
   public float intervalBetweenLetters;
+  private string textToPrint;
   private TextMeshPro m_textMeshPro;
 
+  public AudioSource TeletypeSound;
+
+
+
   IEnumerator StartCountdown() {
-
-    int totalVisibleCharacters = m_textMeshPro.textInfo.characterCount;
     int counter = 0;
-
-    while(counter <= totalVisibleCharacters) {
-
-      //visibleCount = counter % (totalVisibleCharacters + 1);
-      m_textMeshPro.maxVisibleCharacters = counter;
-
+    while(counter <= textToPrint.Length) {
+      TeletypeSound.Play();
+      m_textMeshPro.text = textToPrint.Substring(0, counter);
+      m_textMeshPro.ForceMeshUpdate();
       counter += 1;
+
       yield return new WaitForSeconds(intervalBetweenLetters);
     }
-
   }
 
   void Start()
   {
     m_textMeshPro = gameObject.GetComponent<TextMeshPro>();
-  }
-
-  void OnEnable() {
+    textToPrint = m_textMeshPro.text;
     StartCoroutine(StartCountdown());
-  }
-
-  void Update()
-  {
   }
 
 }

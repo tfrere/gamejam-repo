@@ -21,13 +21,5 @@ public class StartMenuController : MonoBehaviour
         LoadingData.sceneToLoad = targetScene;
         SceneManager.LoadScene("LoadingScene");
       }
-        // if(Input.GetKey("space")) {
-        //     AsyncOperation loadingOperation = SceneManager.LoadSceneAsync("LevelChoosingMenu");
-        //     float loadProgress = loadingOperation.progress;
-        //     if(loadingOperation.isDone)
-        //     {
-        //         print("toto");
-        //     }
-        // }
     }
 }

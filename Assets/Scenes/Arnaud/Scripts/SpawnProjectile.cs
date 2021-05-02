@@ -7,6 +7,8 @@ public class SpawnProjectile : MonoBehaviour
     public float speed = 0;
     private Rigidbody2D bulletRB;
 
+    public string fireInput = "e";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,7 @@ public class SpawnProjectile : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKey(fireInput))
         {
             this.bulletRB = Instantiate(projectile, transform.position, transform.rotation);
             //bulletRB.AddForce(new Vector2(speed, 0), ForceMode2D.Impulse);

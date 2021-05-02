@@ -34,9 +34,11 @@ public class LoadScene : MonoBehaviour
     String getHaiku()
     {
       String[] haikus = {
-        "confessions de minuit\nle vin fait maison\ncolore nos dents",
-        "Journée de l’an neuf –\nles hommes que nous croisons\nregardent ma fille",
-        "Spectacle en plein air\nsur la ligne d'horizon\nl'astre funambule"
+        
+        
+        "Ground squirrel.\nbalancing its tomato.\non the garden fence...\n\n- Don Eulert",
+        "From across the lake,\nPast the black winter trees,\nFaint sounds of a flute...\n\n- Richard Wright",
+        "A little boy sings\non a terrace, eyes aglow.\nRidge spills upward...\n\n- Robert Yehling",
       };
 
       return haikus[Random.Range(0, 3)];
