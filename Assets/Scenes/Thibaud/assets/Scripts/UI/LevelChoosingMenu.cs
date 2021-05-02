@@ -14,27 +14,29 @@ public class LevelChoosingMenu : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D collision)
     {
+        isActive = true;
         if(Input.GetKey("space")) {
             print("OnTriggerStay2D - " + name);
             AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(name);
             float loadProgress = loadingOperation.progress;
-            isActive = true;
             if(loadingOperation.isDone) {
 
             }
         }
-        else {
-            isActive = false;
-        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        isActive = false;
     }
 
     void Update()
     {
         if(isActive) {
-            level.transform.y = 3;
+            level.transform.position = new Vector3(level.transform.position.x,1.5f, level.transform.position.z);
         }
         else {
-            level.transform.y = 2;
+            level.transform.position = new Vector3(level.transform.position.x,1.0f, level.transform.position.z);
         }
     }
 }
