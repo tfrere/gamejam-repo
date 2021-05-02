@@ -33,10 +33,10 @@ public class LevelChoosingMenu : MonoBehaviour
     void Update()
     {
         if(isActive) {
-            level.transform.position = new Vector3(level.transform.position.x,1.5f, level.transform.position.z);
+            level.transform.position = new Vector3(level.transform.position.x, -2.5f, level.transform.position.z);
         }
         else {
-            level.transform.position = new Vector3(level.transform.position.x,1.0f, level.transform.position.z);
+            level.transform.position = new Vector3(level.transform.position.x, -3.0f, level.transform.position.z);
         }
     }
 }

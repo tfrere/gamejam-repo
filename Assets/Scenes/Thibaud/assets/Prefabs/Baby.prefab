@@ -7,34 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4165121505645880804, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 43281e3b7946e4cdfa7104f6176c9853, type: 2}
-    - target: {fileID: 4165121505645880805, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
-      propertyPath: m_fall
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4165121505645880805, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
-      propertyPath: m_jump
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4165121505645880805, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
-      propertyPath: topInput
-      value: i
-      objectReference: {fileID: 0}
-    - target: {fileID: 4165121505645880805, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
-      propertyPath: leftInput
-      value: j
-      objectReference: {fileID: 0}
-    - target: {fileID: 4165121505645880805, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
-      propertyPath: rightInput
-      value: l
-      objectReference: {fileID: 0}
-    - target: {fileID: 4165121505645880805, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
-      propertyPath: bottomInput
-      value: k
-      objectReference: {fileID: 0}
     - target: {fileID: 4165121505645880809, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -79,26 +51,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4165121505645880810, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
-      propertyPath: m_Size.x
-      value: 0.45882788
-      objectReference: {fileID: 0}
-    - target: {fileID: 4165121505645880810, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
-      propertyPath: m_Size.y
-      value: 0.6216075
-      objectReference: {fileID: 0}
-    - target: {fileID: 4165121505645880810, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.015702292
-      objectReference: {fileID: 0}
-    - target: {fileID: 4165121505645880810, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.1870423
-      objectReference: {fileID: 0}
-    - target: {fileID: 4165121505645880811, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3083089168873209362, guid: 04a2c36f206b2455bbb6c88a293f44be, type: 3}
     - target: {fileID: 4165121505645880814, guid: 4559d646b0a7d4430bcc89630ec4894e, type: 3}
       propertyPath: m_Name
       value: Baby
