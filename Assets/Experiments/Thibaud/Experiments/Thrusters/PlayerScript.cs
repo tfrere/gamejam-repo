@@ -9,7 +9,6 @@
      public Rigidbody2D thruster_right;
      public GameObject thruster_left_square;
      public GameObject thruster_right_square;
-     private bool isMoving = false;
 
      void Start()
      {
