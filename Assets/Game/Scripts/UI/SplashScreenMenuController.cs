@@ -8,18 +8,17 @@ public class SplashScreenMenuController : MonoBehaviour
 
   public string targetScene;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+  void Start()
+  {
+    // GameEvents.instance.OnGameLaunchTrigger(1);
+  }
 
+  void Update()
+  {
+    if(Input.GetKey("space")) {
+      GameInfo.sceneToLoad = targetScene;
+      SceneManager.LoadScene("LoadingSceneWithTransition");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-      if(Input.GetKey("space")) {
-        GameInfo.sceneToLoad = targetScene;
-        SceneManager.LoadScene("LoadingSceneWithTransition");
-      }
-    }
+  }
+  
 }

@@ -9,7 +9,7 @@ using Random=UnityEngine.Random;
 
 public class LoadSceneWithTransition : MonoBehaviour
 {
-    public float delay = 5.0f;
+    public float delay = 1.0f;
     public bool isCoroutineExecuting = false;
 
     void Start()

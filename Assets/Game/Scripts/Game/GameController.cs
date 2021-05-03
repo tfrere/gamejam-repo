@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     private bool isRoundActive = false;
     private bool isFirstRound = true;
 
+    private int roundNumber = 0;
+
     void Start()
     {
         RoundNumberTextMeshPro = RoundNumberTextGameObject.GetComponent<TextMeshPro>();
@@ -36,9 +38,10 @@ public class GameController : MonoBehaviour
     {
         PlayerOneScoreText.SetText("" + GameInfo.PlayerOneScore);
         PlayerTwoScoreText.SetText("" + GameInfo.PlayerTwoScore);
-        RoundNumberTextMeshPro.SetText("Round " + (GameInfo.PlayerOneScore + GameInfo.PlayerTwoScore));
+        RoundNumberTextMeshPro.SetText("Round " + roundNumber);
 
         if(GameInfo.PlayerOneScore == GameInfo.MaxScore || GameInfo.PlayerTwoScore == GameInfo.MaxScore) {
+            Time.timeScale = 1;
             goToScoreMenu();
         }
 
@@ -49,8 +52,8 @@ public class GameController : MonoBehaviour
     }
 
     void goToScoreMenu() {
-            GameInfo.sceneToLoad = "ScoreMenu";
-            SceneManager.LoadScene("LoadingSceneWithTransition");
+        GameInfo.sceneToLoad = "ScoreMenu";
+        SceneManager.LoadScene("LoadingSceneWithTransition");
     }
 
     void StartRound() {
@@ -68,7 +71,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator HandleFirstStartRound()
     {
-        print("firstRound");
+        // print("firstRound");
         isRoundActive = false; 
         RoundNumberTextGameObject.SetActive(true);
         soundHandler.ChangeTheSound(0);
@@ -77,15 +80,16 @@ public class GameController : MonoBehaviour
         soundHandler.ChangeTheSound(1);
         PopPlayers();
         yield return new WaitForSeconds(1.0f);
-        soundHandler.ChangeTheSound(2);
         isRoundActive = true;
+        roundNumber++;
     }
     IEnumerator HandleStartRound()
     {
-        print("Round");
+        // print("Round");
         isRoundActive = false;
-        soundHandler.ChangeTheSound(2);
-        yield return new WaitForSeconds(2.0f);
+        Time.timeScale = 0.5f;
+        yield return new WaitForSeconds(.5f);
+        Time.timeScale = 1;
         if(GameObject.Find("Player(Clone)") == null) {
             Destroy(GameObject.Find("Player2(Clone)"));
         }
@@ -99,9 +103,9 @@ public class GameController : MonoBehaviour
         soundHandler.ChangeTheSound(1);
         PopPlayers();
         yield return new WaitForSeconds(1.0f);
-        soundHandler.ChangeTheSound(2);
         isRoundActive = true;
         isFirstRound = false;
+        roundNumber++;
     }
 
 }

@@ -56,11 +56,13 @@ public class PlayerMovement : MonoBehaviour
         {
             rbody.velocity = new Vector2(-m_speed, _prevY);
             facingLeft = true;
+             soundHandler.ChangeTheSound(0);
         }
         if (Input.GetKey(rightInput))
         { 
             rbody.velocity = new Vector2(m_speed, _prevY);
             facingLeft = false;
+             soundHandler.ChangeTheSound(0);
         }
         if (Input.GetKey(topInput) && (isGrounded || isOnWall))
         {
@@ -104,8 +106,17 @@ public class PlayerMovement : MonoBehaviour
         // print("OnCollisionStay2D - " + collision.gameObject.tag);
         isGrounded = collision.gameObject.tag == "Ground";
         isOnWall = collision.gameObject.tag == "Wall";
-        if(isGrounded) {
-            soundHandler.ChangeTheSound(0);
+        if(collision.gameObject.tag == "Death") {
+            if(this.gameObject.name == "Player(Clone)"){
+                GameInfo.PlayerOneScore--;
+                // soundHandler.ChangeTheSound(Random.Range(3, 6));
+                Destroy(this.gameObject.gameObject);
+            }
+            if(this.gameObject.name == "Player2(Clone)"){
+                GameInfo.PlayerTwoScore--;
+                // soundHandler.ChangeTheSound(Random.Range(3, 6));
+                Destroy(this.gameObject.gameObject);
+            }
         }
     }
 

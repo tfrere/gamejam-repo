@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eddfb869976dd486395535be5266d51e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 2
+  delay: 0.5
   isCoroutineExecuting: 0
 --- !u!4 &1043727445
 Transform:

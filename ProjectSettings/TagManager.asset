@@ -8,6 +8,9 @@ TagManager:
   - Ground
   - Death
   - Borders
+  - InvisibleBorders
+  - Music
+  - EventSystem
   layers:
   - Default
   - TransparentFX
