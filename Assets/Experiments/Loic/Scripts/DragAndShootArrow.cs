@@ -13,7 +13,7 @@ public class DragAndShootArrow : MonoBehaviour
     public Vector2 minPower;
     public Vector2 maxPower;
 
-    TrajectoryLine tl;
+    TrajectoryLineArrow tl;
 
     Camera cam;
     Vector2 force;
@@ -23,7 +23,7 @@ public class DragAndShootArrow : MonoBehaviour
     private void Start()
     {
         cam = Camera.main;
-        tl = GetComponent<TrajectoryLine>();
+        tl = GetComponent<TrajectoryLineArrow>();
     }
 
     void Update()

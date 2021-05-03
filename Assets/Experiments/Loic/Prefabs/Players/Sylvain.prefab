@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8718177449181242060}
   - component: {fileID: 7716555903214889091}
   - component: {fileID: 4697337715105172606}
-  - component: {fileID: 4697337715105172607}
+  - component: {fileID: 2718156366841318368}
   - component: {fileID: 4697337715105172593}
   m_Layer: 0
   m_Name: Sylvain
@@ -243,7 +243,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.09574318
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -252,7 +252,7 @@ LineRenderer:
         outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0.25531915
+        value: 0.47872555
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -291,15 +291,15 @@ LineRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 1
-    numCapVertices: 1
-    alignment: 0
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 1
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &4697337715105172607
+--- !u!114 &2718156366841318368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -308,10 +308,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8718177449181242055}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 299a18d9174c8d3428df58e46cf843a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cc64da7585680c41829b0dc2ca8f7a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lr: {fileID: 0}
+  player: {fileID: 8718177449181242055}
 --- !u!114 &4697337715105172593
 MonoBehaviour:
   m_ObjectHideFlags: 0
