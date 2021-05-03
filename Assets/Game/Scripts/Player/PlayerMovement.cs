@@ -18,8 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public string bottomInput = "s";
 
     public float m_speed = 5f;
-    public float m_jump = 10.0f;
-    public float m_fall = 20.0f; 
+    public float m_jump = 6.0f;
+    public float m_fall = 13.0f; 
 
     public string[] collisionTags = { "Wall", "Ground" };
 
@@ -57,13 +57,19 @@ public class PlayerMovement : MonoBehaviour
             rbody.velocity = new Vector2(-m_speed, _prevY);
             facingLeft = true;
              soundHandler.ChangeTheSound(0);
-        }
-        if (Input.GetKey(rightInput))
+        } else if (Input.GetKey(rightInput))
         { 
             rbody.velocity = new Vector2(m_speed, _prevY);
             facingLeft = false;
              soundHandler.ChangeTheSound(0);
+        } else 
+        {
+            if (isGrounded)
+            {
+                rbody.velocity = new Vector2(0f, _prevY);
+            }
         }
+
         if (Input.GetKey(topInput) && (isGrounded || isOnWall))
         {
             rbody.velocity = new Vector2(_prevX, m_jump);
@@ -73,7 +79,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rbody.velocity = new Vector2(_prevX, -m_fall);
         }
-
 
         // Sprite direction
         spriteRenderer.flipX = facingLeft;
