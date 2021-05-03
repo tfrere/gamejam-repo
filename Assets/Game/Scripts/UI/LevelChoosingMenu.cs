@@ -16,12 +16,8 @@ public class LevelChoosingMenu : MonoBehaviour
     {
         isActive = true;
         if(Input.GetKey("space")) {
-            print("OnTriggerStay2D - " + name);
-            AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(name);
-            float loadProgress = loadingOperation.progress;
-            if(loadingOperation.isDone) {
-
-            }
+            GameInfo.sceneToLoad = name;
+            SceneManager.LoadScene("LoadingScene");
         }
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartMenuController : MonoBehaviour
+public class TutorialMenuController : MonoBehaviour
 {
 
   public string targetScene;
@@ -18,8 +18,8 @@ public class StartMenuController : MonoBehaviour
     void Update()
     {
       if(Input.GetKey("space")) {
-        LoadingData.sceneToLoad = targetScene;
-        SceneManager.LoadScene("LoadingScene");
+        GameInfo.sceneToLoad = targetScene;
+        SceneManager.LoadScene("LoadingSceneWithTransition");
       }
     }
 }

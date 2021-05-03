@@ -9,6 +9,7 @@ public class ScoreMenuController : MonoBehaviour
     public TextMeshPro winText;
     public GameObject PlayerOneSprite;
     public GameObject PlayerTwoSprite;
+      public string targetScene;
 
     // Start is called before the first frame update
     void Start()
@@ -17,11 +18,11 @@ public class ScoreMenuController : MonoBehaviour
         PlayerTwoSprite.SetActive(false);
 
         
-        if(GameInfo.PlayerOneScore == 10) {
+        if(GameInfo.PlayerOneScore == GameInfo.MaxScore) {
             winText.SetText("Player 1 won");
             PlayerOneSprite.SetActive(true);
         }
-        if(GameInfo.PlayerTwoScore == 10) {
+        if(GameInfo.PlayerTwoScore == GameInfo.MaxScore) {
             winText.SetText("Player 2 won");
             PlayerTwoSprite.SetActive(true);
         }
@@ -32,12 +33,8 @@ public class ScoreMenuController : MonoBehaviour
     void Update()
     {
         if(Input.GetKey("space")) {
-            AsyncOperation loadingOperation = SceneManager.LoadSceneAsync("StartMenu");
-            float loadProgress = loadingOperation.progress;
-            if(loadingOperation.isDone)
-            {
-                print("toto");
-            }
+            GameInfo.sceneToLoad = targetScene;
+            SceneManager.LoadScene("LoadingSceneWithTransition");
         }
     }
 }

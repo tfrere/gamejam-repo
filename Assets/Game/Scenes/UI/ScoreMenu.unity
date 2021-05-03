@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 1137895675}
   - component: {fileID: 1137895674}
   m_Layer: 0
-  m_Name: Player2Sprite
+  m_Name: PlayerTwoSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -307,7 +307,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1981437635880020547, guid: 04a2c36f206b2455bbb6c88a293f44be, type: 3}
+  m_Sprite: {fileID: 3083089168873209362, guid: 04a2c36f206b2455bbb6c88a293f44be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -326,7 +326,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137895673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.33, y: 2.12, z: 0}
+  m_LocalPosition: {x: 0.33, y: 2.22, z: 0}
   m_LocalScale: {x: 3.431, y: 3.431, z: 3.431}
   m_Children: []
   m_Father: {fileID: 0}
@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 1324540614}
   - component: {fileID: 1324540613}
   m_Layer: 0
-  m_Name: Script
+  m_Name: ScoreMenuController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,6 +534,7 @@ MonoBehaviour:
   winText: {fileID: 1153900580}
   PlayerOneSprite: {fileID: 2073956655}
   PlayerTwoSprite: {fileID: 1137895673}
+  targetScene: LevelChoosingMenu
 --- !u!4 &1324540614
 Transform:
   m_ObjectHideFlags: 0
@@ -849,7 +850,7 @@ GameObject:
   - component: {fileID: 2073956657}
   - component: {fileID: 2073956656}
   m_Layer: 0
-  m_Name: Player1Sprite
+  m_Name: PlayerOneSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -895,7 +896,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3083089168873209362, guid: 80af8ab8ef10a4fefb3bf092d07f28a5, type: 3}
+  m_Sprite: {fileID: 1062266681453288945, guid: 80af8ab8ef10a4fefb3bf092d07f28a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
