@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject Player1;
-    public GameObject Player2;
+    public GameObject PlayerOne;
+    public GameObject PlayerTwo;
 
-    public GameObject Player1Spawn;
-    public GameObject Player2Spawn;
+    public GameObject PlayerOneSpawn;
+    public GameObject PlayerTwoSpawn;
 
     public TextMeshPro PlayerOneScoreText;
     public TextMeshPro PlayerTwoScoreText;
@@ -20,7 +20,6 @@ public class GameController : MonoBehaviour
     private SoundHandler soundHandler;
 
     private bool isRoundActive = false;
-    private bool isFirstRound = true;
 
     private int roundNumber = 0;
 
@@ -45,7 +44,7 @@ public class GameController : MonoBehaviour
             goToScoreMenu();
         }
 
-        if (isRoundActive == true && (GameObject.Find("Player(Clone)") == null || GameObject.Find("Player2(Clone)") == null)) {
+        if (isRoundActive == true && (GameObject.Find("PlayerOne(Clone)") == null || GameObject.Find("PlayerTwo(Clone)") == null)) {
             StartRound();
         }
 
@@ -65,8 +64,8 @@ public class GameController : MonoBehaviour
     }
 
     void PopPlayers() {
-        Instantiate(Player1, Player1Spawn.transform.position, Quaternion.identity);
-        Instantiate(Player2, Player2Spawn.transform.position, Quaternion.identity);
+        Instantiate(PlayerOne, PlayerOneSpawn.transform.position, Quaternion.identity);
+        Instantiate(PlayerTwo, PlayerTwoSpawn.transform.position, Quaternion.identity);
     }
 
     IEnumerator HandleFirstStartRound()
@@ -90,11 +89,11 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(.5f);
         Time.timeScale = 1;
-        if(GameObject.Find("Player(Clone)") == null) {
-            Destroy(GameObject.Find("Player2(Clone)"));
+        if(GameObject.Find("PlayerOne(Clone)") == null) {
+            Destroy(GameObject.Find("PlayerTwo(Clone)"));
         }
-        if(GameObject.Find("Player2(Clone)") == null) {
-            Destroy(GameObject.Find("Player(Clone)"));
+        if(GameObject.Find("PlayerTwo(Clone)") == null) {
+            Destroy(GameObject.Find("PlayerOne(Clone)"));
         }
         RoundNumberTextGameObject.SetActive(true);
         soundHandler.ChangeTheSound(0);
@@ -104,7 +103,6 @@ public class GameController : MonoBehaviour
         PopPlayers();
         yield return new WaitForSeconds(1.0f);
         isRoundActive = true;
-        isFirstRound = false;
         roundNumber++;
     }
 

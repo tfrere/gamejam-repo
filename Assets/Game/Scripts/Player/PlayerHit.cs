@@ -36,21 +36,7 @@ public class PlayerHit : MonoBehaviour
             isPunching = true;
         }
     }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        // print(collision.gameObject.name);
-        // print(this.gameObject.name);
-        if(collision.gameObject.name == "Player2(Clone)" && this.gameObject.name == "PunchCollider") {
-            Destroy(collision.gameObject);
-            GameInfo.PlayerOneScore++;
-            soundHandler.ChangeTheSound(Random.Range(3, 6));
-        }
-        if(collision.gameObject.name == "Player(Clone)" && this.gameObject.name == "PunchCollider2") {
-            Destroy(collision.gameObject);
-            GameInfo.PlayerTwoScore++;
-            soundHandler.ChangeTheSound(Random.Range(3, 6));
-        }
-    }
+    
     void Punch() {
         // print("Punch !");
         Animator.SetTrigger("isPunching");

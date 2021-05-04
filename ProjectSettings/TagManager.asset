@@ -11,6 +11,8 @@ TagManager:
   - InvisibleBorders
   - Music
   - EventSystem
+  - SelfDeath
+  - Arrow
   layers:
   - Default
   - TransparentFX
@@ -48,18 +50,30 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 475111929
-    locked: 0
-  - name: Midground
-    uniqueID: 1954799545
-    locked: 0
-  - name: Level
-    uniqueID: 4068636879
+  - name: UI
+    uniqueID: 1790347853
     locked: 0
   - name: Player
     uniqueID: 72440171
     locked: 0
   - name: Particles
     uniqueID: 2874890571
+    locked: 0
+  - name: Details
+    uniqueID: 1954799545
+    locked: 0
+  - name: Ground
+    uniqueID: 4068636879
+    locked: 0
+  - name: ' NearBackground'
+    uniqueID: 3561226947
+    locked: 0
+  - name: MidBackground
+    uniqueID: 2070553539
+    locked: 0
+  - name: FarBackground
+    uniqueID: 475111929
+    locked: 0
+  - name: InvisibleBorders
+    uniqueID: 3380255345
     locked: 0
