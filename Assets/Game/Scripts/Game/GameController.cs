@@ -64,8 +64,8 @@ public class GameController : MonoBehaviour
     }
 
     void PopPlayers() {
-        Instantiate(PlayerOne, PlayerOneSpawn.transform.position, Quaternion.identity);
-        Instantiate(PlayerTwo, PlayerTwoSpawn.transform.position, Quaternion.identity);
+        GameObject playerOne = Instantiate(PlayerOne, PlayerOneSpawn.transform.position, Quaternion.identity);
+        GameObject playerTwo = Instantiate(PlayerTwo, PlayerTwoSpawn.transform.position, Quaternion.identity);
     }
 
     IEnumerator HandleFirstStartRound()

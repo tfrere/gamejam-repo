@@ -723,10 +723,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf40c94d3e3394455829c3108ec64af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1: {fileID: 4165121505645880814, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
-  Player2: {fileID: 4708708392311400763, guid: 0d9d4be6d44f642eb9d5efcfb320efac, type: 3}
-  Player1Spawn: {fileID: 6336275520509509805}
-  Player2Spawn: {fileID: 6336275519506159194}
+  PlayerOne: {fileID: 0}
+  PlayerTwo: {fileID: 0}
+  PlayerOneSpawn: {fileID: 0}
+  PlayerTwoSpawn: {fileID: 0}
   PlayerOneScoreText: {fileID: 6336275520605403856}
   PlayerTwoScoreText: {fileID: 6336275520145041332}
   RoundNumberTextGameObject: {fileID: 2002613157}
@@ -841,6 +841,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: b8783c1401a934339868a4b610bdd07b, type: 3}
   - {fileID: 8300000, guid: dbae0ebf1a1334bed92ba66e9a20a927, type: 3}
+  canStackSound: 0
 --- !u!1 &6336275520227994572
 GameObject:
   m_ObjectHideFlags: 0

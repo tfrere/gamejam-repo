@@ -3,20 +3,24 @@ using UnityEngine;
 public class SoundHandler : MonoBehaviour
 {
     [SerializeField] AudioClip[] clips; // drag and add audio clips in the inspector
+    
     AudioSource audioSource;
+
+    public bool canStackSound = false;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
     public void ChangeTheSound(int clipIndex) // the index of the sound, 0 for first sound, 1 for the 2nd..etc
     {
-        // use one desired logic
-        // this will make only one sound to play without interruption
-        audioSource.clip = clips[clipIndex];
-        audioSource.Play();
+        if (!canStackSound) {
+            audioSource.clip = clips[clipIndex];
+            audioSource.Play();
+        }
+        else {
+            audioSource.PlayOneShot(clips[clipIndex]);
+        }
  
-        // this will make multiple sound to play with interruption
-        // audioSource.PlayOneShot(clips[clipIndex]);
     }
 }
  

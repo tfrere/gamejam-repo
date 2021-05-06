@@ -5,20 +5,49 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
+    private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
     private SoundHandler soundHandler;
+    public ParticleSystem particleSystem;
+
+    public bool isDead = false;
 
     void Start()
     {
+        rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         soundHandler = GetComponent<SoundHandler>();
     }
 
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Death") {
+        handleDeath(collision.gameObject);
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        handleDeath(collision.gameObject);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {   
+        handleDeath(collision.gameObject);
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {   
+        handleDeath(collision.gameObject);
+    }
+
+    void handleDeath(GameObject gameObject) {
+        // print("player death collide with -> " + collision.gameObject.name + " with tag : " + collision.gameObject.tag + " from : " + this.gameObject.name);
+        bool isSelfPunch = gameObject.transform.parent && gameObject.transform.parent.name == this.gameObject.name;
+        bool isSelfArrow = gameObject.name.Contains("Arrow") && gameObject.name.Contains(this.gameObject.name);
+        if( gameObject.tag == "Death"
+            && (!isSelfPunch && !isSelfArrow)) {
             if(this.gameObject.name.Contains("PlayerOne")) {
                 GameInfo.PlayerTwoScore++;
             }
@@ -27,7 +56,7 @@ public class PlayerDeath : MonoBehaviour
             }
             Death();
         }
-        if(collision.gameObject.tag == "SelfDeath") {
+        if(gameObject.tag == "SelfDeath") {
             if(this.gameObject.name.Contains("PlayerOne")) {
                 GameInfo.PlayerOneScore--;
             }
@@ -44,11 +73,15 @@ public class PlayerDeath : MonoBehaviour
 
     IEnumerator DeathActivation()
     {
-        boxCollider.enabled = false;
-        spriteRenderer.enabled = false;
-        soundHandler.ChangeTheSound(Random.Range(3, 6));
-        print("shouldberenderedd");
-        yield return new WaitForSeconds(.5f);
+        if(!isDead) {
+            rigidBody.simulated = false;
+            boxCollider.enabled = false;
+            spriteRenderer.enabled = false;
+            soundHandler.ChangeTheSound(Random.Range(8, 10));
+            particleSystem.Play();
+            isDead = true;
+        }
+        yield return new WaitForSeconds(1f);
         Destroy(this.gameObject.gameObject);
     }
 }

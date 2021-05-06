@@ -1,11 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
-
-// TO DO 
-
-// On punch
-// Instanciate collider 
-// collider with sprite animation
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,109 +11,106 @@ public class PlayerMovement : MonoBehaviour
     public string rightInput = "d";
     public string topInput = "z";
     public string bottomInput = "s";
+    public string jumpInput = "x";
 
     public float m_speed = 5f;
-    public float m_jump = 6.0f;
-    public float m_fall = 13.0f; 
 
-    public string[] collisionTags = { "Wall", "Ground" };
+    private List<string> collisionTags =  new List<string> {"Ground"};
+
 
     // GameObject Internals
-    private Rigidbody2D rbody;
+    public Rigidbody2D rigidBody;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private SoundHandler soundHandler;
 
     // PRIVATE COOKING
-    public bool facingLeft = false;
-    private bool isGrounded = false;
-    private bool isOnWall = false;
-    private float _defaultMass;
+    public string orientation = "right";
+    public string oldHorizontalOrientation = "right";
+
+    public string state = "idle";
+    private string prevState = "idle";
+    private bool isPlayingSound = false;
+    public bool isGrounded = false;
 
     void Start()
     {
-        rbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        oldHorizontalOrientation = spriteRenderer.flipX ? "left" : "right";
         animator = GetComponent<Animator>();
         soundHandler = GetComponent<SoundHandler>();
 
-        _defaultMass = rbody.mass;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        float _prevX = rbody.velocity.x;
-        float _prevY = rbody.velocity.y;
+        orientation = oldHorizontalOrientation;
 
+        state = "idle";
+
+        float _prevX = rigidBody.velocity.x;
+        float _prevY = rigidBody.velocity.y;
+
+        // IF LEFT RIGHT
         if (Input.GetKey(leftInput))
         {
-            rbody.velocity = new Vector2(-m_speed, _prevY);
-            facingLeft = true;
+            rigidBody.velocity = new Vector2(-m_speed, _prevY);
+            orientation = oldHorizontalOrientation = "left";
+            if(isGrounded) { state = "walking"; }
         } else if (Input.GetKey(rightInput))
         { 
-            rbody.velocity = new Vector2(m_speed, _prevY);
-            facingLeft = false;
-        } else 
-        {
-            if (isGrounded)
-            {
-                rbody.velocity = new Vector2(0f, _prevY);
-            }
+            rigidBody.velocity = new Vector2(m_speed, _prevY);
+            orientation = oldHorizontalOrientation = "right";
+            if(isGrounded) { state = "walking"; }
         }
-
-        if (Input.GetKey(topInput) && (isGrounded || isOnWall))
+        if (isGrounded && state == "idle" && prevState == "walking") {
+            rigidBody.velocity = new Vector2(0f, _prevY);
+        }
+        if (Input.GetKey(topInput))
         {
-            rbody.velocity = new Vector2(_prevX, m_jump);
-            soundHandler.ChangeTheSound(2);
+            orientation = "top";
         }
         if (Input.GetKey(bottomInput))
         {
-            rbody.velocity = new Vector2(_prevX, -m_fall);
+            orientation = "bottom";
         }
 
-        // Sprite direction
-        spriteRenderer.flipX = facingLeft;
-
-        // Rigidbody update
-        if (isOnWall || isGrounded)
-        {
-            rbody.mass = 0.5f * _defaultMass;
-        } else
-        {
-            rbody.mass = _defaultMass;
+        // IF ON WALL OR GROUNDED
+        if(!isPlayingSound && state != "idle") {
+            MakeSound();
         }
 
-        // ANIMATOR
-        animator.SetFloat("Speed", Mathf.Abs(rbody.velocity.x));
+        spriteRenderer.flipX = orientation == "left";
+
+        prevState = state;
+
+        animator.SetFloat("Speed", Mathf.Abs(rigidBody.velocity.x));
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        // print("OnCollisionEnter2D - " + collision.gameObject.tag);
-        isGrounded = collision.gameObject.tag == "Ground";
-        isOnWall = collision.gameObject.tag == "Wall";
-        if(isOnWall) {
-            soundHandler.ChangeTheSound(1);
-        }
-    }
-    
     void OnCollisionStay2D(Collision2D collision)
     {
-        // print("OnCollisionStay2D - " + collision.gameObject.tag);
-        isGrounded = collision.gameObject.tag == "Ground";
-        isOnWall = collision.gameObject.tag == "Wall";
-        if(isGrounded) {
-            soundHandler.ChangeTheSound(0);
-        }
+        isGrounded = collisionTags.Contains(collision.gameObject.tag);
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        // print("OnCollisionExit2D - " + collision.gameObject.tag);
-        isGrounded = isGrounded && collision.gameObject.tag == "Ground" ? false : isGrounded;
-        isOnWall = isOnWall && collision.gameObject.tag == "Wall" ? false : isOnWall;
+        isGrounded = isGrounded && collisionTags.Contains(collision.gameObject.tag) ? false : isGrounded;
+    }
+
+    void MakeSound() {
+        StartCoroutine(MakeSoundActivation());
+    }
+
+    IEnumerator MakeSoundActivation()
+    {
+        if(state == "walking") {
+            isPlayingSound = true;
+            soundHandler.ChangeTheSound(Random.Range(0, 5));
+        }
+        yield return new WaitForSeconds(0.3f);
+        isPlayingSound = false;
     }
 
 

@@ -8,6 +8,7 @@ public class Levitate : MonoBehaviour {
 	public float amplitude = 10.0f;
 	public float frequency = 0.7f;
 	public int _scaleMultiplier = 10;
+	public bool isReverse = false;
 
 	public bool isHorizontal = false;
 
@@ -21,7 +22,8 @@ public class Levitate : MonoBehaviour {
 	void Update () {
 
 		tempPos = posOffset;
-		float value = Mathf.Sin (Time.fixedTime * Mathf.PI * frequency) * amplitude;
+		float test = isReverse ? -Time.fixedTime : Time.fixedTime;
+		float value = Mathf.Sin (test * Mathf.PI * frequency) * amplitude;
 		float clampedValue = Mathf.Clamp(value, -2, 2);
 		if(isHorizontal){
 			tempPos.x += clampedValue;

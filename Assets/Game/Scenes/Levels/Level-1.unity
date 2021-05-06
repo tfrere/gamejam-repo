@@ -1915,6 +1915,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &806355316 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336275520509509805, guid: 31a060d2c234c420890907553e771407, type: 3}
+  m_PrefabInstance: {fileID: 6336275520665582063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &830011462
 GameObject:
   m_ObjectHideFlags: 0
@@ -3227,6 +3232,11 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1164010426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336275519506159194, guid: 31a060d2c234c420890907553e771407, type: 3}
+  m_PrefabInstance: {fileID: 6336275520665582063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1269781741
 GameObject:
   m_ObjectHideFlags: 0
@@ -3892,6 +3902,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 3.7043
       objectReference: {fileID: 0}
+    - target: {fileID: 6336275520165585451, guid: 31a060d2c234c420890907553e771407, type: 3}
+      propertyPath: PlayerOne
+      value: 
+      objectReference: {fileID: 4165121505645880814, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+    - target: {fileID: 6336275520165585451, guid: 31a060d2c234c420890907553e771407, type: 3}
+      propertyPath: PlayerTwo
+      value: 
+      objectReference: {fileID: 4708708392311400763, guid: 0d9d4be6d44f642eb9d5efcfb320efac, type: 3}
+    - target: {fileID: 6336275520165585451, guid: 31a060d2c234c420890907553e771407, type: 3}
+      propertyPath: PlayerOneSpawn
+      value: 
+      objectReference: {fileID: 806355316}
+    - target: {fileID: 6336275520165585451, guid: 31a060d2c234c420890907553e771407, type: 3}
+      propertyPath: PlayerTwoSpawn
+      value: 
+      objectReference: {fileID: 1164010426}
     - target: {fileID: 6336275520165585452, guid: 31a060d2c234c420890907553e771407, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
