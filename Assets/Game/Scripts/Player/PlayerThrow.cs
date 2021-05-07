@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerThrow : MonoBehaviour
 {
@@ -23,13 +24,14 @@ public class PlayerThrow : MonoBehaviour
         arrowName = Arrow.name + "-" + this.gameObject.transform.parent.name;
     }
 
-    void Update()
+    public void ThrowInputAction(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(Player.throwInput) && !isThrowing && !PlayerDeath.isDead && !Player.isMakingAnAction)
-        {  
+        if(context.performed && !isThrowing && !PlayerDeath.isDead && !Player.isMakingAnAction) {
+            print("Throw!");
             Throw();
         }
     }
+
     void Throw() {
         if(this.gameObject.transform.parent.gameObject.name == "PlayerOne" && GameInfo.PlayerOneArrows > 0) {
             GameInfo.PlayerOneArrows--;

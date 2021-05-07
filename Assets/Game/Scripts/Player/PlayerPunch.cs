@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerPunch : MonoBehaviour
 {
@@ -37,19 +38,20 @@ public class PlayerPunch : MonoBehaviour
                 soundHandler.ChangeTheSound(2);
         }
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(Player.punchInput) && !isPunching && !PlayerDeath.isDead && !Player.isMakingAnAction) 
-        {  
-            isPunching = true;
-            Player.isMakingAnAction = true;
-            Punch();
-        } 
-    }
     
+    public void PunchInputAction(InputAction.CallbackContext context)
+    {
+        if(context.performed && !isPunching && !PlayerDeath.isDead && !Player.isMakingAnAction) {
+            print("Punch!");
+            Punch();
+        }
+    }
+
+
     void Punch() {
         // print("Punch !");
+        isPunching = true;
+        Player.isMakingAnAction = true;
         soundHandler.ChangeTheSound(Random.Range(0, 2));
         if(
             (PlayerMovement.orientation == "top" && PlayerJump.isJumping) ||

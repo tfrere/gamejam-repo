@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerJump : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PlayerJump : MonoBehaviour
     public bool isOnWall = false;
     public bool isJumping = false;
 
+    public bool hasToJump = false;
+
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -35,12 +38,11 @@ public class PlayerJump : MonoBehaviour
     {
     }
 
-    
     void OnCollisionStay2D(Collision2D collision)
     {
         isOnWall = collisionTags.Contains(collision.gameObject.tag);
 
-        if(Input.GetKey(player.jumpInput) && !isJumping && (playerMovement.isGrounded || isOnWall)) {
+        if(hasToJump && !isJumping && (playerMovement.isGrounded || isOnWall)) {
             MakeJump(collision);            
         }
 
@@ -51,6 +53,14 @@ public class PlayerJump : MonoBehaviour
         isOnWall = isOnWall && collisionTags.Contains(collision.gameObject.tag) ? false : isOnWall;
     }
 
+    public void JumpInputAction(InputAction.CallbackContext context)
+    {
+        if(context.performed && !isJumping && (playerMovement.isGrounded || isOnWall)) {
+            print("Jump!");
+            hasToJump = true;
+            // rbody.AddForce(new Vector2(rbody.velocity.x, jumpForce), ForceMode2D.Impulse);
+        }
+    }
 
     void MakeJump(Collision2D collision) {
         StartCoroutine(MakeJumpActivation(collision));
@@ -82,6 +92,7 @@ public class PlayerJump : MonoBehaviour
         soundHandler.ChangeTheSound(7);
         yield return new WaitForSeconds(0.3f);
         isJumping = false;
+        hasToJump = false;
     }
 
 }

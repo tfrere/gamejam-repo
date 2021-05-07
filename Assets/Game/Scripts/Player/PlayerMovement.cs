@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isPlayingSound = false;
     public bool isGrounded = false;
 
+    private float inputTreshold = 0.1f;
+
+    private Vector2 movementInputVector;
+
     void Start()
     {
         player = GetComponent<Player>();
@@ -36,7 +41,12 @@ public class PlayerMovement : MonoBehaviour
         oldHorizontalOrientation = spriteRenderer.flipX ? "left" : "right";
         animator = GetComponent<Animator>();
         soundHandler = GetComponent<SoundHandler>();
+    }
 
+    public void MoveInputAction(InputAction.CallbackContext context)
+    {
+        print("Move!");
+        movementInputVector = context.ReadValue<Vector2>();
     }
 
     // Update is called once per frame
@@ -51,37 +61,40 @@ public class PlayerMovement : MonoBehaviour
         float _prevY = rigidBody.velocity.y;
 
         // IF LEFT RIGHT
-        if (Input.GetKey(player.leftInput))
+        if (movementInputVector.x < -inputTreshold)
         {
             orientation = oldHorizontalOrientation = "left";
             if(!playerJump.isJumping) {
                 rigidBody.velocity = new Vector2(-m_speed, _prevY);
             }
             if(isGrounded) { state = "walking"; }
-        } else if (Input.GetKey(player.rightInput))
+            // hasToMoveLeft = false;
+        } else if (movementInputVector.x > inputTreshold)
         { 
             orientation = oldHorizontalOrientation = "right";
             if(!playerJump.isJumping) {
                 rigidBody.velocity = new Vector2(m_speed, _prevY);
             }
             if(isGrounded) { state = "walking"; }
+            // hasToMoveRight = false;
         }
-        if (isGrounded && state == "idle" && prevState == "walking") {
-            rigidBody.velocity = new Vector2(0f, _prevY);
-        }
-        if (Input.GetKey(player.topInput))
+        else if (movementInputVector.y > inputTreshold)
         {
             orientation = "top";
+            // hasToMoveUp = false;
         }
-        if (Input.GetKey(player.bottomInput))
+        else if (movementInputVector.y < -inputTreshold)
         {
             orientation = "bottom";
             if(!isGrounded) {
                 rigidBody.velocity = new Vector2(_prevX, _prevY - 0.3f);
             }
+            // hasToMoveDown = false;
         }
 
-        // IF ON WALL OR GROUNDED
+        if (isGrounded && state == "idle" && prevState == "walking") {
+            rigidBody.velocity = new Vector2(0f, _prevY);
+        }
         if(!isPlayingSound && state != "idle") {
             MakeSound();
         }
@@ -89,9 +102,11 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer.flipX = orientation == "left";
 
         prevState = state;
-
+        
         // animator.SetFloat("Speed", Mathf.Abs(rigidBody.velocity.x));
     }
+
+
 
     void OnCollisionStay2D(Collision2D collision)
     {
@@ -102,7 +117,6 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = isGrounded && collisionTags.Contains(collision.gameObject.tag) ? false : isGrounded;
     }
-
     void MakeSound() {
         StartCoroutine(MakeSoundActivation());
     }
