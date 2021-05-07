@@ -162,6 +162,17 @@
                 },
                 {
                     "name": "",
+                    "id": "49ea9d78-5bdc-4f01-8103-e4c0aab80768",
+                    "path": "<XInputController>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;Joystick",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "aa62f872-a59a-44e0-a0b0-86fa9454048f",
                     "path": "<Keyboard>/#(z)",
                     "interactions": "",
@@ -189,6 +200,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32693ebf-d892-4c40-ab25-968db7d1f4d5",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -228,6 +250,17 @@
                 },
                 {
                     "name": "",
+                    "id": "42dc4cfc-09cc-44fd-9b91-6a354e333896",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;Joystick",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "46de7257-543f-49c4-ab7c-225885b93189",
                     "path": "<Keyboard>/#(c)",
                     "interactions": "",
@@ -255,6 +288,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "Punch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29b89ae9-8663-4755-a2e2-b203b4071da1",
+                    "path": "<XInputController>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick;Gamepad",
                     "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
