@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PunchHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 1018928610, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1018928615, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: punchKey
       value: o
@@ -42,6 +46,34 @@ PrefabInstance:
     - target: {fileID: 1322856646, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: jumpInput
       value: m
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053502712739869238, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: topInput
+      value: i
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053502712739869238, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: jumpInput
+      value: n
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053502712739869238, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: leftInput
+      value: j
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053502712739869238, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: punchInput
+      value: b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053502712739869238, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: rightInput
+      value: l
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053502712739869238, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: throwInput
+      value: m
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053502712739869238, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: bottomInput
+      value: k
       objectReference: {fileID: 0}
     - target: {fileID: 4165121505645880804, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_Controller
@@ -98,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 4165121505645880811, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3083089168873209362, guid: 04a2c36f206b2455bbb6c88a293f44be, type: 3}
+      objectReference: {fileID: 21300000, guid: 7c2f0e837da114e7ea38746d4639814f, type: 3}
     - target: {fileID: 4165121505645880811, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_SortingLayer
       value: 8
@@ -114,6 +146,10 @@ PrefabInstance:
     - target: {fileID: 4165121505645880814, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_Name
       value: PlayerTwo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165121505645880814, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5161977215347657786, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: throwKey

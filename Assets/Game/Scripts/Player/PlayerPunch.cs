@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerPunch : MonoBehaviour
 {
+     public Player Player;
      public PlayerMovement PlayerMovement;
      public PlayerJump PlayerJump;
      public PlayerDeath PlayerDeath;
@@ -14,9 +15,9 @@ public class PlayerPunch : MonoBehaviour
 
      private bool isPunching;
     public float accelerationOnPunch = 15.0f; 
-    public float punchRepulseForce = 15f;
+    public float punchRepulseForce = 150f;
 
-     public string punchKey = "e";
+     public string oldOrientation = "left";
 
     void Start()
     {
@@ -25,54 +26,30 @@ public class PlayerPunch : MonoBehaviour
         soundHandler = GetComponent<SoundHandler>();
         SpriteRenderer = GetComponent<SpriteRenderer>();    
     }
-
-    // Make a collision to perrform this effect ! 
-
-    
-    // void OnTriggerEnter2D(Collider2D collider)
-    // {
-    //     float orientation = PlayerMovement.orientation == "left" ? 1: -1;
-    //     Vector2 repulseVector = new Vector2(punchRepulseForce * orientation, 0); 
-    //     PlayerMovement.rigidBody.AddForce(repulseVector, ForceMode2D.Impulse);
-    //     soundHandler.ChangeTheSound(2);
-
-    //     // Collider2D[] contacts = new Collider2D[1];
-    //     // collider.GetContacts(contacts);
-    //     // // print(contacts);
-    //     // // print(this.gameObject.transform.position.x);
-    //     // // print(contacts[0].gameObject.name);
-    //     // print(this.gameObject.transform.position.x);
-    //     // print(contacts[0].gameObject.transform.position.x);
-    //     // print(this.gameObject.transform.position.x - contacts[0].gameObject.transform.position.x);
-    //     // string orientation = this.gameObject.transform.position.x - contacts[0].gameObject.transform.position.x > 0 ? "left" : "right";
-    //     // print(orientation);
-    //     // Collider2D contact = collider.GetContacts(new Collider2D[1]);
-    //     // if(contact.gameObject.name == "PlayerPunch") {
-    //     //     print("sthing");
-    //     // }
-    // }
+    void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.gameObject.name == "PunchHandler") {
+                Vector2 orientation = new Vector2(
+                    (this.gameObject.transform.position.x - collision.gameObject.transform.position.x) * 3,
+                    (this.gameObject.transform.position.y - collision.gameObject.transform.position.y) * 3
+                );
+                print("repulseVector " + orientation);
+                PlayerMovement.rigidBody.AddForce(orientation * punchRepulseForce, ForceMode2D.Impulse);
+                soundHandler.ChangeTheSound(2);
+        }
+    }
 
     void Update()
     {
-        if(PlayerMovement.orientation == "left" || PlayerMovement.orientation == "right") {
-            this.gameObject.transform.localPosition = new Vector2(PlayerMovement.orientation == "left" ? -0.55f : .55f, 0);
-
-        }
-        if(PlayerMovement.orientation == "top" || PlayerMovement.orientation == "bottom") {
-            this.gameObject.transform.localPosition = new Vector2(0, PlayerMovement.orientation == "top" ? 0.75f : -0.75f);
-        }
-        SpriteRenderer.flipX = PlayerMovement.orientation == "left";
-
-        if (Input.GetKeyDown(punchKey) && !isPunching && !PlayerDeath.isDead) 
+        if (Input.GetKeyDown(Player.punchInput) && !isPunching && !PlayerDeath.isDead && !Player.isMakingAnAction) 
         {  
-            Punch();
             isPunching = true;
+            Player.isMakingAnAction = true;
+            Punch();
         } 
     }
     
     void Punch() {
         // print("Punch !");
-        Animator.SetTrigger("isPunching");
         soundHandler.ChangeTheSound(Random.Range(0, 2));
         if(
             (PlayerMovement.orientation == "top" && PlayerJump.isJumping) ||
@@ -86,8 +63,25 @@ public class PlayerPunch : MonoBehaviour
     IEnumerator PunchActivation()
     {
         PunchCollider.enabled = true;
+        if(PlayerMovement.orientation == "left" || PlayerMovement.orientation == "right") {
+            Animator.SetTrigger("HorizontalPunch");
+        }
+        if(PlayerMovement.orientation == "top" || PlayerMovement.orientation == "bottom") {
+            Animator.SetTrigger("VerticalPunch");
+        }
+        if(PlayerMovement.orientation == "left" || PlayerMovement.orientation == "right") {
+            this.gameObject.transform.localPosition = new Vector2(PlayerMovement.orientation == "left" ? -0.75f : .75f, 0);
+        }
+        if(PlayerMovement.orientation == "top" || PlayerMovement.orientation == "bottom") {
+            this.gameObject.transform.localPosition = new Vector2(0, PlayerMovement.orientation == "top" ? 1f : -1f);
+        }
+        SpriteRenderer.flipX = PlayerMovement.orientation == "left";
+
+
         yield return new WaitForSeconds(.3f);
         PunchCollider.enabled = false;
         isPunching = false;
+        Player.isMakingAnAction = false;
     }
+
 }

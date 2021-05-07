@@ -5,6 +5,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public bool isMakingAnAction = false;
+
+    public bool isInvicible = false;
+
+    public string leftInput = "q";
+    public string rightInput = "d";
+    public string topInput = "z";
+    public string bottomInput = "s";
+
+    public string punchInput = "e";
+    public string jumpInput = "x";
+    public string throwInput = "q";
 
     void Start()
     {

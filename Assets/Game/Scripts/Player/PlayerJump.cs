@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour
 {
 
-    public string jumpInput = "x";
     public float jumpForce = 1.2f;
     public float wallJumpRepulseForce = 3.0f;
     private List<string> collisionTags =  new List<string> {"Borders", "Wall"};
 
     // GameObject Internals
+    private Player player;
     private Rigidbody2D rbody;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -24,6 +24,7 @@ public class PlayerJump : MonoBehaviour
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
         playerMovement = GetComponent<PlayerMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -39,7 +40,7 @@ public class PlayerJump : MonoBehaviour
     {
         isOnWall = collisionTags.Contains(collision.gameObject.tag);
 
-        if(Input.GetKey(jumpInput) && !isJumping && (playerMovement.isGrounded || isOnWall)) {
+        if(Input.GetKey(player.jumpInput) && !isJumping && (playerMovement.isGrounded || isOnWall)) {
             MakeJump(collision);            
         }
 
@@ -72,6 +73,7 @@ public class PlayerJump : MonoBehaviour
                 playerMovement.oldHorizontalOrientation = "left";
             }
 
+            rbody.velocity = new Vector2(0,0);
             rbody.AddForce(repulseVector, ForceMode2D.Impulse);
         }
         else {

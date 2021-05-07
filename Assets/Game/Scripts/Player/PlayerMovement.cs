@@ -6,13 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
 
     // Public configuration
-    // INPUTS
-    public string leftInput = "q";
-    public string rightInput = "d";
-    public string topInput = "z";
-    public string bottomInput = "s";
-    public string jumpInput = "x";
-
     public float m_speed = 5f;
 
     private List<string> collisionTags =  new List<string> {"Ground"};
@@ -23,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private SoundHandler soundHandler;
+    private PlayerJump playerJump;
+    private Player player;
 
     // PRIVATE COOKING
     public string orientation = "right";
@@ -35,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        player = GetComponent<Player>();
+        playerJump = GetComponent<PlayerJump>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         oldHorizontalOrientation = spriteRenderer.flipX ? "left" : "right";
         animator = GetComponent<Animator>();
@@ -54,27 +51,34 @@ public class PlayerMovement : MonoBehaviour
         float _prevY = rigidBody.velocity.y;
 
         // IF LEFT RIGHT
-        if (Input.GetKey(leftInput))
+        if (Input.GetKey(player.leftInput))
         {
-            rigidBody.velocity = new Vector2(-m_speed, _prevY);
             orientation = oldHorizontalOrientation = "left";
+            if(!playerJump.isJumping) {
+                rigidBody.velocity = new Vector2(-m_speed, _prevY);
+            }
             if(isGrounded) { state = "walking"; }
-        } else if (Input.GetKey(rightInput))
+        } else if (Input.GetKey(player.rightInput))
         { 
-            rigidBody.velocity = new Vector2(m_speed, _prevY);
             orientation = oldHorizontalOrientation = "right";
+            if(!playerJump.isJumping) {
+                rigidBody.velocity = new Vector2(m_speed, _prevY);
+            }
             if(isGrounded) { state = "walking"; }
         }
         if (isGrounded && state == "idle" && prevState == "walking") {
             rigidBody.velocity = new Vector2(0f, _prevY);
         }
-        if (Input.GetKey(topInput))
+        if (Input.GetKey(player.topInput))
         {
             orientation = "top";
         }
-        if (Input.GetKey(bottomInput))
+        if (Input.GetKey(player.bottomInput))
         {
             orientation = "bottom";
+            if(!isGrounded) {
+                rigidBody.velocity = new Vector2(_prevX, _prevY - 0.3f);
+            }
         }
 
         // IF ON WALL OR GROUNDED
@@ -86,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
 
         prevState = state;
 
-        animator.SetFloat("Speed", Mathf.Abs(rigidBody.velocity.x));
+        // animator.SetFloat("Speed", Mathf.Abs(rigidBody.velocity.x));
     }
 
     void OnCollisionStay2D(Collision2D collision)

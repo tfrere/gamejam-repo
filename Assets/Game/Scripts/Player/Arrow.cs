@@ -23,17 +23,47 @@ public class Arrow : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        if(collision.gameObject.name.Contains("Arrow")) { 
-            // dont work 
-            if(!isTaping) {
-                TapSound();
+
+        bool isSelfArrow = collision.gameObject.tag == "Player" && this.gameObject.name.Contains(collision.gameObject.tag);
+        
+        print("arrow collision");
+        // if pickable
+        if(isDestroyed && collision.gameObject.name.Contains("Player")) { 
+            print("pickable");
+            if(collision.gameObject.name == "PlayerOne") {
+                GameInfo.PlayerOneArrows++;
+            }
+            else if(collision.gameObject.name == "PlayerTwo") {
+                GameInfo.PlayerTwoArrows++;
+            }
+            Destroy(this.gameObject);
+        }
+        else {
+            // if arrow collision
+            if(collision.gameObject.name.Contains("Arrow")) { 
+                if(!isTaping) {
+                    TapSound();
+                }
+            }
+
+            // if returned
+            if(collision.gameObject.name == "PunchHandler") {
+                this.gameObject.name = "Arrow-" + collision.gameObject.transform.parent.name; 
+                Vector2 orientation = new Vector2(
+                (collision.gameObject.transform.position.x - this.gameObject.transform.position.x) * 3,
+                (collision.gameObject.transform.position.y - this.gameObject.transform.position.y)
+                );
+                // Quaternion quaternion = Quaternion.AngleAxis(180, Vector3.forward);
+                // print("repulseVector " + orientation)
+                this.gameObject.transform.eulerAngles = this.gameObject.transform.eulerAngles + 180f * Vector3.up;
+                rigidBody.velocity = new Vector2(0,0);
+                rigidBody.AddForce(-orientation * 10f, ForceMode2D.Impulse);
+            }
+            else if(!isSelfArrow && collisionTags.Contains(collision.gameObject.tag)) {
+                Destruction();
             }
         }
-        bool isSelfArrow = collision.gameObject.tag == "Player" && this.gameObject.name.Contains(collision.gameObject.tag);
 
-        if(!isSelfArrow && collisionTags.Contains(collision.gameObject.tag)) {
-            Destruction();
-        }
     }
 
     void TapSound() {
@@ -57,14 +87,13 @@ public class Arrow : MonoBehaviour
     {
         if(!isDestroyed) {
             soundHandler.ChangeTheSound(0);
-            // print("arrow will destroy");
-            // this.gameObject.GetComponent<AudioSource>().Play();
-            rigidBody.simulated = false;
-            boxCollider.enabled = false;
-            // spriteRenderer.enabled = false;
+            rigidBody.velocity = new Vector2(0,0);
+            // rigidBody.simulated = false;
+            // boxCollider.enabled = false;
             isDestroyed = true;
         }
         yield return new WaitForSeconds(0.3f);
-        Destroy(this.gameObject);
+        // Destroy(this.gameObject);
+        this.gameObject.name = "Arrow-pickable"; 
     }
 }

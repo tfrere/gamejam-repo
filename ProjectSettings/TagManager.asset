@@ -20,12 +20,12 @@ TagManager:
   - Wall
   - Water
   - UI
+  - Arrows
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerOne
+  - PlayerTwo
+  - SwordOne
+  - SwordTwo
   - 
   - 
   - 

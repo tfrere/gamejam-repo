@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerThrow : MonoBehaviour
 {
+    public Player Player;
      public PlayerMovement PlayerMovement;
      public PlayerDeath PlayerDeath;
      public GameObject Arrow;
@@ -12,8 +13,6 @@ public class PlayerThrow : MonoBehaviour
      private SoundHandler SoundHandler;
 
      private bool isThrowing;
-
-     public string throwKey = "q";
 
     private string arrowName;
 
@@ -26,9 +25,8 @@ public class PlayerThrow : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(throwKey) && !isThrowing && !PlayerDeath.isDead)
+        if (Input.GetKeyDown(Player.throwInput) && !isThrowing && !PlayerDeath.isDead && !Player.isMakingAnAction)
         {  
-            isThrowing = true;
             Throw();
         }
     }
@@ -49,6 +47,13 @@ public class PlayerThrow : MonoBehaviour
     }
 
     void ThrowHandle() {
+        StartCoroutine(ThrowActivation());
+    }
+
+    IEnumerator ThrowActivation()
+    {
+        isThrowing = true;
+        Player.isMakingAnAction = true;
         if(PlayerMovement.orientation == "left" || PlayerMovement.orientation == "right") {
             float positionOffset = PlayerMovement.orientation == "left" ? -1f : 1f;
             Vector3 arrowVector = PlayerMovement.orientation == "left" ? Vector3.left : Vector3.right;
@@ -68,13 +73,8 @@ public class PlayerThrow : MonoBehaviour
             newArrow.GetComponent<Rigidbody2D>().AddForce(arrowVector * ArrowSpeed, ForceMode2D.Impulse);
         }
         SoundHandler.ChangeTheSound(Random.Range(0, 5));
-        StartCoroutine(ThrowActivation());
-
-    }
-
-    IEnumerator ThrowActivation()
-    {
         yield return new WaitForSeconds(.3f);
         isThrowing = false;
+        Player.isMakingAnAction = false;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
+    private Player player;
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
@@ -15,6 +16,7 @@ public class PlayerDeath : MonoBehaviour
 
     void Start()
     {
+        player = GetComponent<Player>();
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,43 +29,35 @@ public class PlayerDeath : MonoBehaviour
         handleDeath(collision.gameObject);
     }
 
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        handleDeath(collision.gameObject);
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {   
-        handleDeath(collision.gameObject);
-    }
-
-    void OnTriggerStay2D(Collider2D collision)
-    {   
-        handleDeath(collision.gameObject);
-    }
-
     void handleDeath(GameObject gameObject) {
         // print("player death collide with -> " + collision.gameObject.name + " with tag : " + collision.gameObject.tag + " from : " + this.gameObject.name);
         bool isSelfPunch = gameObject.transform.parent && gameObject.transform.parent.name == this.gameObject.name;
         bool isSelfArrow = gameObject.name.Contains("Arrow") && gameObject.name.Contains(this.gameObject.name);
-        if( gameObject.tag == "Death"
-            && (!isSelfPunch && !isSelfArrow)) {
-            if(this.gameObject.name.Contains("PlayerOne")) {
-                GameInfo.PlayerTwoScore++;
+        bool isPickableArrow = gameObject.name == "Arrow-pickable";
+
+        // print("isSelfPunch " + isSelfPunch);
+        // print("isSelfArrow " + isSelfArrow);
+        // print("tag " + gameObject.tag);
+        if(!player.isInvicible) {
+            if( gameObject.tag == "Death"   
+                && (!isSelfPunch && !isSelfArrow && !isPickableArrow)) {
+                if(this.gameObject.name.Contains("PlayerOne")) {
+                    GameInfo.PlayerTwoScore++;
+                }
+                else if(this.gameObject.name.Contains("PlayerTwo")) {
+                    GameInfo.PlayerOneScore++;
+                }
+                Death();
             }
-            if(this.gameObject.name.Contains("PlayerTwo")) {
-                GameInfo.PlayerOneScore++;
+            else if(gameObject.tag == "SelfDeath") {
+                if(this.gameObject.name.Contains("PlayerOne")) {
+                    GameInfo.PlayerOneScore--;
+                }
+                else if(this.gameObject.name.Contains("PlayerTwo")) {
+                    GameInfo.PlayerTwoScore--;
+                }
+                Death();
             }
-            Death();
-        }
-        if(gameObject.tag == "SelfDeath") {
-            if(this.gameObject.name.Contains("PlayerOne")) {
-                GameInfo.PlayerOneScore--;
-            }
-            if(this.gameObject.name.Contains("PlayerTwo")) {
-                GameInfo.PlayerTwoScore--;
-            }
-            Death();
         }
     }
 
