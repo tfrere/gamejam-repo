@@ -69,7 +69,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if(isGrounded) { state = "walking"; }
             // hasToMoveLeft = false;
-        } else if (movementInputVector.x > inputTreshold)
+        } 
+        if (movementInputVector.x > inputTreshold)
         { 
             orientation = oldHorizontalOrientation = "right";
             if(!playerJump.isJumping) {
@@ -78,12 +79,14 @@ public class PlayerMovement : MonoBehaviour
             if(isGrounded) { state = "walking"; }
             // hasToMoveRight = false;
         }
-        else if (movementInputVector.y > inputTreshold)
+        
+        if (movementInputVector.y > inputTreshold)
         {
             orientation = "top";
             // hasToMoveUp = false;
         }
-        else if (movementInputVector.y < -inputTreshold)
+        
+        if (movementInputVector.y < -inputTreshold)
         {
             orientation = "bottom";
             if(!isGrounded) {

@@ -535,7 +535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chose your level
+  m_text: Choose your level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 215fb1c3003524a2a91f4aefa7d971c3, type: 2}
   m_sharedMaterial: {fileID: 2332621901694672833, guid: 215fb1c3003524a2a91f4aefa7d971c3, type: 2}
@@ -736,9 +736,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4671681529208045283, guid: 0d9d4be6d44f642eb9d5efcfb320efac, type: 3}
+      propertyPath: isInvicible
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4708708392311400763, guid: 0d9d4be6d44f642eb9d5efcfb320efac, type: 3}
       propertyPath: m_Name
-      value: Player2
+      value: PlayerTwo
       objectReference: {fileID: 0}
     - target: {fileID: 4708708392311400764, guid: 0d9d4be6d44f642eb9d5efcfb320efac, type: 3}
       propertyPath: m_RootOrder
@@ -1858,6 +1862,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4053502712739869238, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: isInvicible
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4165121505645880809, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1904,7 +1912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4165121505645880814, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: PlayerOne
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
