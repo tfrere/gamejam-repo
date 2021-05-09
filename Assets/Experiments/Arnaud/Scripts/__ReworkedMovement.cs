@@ -131,11 +131,14 @@ public class __ReworkedMovement: MonoBehaviour
         //print("Move!   " + movementInputVector.x + "-" + movementInputVector.y);
     }
 
+    private bool forceJump = false;
     public void JumpInputAction(InputAction.CallbackContext context)
     {
-        print("Jump!");
-        // Simulate a joystick input ?
-        // movementInputVector = new Vector2(0, 1);
+        // Simulate a joystick input ? --> Weird effect
+        //movementInputVector = new Vector2(rb2D.velocity.x, 1);
+        // Use a private state to inject the forceJump into NormalizeMoveInput ?
+        forceJump = true;
+
     }
 
     public void ThrowInputAction(InputAction.CallbackContext context)
@@ -156,6 +159,12 @@ public class __ReworkedMovement: MonoBehaviour
     private Vector2 NormalizeMoveInput(Vector2 moveInput)
     {
         Vector2 n = new Vector2(NormalizeMoveAxis(moveInput.x), NormalizeMoveAxis(moveInput.y));
+        // If forceJump has been triggered, force the jump
+        if (forceJump)
+        {
+            n.y = 1;
+            forceJump = false;
+        }
         //print("Normalize " + n.x + " - " + n.y);
         return n;
     }
