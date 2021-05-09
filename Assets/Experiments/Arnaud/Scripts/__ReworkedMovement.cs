@@ -136,8 +136,8 @@ public class __ReworkedMovement: MonoBehaviour
     {
         // Simulate a joystick input ? --> Weird effect
         //movementInputVector = new Vector2(rb2D.velocity.x, 1);
-        // Use a private state to inject the forceJump into NormalizeMoveInput ?
-        forceJump = true;
+        // Use a private state to inject the forceJump into NormalizeMoveInput ? ---> Ralentit la machine
+        //forceJump = true;
 
     }
 
