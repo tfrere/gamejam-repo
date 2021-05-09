@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelChoosingMenu : MonoBehaviour
 {
     public GameObject level;
+    public string levelName;
     public GameObject levelStroke;
     private bool isActive;
     public int interpolationFramesCount = 45; // Number of frames to completely interpolate between the 2 positions
@@ -47,8 +48,9 @@ public class LevelChoosingMenu : MonoBehaviour
             // level.transform.position = Vector3.Lerp(level.transform.position, test, interpolationRatio);
             level.transform.position = new Vector3(level.transform.position.x, -3f, level.transform.position.z);
         }
-       if(Input.GetKey("space")) {
-            GameInfo.sceneToLoad = name;
+       if(Input.GetKey("space") && isActive) {
+           print(levelName);
+            GameInfo.sceneToLoad = levelName;
             SceneManager.LoadScene("LoadingScene");
         }
     }

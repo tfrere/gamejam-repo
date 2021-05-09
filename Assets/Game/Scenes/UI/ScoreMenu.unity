@@ -1568,9 +1568,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'PLAYER
 
-    TWO
-
-'
+    ONE'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 215fb1c3003524a2a91f4aefa7d971c3, type: 2}
   m_sharedMaterial: {fileID: 2332621901694672833, guid: 215fb1c3003524a2a91f4aefa7d971c3, type: 2}

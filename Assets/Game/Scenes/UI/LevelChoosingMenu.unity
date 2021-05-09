@@ -123,36 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &108747303
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 108747305}
-  m_Layer: 0
-  m_Name: Script
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &108747305
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 108747303}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2071804, y: 0.30865553, z: -1.1352232}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &144159662
 GameObject:
   m_ObjectHideFlags: 0
@@ -2042,7 +2012,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2269,7 +2239,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &924341473
 PrefabInstance:
@@ -3428,7 +3398,7 @@ GameObject:
   - component: {fileID: 1192736782}
   - component: {fileID: 1192736781}
   m_Layer: 0
-  m_Name: Level-3
+  m_Name: Level-cavern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3447,7 +3417,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 334036425}
+  levelName: Level-cavern
   levelStroke: {fileID: 1234958729}
+  interpolationFramesCount: 45
 --- !u!61 &1192736782
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3539,7 +3511,7 @@ Transform:
   - {fileID: 544002428}
   - {fileID: 1234958730}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1234958729 stripped
 GameObject:
@@ -3564,7 +3536,7 @@ GameObject:
   - component: {fileID: 1345425585}
   - component: {fileID: 1345425584}
   m_Layer: 0
-  m_Name: Level-1
+  m_Name: Level-docks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3635,7 +3607,7 @@ Transform:
   - {fileID: 1748221143}
   - {fileID: 655313951}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1345425584
 MonoBehaviour:
@@ -3650,7 +3622,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 2123178607}
+  levelName: Level-docks
   levelStroke: {fileID: 153951449}
+  interpolationFramesCount: 45
 --- !u!61 &1345425585
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3690,7 +3664,7 @@ GameObject:
   - component: {fileID: 1428900036}
   - component: {fileID: 1428900035}
   m_Layer: 0
-  m_Name: Level-2
+  m_Name: Level-desert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3709,7 +3683,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 202141818}
+  levelName: Level-desert
   levelStroke: {fileID: 633221220}
+  interpolationFramesCount: 45
 --- !u!61 &1428900036
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3801,7 +3777,7 @@ Transform:
   - {fileID: 994798075}
   - {fileID: 144159664}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1491191255
 PrefabInstance:
@@ -3903,7 +3879,7 @@ Transform:
   - {fileID: 924341474}
   - {fileID: 481398576}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1731644739
 GameObject:
@@ -4068,7 +4044,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4314,7 +4290,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4334,7 +4310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4165121505645880809, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4165121505645880809, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_LocalPosition.x
