@@ -1,68 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-
-
-
-public interface IPlayerMovement
-{
-    public void OnMove(InputValue value);
-    public void OnJump(InputValue value);
-    public void CancelJumpInput();
-}
-
-
-public class PlayerMovementHandler: MonoBehaviour, IPlayerMovement
-{
-    public Vector2 moveInputs = Vector2.zero;
-    public bool JumpOnMoveUp { get; set; }
-    public bool ForceFallOnMoveDown { get; set; }
-
-    private float MIN_AXIS_INPUT_VALUE = 0.3f;
-
-    public void OnMove(InputValue value)
-    {
-        Vector2 v = value.Get<Vector2>();
-        //Debug.Log("On move" + v.ToString());
-        UpdateMoveInputs(v);
-    }
-
-    public void OnJump(InputValue value)
-    {
-        //Debug.Log("On Jump" + value.Get().ToString() + " " + value.isPressed);
-        moveInputs.Set(moveInputs.x, value.Get<float>());
-    }
-
-    public void CancelJumpInput()
-    {
-        moveInputs.Set(moveInputs.x, 0);
-    }
-
-    private void UpdateMoveInputs(Vector2 v)
-    {
-        // Check for down rush
-        bool isRushingDown = v.y < -MIN_AXIS_INPUT_VALUE;
-        if (isRushingDown)
-        {
-            moveInputs.Set(v.x, v.y);
-            return;
-        }
-
-        // Check for moving up
-        bool isMovingUp = v.y > MIN_AXIS_INPUT_VALUE;
-        if (isMovingUp && JumpOnMoveUp)
-        {
-            moveInputs.Set(v.x, 1);
-            return;
-        }
-
-        // use new X and old Y
-        float prevY = moveInputs.y;
-        moveInputs.Set(v.x, prevY);
-        return;
-    }
-}
-
 
 
 public class __ReworkedMovement: MonoBehaviour
@@ -87,6 +24,12 @@ public class __ReworkedMovement: MonoBehaviour
     private float t = 0.0f;
     private float JUMP_TIMER = 0.6f;
 
+    // BASE Vectors -> Apply scale on m_speed on start method
+    private Vector2 SCALER_MOVE = new Vector2(3, 3);
+    private Vector2 SCALER_JUMP = new Vector2(1.7f, 2.5f);
+    private Vector2 SCALER_FASTFALL = new Vector2(0, -5);
+    private Vector2 SCALER_CLASSICFALL = new Vector2(0, -2f);
+
 
     // MISC
     private Animator animator;
@@ -101,6 +44,12 @@ public class __ReworkedMovement: MonoBehaviour
         contactFilter = new ContactFilter2D();
         contactFilter.SetLayerMask(mask);
 
+        // VECTOR INITIALIZATION
+        SCALER_MOVE *= m_speed;
+        SCALER_JUMP *= m_speed;
+        SCALER_FASTFALL *= m_speed;
+        SCALER_CLASSICFALL *= m_speed;
+
 
         // MISC
         animator = GetComponent<Animator>();
@@ -108,9 +57,9 @@ public class __ReworkedMovement: MonoBehaviour
 
 
         // Player inputs
-        pmh = gameObject.AddComponent<PlayerMovementHandler>() as PlayerMovementHandler;
+        pmh = gameObject.AddComponent<PlayerMovementHandler>();
         //pmh.JumpOnMoveUp = true;
-        pmh.ForceFallOnMoveDown = true;
+        //pmh.ForceFallOnMoveDown = true;
     }
 
     void FixedUpdate()
@@ -144,13 +93,16 @@ public class __ReworkedMovement: MonoBehaviour
         {
             // Jump
             bool isFirstFrame = t == 0;
-            Vector2 jumpScaler = new Vector2(1.7f, 2.5f) * m_speed;
-            // Initial jump : Apply the scaler to the provided input
-            Vector2 jumpImpulsion = Vector2.Scale(normalizedMove, jumpScaler);
-            // Aerial control : Apply new normlalized X, or get back prebious velocity
-            Vector2 aerialControl = normalizedMove.x != 0 ? new Vector2(normalizedMove.x * jumpScaler.x, prevVelocity.y) : prevVelocity;
-            rb2D.velocity = isFirstFrame ? jumpImpulsion : aerialControl;
 
+            if (isFirstFrame)
+            {
+                // Initial jump : Apply the scaler to the provided input
+                rb2D.velocity = Vector2.Scale(normalizedMove, SCALER_JUMP);
+            } else
+            {
+                // Aerial control : Apply new normlalized X, or get back prebious velocity
+                rb2D.velocity = new Vector2(normalizedMove.x * SCALER_JUMP.x, prevVelocity.y);
+            }
 
             // Reset delay
             t += Time.deltaTime;
@@ -168,20 +120,18 @@ public class __ReworkedMovement: MonoBehaviour
             if (hasFastFall)
             {
                 // Apply the fast fall effect
-                Vector2 fastFallScaler = new Vector2(0, -5) * m_speed;
-                rb2D.velocity = fastFallScaler;
+                rb2D.velocity = SCALER_FASTFALL;
                 return;
             }
             // Apply classic gravity effect 
             // Keep previous applied X / Modify Y value
-            Vector2 classicFall = new Vector2(prevVelocity.x, -2f * m_speed);
-            rb2D.velocity = classicFall;
+            SCALER_CLASSICFALL.x = prevVelocity.x;
+            rb2D.velocity = SCALER_CLASSICFALL;
             return;
         }
 
         // CLassic case to move
-        Vector2 moveScaler = new Vector2(3, 3) * m_speed;
-        rb2D.velocity = Vector2.Scale(normalizedMove, moveScaler);
+        rb2D.velocity = Vector2.Scale(normalizedMove, SCALER_MOVE);
     }
 
 
