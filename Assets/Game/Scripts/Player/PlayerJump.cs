@@ -45,7 +45,6 @@ public class PlayerJump : MonoBehaviour
         if(hasToJump && !isJumping && (playerMovement.isGrounded || isOnWall)) {
             MakeJump(collision);            
         }
-
     }
 
     void OnCollisionExit2D(Collision2D collision)
