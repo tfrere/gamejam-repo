@@ -1,7 +1,47 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+
+
+public interface IPlayerMovement
+{
+    public void OnMove(InputValue value);
+    public void OnJump(InputValue value);
+    public void CancelJump();
+}
+
+
+public class PlayerMovementHandler: MonoBehaviour, IPlayerMovement
+{
+    public Vector2 moveInputs = Vector2.zero;
+    public bool JumpOnMoveUp { get; set; }
+
+    public void OnMove(InputValue value)
+    {
+        Debug.Log("On move" + value.Get<Vector2>().ToString());
+
+        if (JumpOnMoveUp)
+        {
+            moveInputs = value.Get<Vector2>();
+        } else
+        {
+            moveInputs.x = value.Get<Vector2>().x;
+        }
+        
+    }
+    public void OnJump(InputValue value)
+    {
+        Debug.Log("On Jump" + value.Get().ToString() + " " + value.isPressed);
+        moveInputs.Set(moveInputs.x, value.Get<float>());
+    }
+    public void CancelJump()
+    {
+        moveInputs.Set(moveInputs.x, 0);
+    }
+}
+
+
 
 public class __ReworkedMovement: MonoBehaviour
 {
@@ -13,14 +53,12 @@ public class __ReworkedMovement: MonoBehaviour
 
     // BASE
     private Rigidbody2D rb2D;
+    private PlayerMovementHandler pmh;
     private ContactFilter2D contactFilter;
     private CircleCollider2D groundCollider;
-    private Vector2 movementInputVector;
+
 
     // BASE State
-    private float MOVE_INPUT_MIN = 0.2f;
-    private float MOVE_INPUT_FAST = 0.4f;
-
     private bool isGrounded = false;
     private bool hasJumped = false;
     private bool hasFastFall = false;
@@ -28,12 +66,21 @@ public class __ReworkedMovement: MonoBehaviour
     private float JUMP_TIMER = 0.6f;
 
 
-
-
     // MISC
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
+
+    // EXPERIMENT
+    
+
+
+
+    
+
+
+
+    // END OF EXPERIMENT
 
     void Start()
     {
@@ -47,6 +94,10 @@ public class __ReworkedMovement: MonoBehaviour
         // MISC
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+
+        // Player inputs
+        pmh = gameObject.AddComponent<PlayerMovementHandler>() as PlayerMovementHandler;
     }
 
     void FixedUpdate()
@@ -55,7 +106,7 @@ public class __ReworkedMovement: MonoBehaviour
         Vector2 prevVelocity = rb2D.velocity;
 
         // Normalize inputs
-        Vector2 normalizedMove = NormalizeMoveInput(movementInputVector);
+        Vector2 normalizedMove = pmh.moveInputs;
 
 
         // Manage BASE state and MISC State
@@ -122,68 +173,6 @@ public class __ReworkedMovement: MonoBehaviour
 
 
 
-    /* 
-     * Player Input Connection 
-     */
-    public void MoveInputAction(InputAction.CallbackContext context)
-    {
-        movementInputVector = context.ReadValue<Vector2>();
-        //print("Move!   " + movementInputVector.x + "-" + movementInputVector.y);
-    }
-
-    private bool forceJump = false;
-    public void JumpInputAction(InputAction.CallbackContext context)
-    {
-        // Simulate a joystick input ? --> Weird effect
-        //movementInputVector = new Vector2(rb2D.velocity.x, 1);
-        // Use a private state to inject the forceJump into NormalizeMoveInput ? ---> Ralentit la machine
-        //forceJump = true;
-
-    }
-
-    public void ThrowInputAction(InputAction.CallbackContext context)
-    {
-        print("Throw!");
-    }
-
-    public void PunchInputAction(InputAction.CallbackContext context)
-    {
-        print("Punch!");
-    }
-
-
-
-    /* 
-     *  Normalize Player Inputs
-     */
-    private Vector2 NormalizeMoveInput(Vector2 moveInput)
-    {
-        Vector2 n = new Vector2(NormalizeMoveAxis(moveInput.x), NormalizeMoveAxis(moveInput.y));
-        // If forceJump has been triggered, force the jump
-        if (forceJump)
-        {
-            n.y = 1;
-            forceJump = false;
-        }
-        //print("Normalize " + n.x + " - " + n.y);
-        return n;
-    }
-
-    private float NormalizeMoveAxis(float axis)
-    {
-        // Return a value between 0 and 1;
-        bool isMoving = Mathf.Abs(axis) > MOVE_INPUT_MIN;
-        if (!isMoving)
-        {
-            return 0;
-        }
-
-        float coef = axis < 0 ? -1 : 1;
-        bool isFast = Mathf.Abs(axis) > MOVE_INPUT_FAST;
-        return isFast ? coef : 0.5f * coef;
-    }
-
-
     /*
      * Internal state management (linked to Rigidbody essentially)
      */
@@ -205,6 +194,7 @@ public class __ReworkedMovement: MonoBehaviour
     {
         t = 0f;
         hasJumped = false;
+        pmh.CancelJump();
     }
 
     
