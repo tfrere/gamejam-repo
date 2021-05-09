@@ -176,7 +176,10 @@ public class __ReworkedMovement: MonoBehaviour
      */
     public void SetSpriteDirection(float x)
     {
-        spriteRenderer.flipX = x < 0;
+        if (x != 0)
+        {
+            spriteRenderer.flipX = x < 0;
+        }
     }
 
 }
