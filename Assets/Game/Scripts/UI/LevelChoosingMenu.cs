@@ -6,33 +6,62 @@ using UnityEngine.SceneManagement;
 public class LevelChoosingMenu : MonoBehaviour
 {
     public GameObject level;
+    public GameObject levelStroke;
     private bool isActive;
-    // Start is called before the first frame update
+    public int interpolationFramesCount = 45; // Number of frames to completely interpolate between the 2 positions
+    int elapsedFrames = 0;
+
     void Start()
     {
         
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        isActive = true;
+    }
+
     void OnTriggerStay2D(Collider2D collision)
     {
         isActive = true;
-        if(Input.GetKey("space")) {
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        StartEnableSign();
+    }
+
+    void Update()
+    {
+        float interpolationRatio = (float)elapsedFrames / interpolationFramesCount;
+
+        if(isActive) {
+            levelStroke.SetActive(true);
+            // Vector3 test = new Vector3(level.transform.position.x, -2.5f, level.transform.position.z);
+            // level.transform.position = Vector3.Lerp(level.transform.position, test, interpolationRatio);
+            level.transform.position = new Vector3(level.transform.position.x, -2.5f, level.transform.position.z);
+        }
+        else {
+            levelStroke.SetActive(false);
+            // Vector3 test = new Vector3(level.transform.position.x, -3f, level.transform.position.z);
+            // level.transform.position = Vector3.Lerp(level.transform.position, test, interpolationRatio);
+            level.transform.position = new Vector3(level.transform.position.x, -3f, level.transform.position.z);
+        }
+       if(Input.GetKey("space")) {
             GameInfo.sceneToLoad = name;
             SceneManager.LoadScene("LoadingScene");
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    void StartEnableSign()
     {
-        isActive = false;
+      StartCoroutine(EnableSign());
     }
 
-    void Update()
+    IEnumerator EnableSign()
     {
-        if(isActive) {
-            level.transform.position = new Vector3(level.transform.position.x, -2.5f, level.transform.position.z);
-        }
-        else {
-            level.transform.position = new Vector3(level.transform.position.x, -3.0f, level.transform.position.z);
-        }
+        yield return new WaitForSeconds(0.1f);
+        isActive = false;
     }
 }
+

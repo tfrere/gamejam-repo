@@ -7,26 +7,28 @@ using UnityEngine.SceneManagement;
 public class ScoreMenuController : MonoBehaviour
 {
     public TextMeshPro winText;
-    public GameObject PlayerOneSprite;
-    public GameObject PlayerTwoSprite;
+
+    public TextMeshPro playerOneScore;
+    public TextMeshPro playerTwoScore;
+
+    public GameObject playerOneBox;
+    public GameObject playerTwoBox;
+
       public string targetScene;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerOneSprite.SetActive(false);
-        PlayerTwoSprite.SetActive(false);
-
-        
         if(GameInfo.PlayerOneScore == GameInfo.MaxScore) {
             winText.SetText("Player 1 won");
-            PlayerOneSprite.SetActive(true);
+            // playerOneBox.transform.translate = new Vector3(playerOneBox.transform.translate.x, playerOneBox.transform.translate.y - 1f, playerOneBox.transform.translate.z);
         }
         if(GameInfo.PlayerTwoScore == GameInfo.MaxScore) {
             winText.SetText("Player 2 won");
-            PlayerTwoSprite.SetActive(true);
+            // playerTwoBox.transform.translate = new Vector3(playerTwoBox.transform.translate.x, playerTwoBox.transform.translate.y - 1f, playerTwoBox.transform.translate.z);
         }
-
+        playerOneScore.text = GameInfo.PlayerOneScore + "";
+        playerTwoScore.text = GameInfo.PlayerTwoScore + "";
     }
 
     // Update is called once per frame

@@ -44,7 +44,6 @@ public class GameController : MonoBehaviour
         RoundNumberTextMeshPro.SetText("Round " + roundNumber);
 
         if(GameInfo.PlayerOneScore == GameInfo.MaxScore || GameInfo.PlayerTwoScore == GameInfo.MaxScore) {
-            Time.timeScale = 1;
             GoToScore();
         }
 
@@ -83,6 +82,7 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(1f);
+        Time.timeScale = 1;
         GameInfo.sceneToLoad = "ScoreMenu";
         SceneManager.LoadScene("LoadingSceneWithTransition");
     }
