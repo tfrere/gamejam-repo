@@ -22,8 +22,6 @@ public class BaseMovement : MonoBehaviour
     private Animator animator;
 
 
-
-
     // PRIVATE COOKING
     private bool facingLeft = false;
     private bool isGrounded = false;
@@ -61,13 +59,11 @@ public class BaseMovement : MonoBehaviour
         if (Input.GetKey(topInput) && (isGrounded || isOnWall))
         {
             rbody.velocity = new Vector2(_prevX, m_jump);
-
         }
         if (Input.GetKey(bottomInput))
         {
             rbody.velocity = new Vector2(_prevX, -m_fall);
         }
-
 
         // Sprite direction
         spriteRenderer.flipX = facingLeft;
