@@ -3224,25 +3224,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.44583118}
   serializedVersion: 2
   m_Radius: 0.05416882
---- !u!95 &1585252392426836005
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585252392426836015}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6bf6beb7099f04f9299a715728975221, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1585252392426836008
 Transform:
   m_ObjectHideFlags: 0
@@ -3318,7 +3299,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 1062266681453288945, guid: 04a2c36f206b2455bbb6c88a293f44be, type: 3}
+  m_Sprite: {fileID: -5277944779335950654, guid: 34507b8671c14477b8f04239c8279f6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3367,10 +3348,11 @@ GameObject:
   - component: {fileID: 1585252392426836010}
   - component: {fileID: 1585252392426836009}
   - component: {fileID: 1585252392426836011}
-  - component: {fileID: 1585252392426836005}
   - component: {fileID: 438102751631989355}
   - component: {fileID: 1585252392426836017}
   - component: {fileID: 1585252392426836016}
+  - component: {fileID: 1585252392426836018}
+  - component: {fileID: 1585252392426836019}
   m_Layer: 0
   m_Name: Tommy
   m_TagString: Player
@@ -3480,3 +3462,35 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1585252392426836018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585252392426836015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c9fc744aa9334922a7ca9e82554d633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxArrows: 3
+--- !u!95 &1585252392426836019
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585252392426836015}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2aa79e6b60c640b0bbf9ba6b04d1e58, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

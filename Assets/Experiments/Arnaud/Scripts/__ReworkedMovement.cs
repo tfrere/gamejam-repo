@@ -110,28 +110,37 @@ public class __ReworkedMovement: MonoBehaviour
             {
                 ResetHasJumped();
             }
-            return;
-        }
 
-
-        // Aerial effect
-        if (!isGrounded)
+        } else if (!isGrounded)
         {
             if (hasFastFall)
             {
                 // Apply the fast fall effect
                 rb2D.velocity = SCALER_FASTFALL;
-                return;
+            } else
+            {
+                // Apply classic gravity effect 
+                // Keep previous applied X / Modify Y value
+                SCALER_CLASSICFALL.x = prevVelocity.x;
+                rb2D.velocity = SCALER_CLASSICFALL;
             }
-            // Apply classic gravity effect 
-            // Keep previous applied X / Modify Y value
-            SCALER_CLASSICFALL.x = prevVelocity.x;
-            rb2D.velocity = SCALER_CLASSICFALL;
-            return;
+           
+        } else
+        {
+
+            // CLassic case to move
+            rb2D.velocity = Vector2.Scale(normalizedMove, SCALER_MOVE);
         }
 
-        // CLassic case to move
-        rb2D.velocity = Vector2.Scale(normalizedMove, SCALER_MOVE);
+
+        animator.SetFloat("Speed", Mathf.Abs(rb2D.velocity.x));
+        animator.SetBool("isJumping", hasJumped);
+        animator.SetBool("isDead", false);
+        animator.SetBool("isFacingUp", rb2D.velocity.y > 0.3f);
+        animator.SetBool("isFacingDown", rb2D.velocity.y < -0.3f);
+
+
+
     }
 
 
