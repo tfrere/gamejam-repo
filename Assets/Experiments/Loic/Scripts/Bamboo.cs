@@ -11,7 +11,7 @@ public class Bamboo : MonoBehaviour
 
     [Range(1, 8)]
     public int size = 1;
-    
+
     public float minGrowTime = 2.0f;
     public float maxGrowTime = 20.0f;
 
@@ -44,11 +44,11 @@ public class Bamboo : MonoBehaviour
                 newBambooChunk.GetComponent<SpriteRenderer>().sprite = bambooChunkTop;                
             }
         }
-        // Create a new bamboo chunk each 2 to 20 seconds
-        InvokeRepeating("BambooChunkGrow", Random.Range(minGrowTime, maxGrowTime), Random.Range(minGrowTime, maxGrowTime));
+        // Create a new bamboo chunk depending of the min / max grow time public variables
+        InvokeRepeating("BambooGrow", Random.Range(minGrowTime, maxGrowTime), Random.Range(minGrowTime, maxGrowTime));
     }
 
-    void BambooChunkGrow()
+    void BambooGrow()
     {
         if (size < 8) {
             // Replace last bamboo chunk sprite
