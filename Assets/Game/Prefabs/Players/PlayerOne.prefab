@@ -371,7 +371,7 @@ SpriteRenderer:
   m_SortingLayerID: 72440171
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7c2f0e837da114e7ea38746d4639814f, type: 3}
+  m_Sprite: {fileID: -5277944779335950654, guid: 34507b8671c14477b8f04239c8279f6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -420,7 +420,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.25}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.82, y: 0.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -437,9 +437,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4165121505645880814}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 20d3492464d5e4c7f987c28a91e89f44, type: 2}
+  m_Controller: {fileID: 9100000, guid: f2aa79e6b60c640b0bbf9ba6b04d1e58, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -455,7 +455,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4165121505645880814}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -633,6 +633,7 @@ MonoBehaviour:
   wallJumpRepulseForce: 3
   isOnWall: 0
   isJumping: 0
+  hasToJump: 0
 --- !u!114 &4053502712739869238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,13 +648,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMakingAnAction: 0
   isInvicible: 0
-  leftInput: a
-  rightInput: d
-  topInput: w
-  bottomInput: s
-  punchInput: x
-  jumpInput: z
-  throwInput: c
 --- !u!114 &-6548712538443255496
 MonoBehaviour:
   m_ObjectHideFlags: 0

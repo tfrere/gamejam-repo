@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6548712538443255496, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
+      objectReference: {fileID: 0}
     - target: {fileID: 342639288, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: topInput
       value: i
@@ -78,7 +82,7 @@ PrefabInstance:
     - target: {fileID: 4165121505645880804, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: e7d15c452cbbe40fdbe326938f49b913, type: 2}
+      objectReference: {fileID: 9100000, guid: 5f747087b69884cf48342509be5460ff, type: 2}
     - target: {fileID: 4165121505645880809, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -130,7 +134,7 @@ PrefabInstance:
     - target: {fileID: 4165121505645880811, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7c2f0e837da114e7ea38746d4639814f, type: 3}
+      objectReference: {fileID: -5277944779335950654, guid: 97106769c917145c6b8d9dccd5d5897c, type: 3}
     - target: {fileID: 4165121505645880811, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_SortingLayer
       value: 8

@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using TMPro;
-using Random=UnityEngine.Random;
 
 public class LoadSceneWithTransition : MonoBehaviour
 {
