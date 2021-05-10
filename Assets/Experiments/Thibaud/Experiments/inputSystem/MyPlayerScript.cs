@@ -11,38 +11,39 @@ public class MyPlayerScript : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
 
-    public float speed = 10f;
+    public float speed = 3f;
 
     private float inputX = 0f;
+
 
     void start () {
     }
 
-    public void Punch(InputAction.CallbackContext context)
-    {
-        if(context.performed) {
-            print("Punch!");
-            spriteRenderer.color = Color.blue;
-        }
-    }
+    // public void Punch(InputAction.CallbackContext context)
+    // {
+    //     if(context.performed) {
+    //         print("Punch!");
+    //         spriteRenderer.color = Color.blue;
+    //     }
+    // }
 
     public void Jump(InputAction.CallbackContext context)
     {
         if(context.performed) {
             print("Jump!");
             Vector2 value = new Vector2(inputX, 2f);
-            rigidBody.AddForce(value, ForceMode2D.Impulse);
+            rigidBody.velocity = value;
             spriteRenderer.color = Color.red;
         }
     }
 
-    public void Throw(InputAction.CallbackContext context)
-    {
-        if(context.performed) {
-            print("Throw!");
-            spriteRenderer.color = Color.green;
-        }
-    }
+    // public void Throw(InputAction.CallbackContext context)
+    // {
+    //     if(context.performed) {
+    //         print("Throw!");
+    //         spriteRenderer.color = Color.green;
+    //     }
+    // }
 
     public void Move(InputAction.CallbackContext context)
     {
@@ -51,10 +52,17 @@ public class MyPlayerScript : MonoBehaviour
     }
 
     void Update() {
+
+
+        float _prevX = rigidBody.velocity.x;
+        float _prevY = rigidBody.velocity.y;
+
+        // bool isXAxis = new Vector2(-speed, _prevY);
+
         print("update" + inputX);
         Vector2 value = new Vector2(inputX, rigidBody.velocity.y);
-        rigidBody.AddForce(value, ForceMode2D.Impulse);
-        // rigidBody.velocity = value;
+        // rigidBody.AddForce(value, ForceMode2D.Impulse);
+        rigidBody.velocity = value;
         // spriteRenderer.color = Color.white;
     }
 

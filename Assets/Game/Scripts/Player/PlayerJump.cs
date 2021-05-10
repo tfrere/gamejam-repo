@@ -24,6 +24,10 @@ public class PlayerJump : MonoBehaviour
 
     public bool hasToJump = false;
 
+    // Acceptable difference in degrees to differentiate if player comes from top
+     private float contactThreshold = 30;
+
+
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -36,11 +40,22 @@ public class PlayerJump : MonoBehaviour
 
     void Update()
     {
+        if(!playerMovement.isGrounded) {
+            animator.SetBool("isJumping", isJumping);
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        isOnWall = collisionTags.Contains(collision.gameObject.tag);
+
+        bool comingFromTop = false;
+        // if collide from top 
+        if (Vector3.Angle(collision.contacts[0].normal, Vector3.up) <= contactThreshold)
+        {
+            comingFromTop = true;
+        }
+
+        isOnWall = !comingFromTop;
 
         if(hasToJump && !isJumping && (playerMovement.isGrounded || isOnWall)) {
             MakeJump(collision);            
@@ -57,7 +72,6 @@ public class PlayerJump : MonoBehaviour
         if(context.performed && !isJumping && (playerMovement.isGrounded || isOnWall)) {
             print("Jump!");
             hasToJump = true;
-            // rbody.AddForce(new Vector2(rbody.velocity.x, jumpForce), ForceMode2D.Impulse);
         }
     }
 
@@ -82,16 +96,17 @@ public class PlayerJump : MonoBehaviour
                 playerMovement.oldHorizontalOrientation = "left";
             }
 
-            rbody.velocity = new Vector2(0,0);
-            rbody.AddForce(repulseVector, ForceMode2D.Impulse);
+            // rbody.velocity = new Vector2(0,0);
+            rbody.velocity = repulseVector;
         }
         else {
-            rbody.AddForce(new Vector2(rbody.velocity.x, jumpForce), ForceMode2D.Impulse);
+            rbody.velocity = new Vector2(rbody.velocity.x, jumpForce);
         }
         soundHandler.ChangeTheSound(7);
         yield return new WaitForSeconds(0.3f);
         isJumping = false;
         hasToJump = false;
     }
+    
 
 }

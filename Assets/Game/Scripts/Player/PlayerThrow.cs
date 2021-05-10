@@ -65,11 +65,11 @@ public class PlayerThrow : MonoBehaviour
             newArrow.name = arrowName;
             newArrow.GetComponent<Rigidbody2D>().AddForce(arrowVector * ArrowSpeed, ForceMode2D.Impulse);
         }
-        if(PlayerMovement.orientation == "top" || PlayerMovement.orientation == "bottom") {
-            float positionOffset = PlayerMovement.orientation == "top" ? 1f : -1.5f;
-            Vector3 arrowVector = PlayerMovement.orientation == "top" ? Vector3.up : Vector3.back;
+        if(PlayerMovement.orientation == "up" || PlayerMovement.orientation == "down") {
+            float positionOffset = PlayerMovement.orientation == "up" ? 1f : -1.5f;
+            Vector3 arrowVector = PlayerMovement.orientation == "up" ? Vector3.up : Vector3.back;
             Vector3 arrowPosition = new Vector3(this.transform.position.x, this.transform.position.y + positionOffset, this.transform.position.z);
-            Quaternion quaternion = PlayerMovement.orientation == "top" ? Quaternion.AngleAxis(90, Vector3.forward): Quaternion.AngleAxis(-90, Vector3.forward);
+            Quaternion quaternion = PlayerMovement.orientation == "up" ? Quaternion.AngleAxis(90, Vector3.forward): Quaternion.AngleAxis(-90, Vector3.forward);
             GameObject newArrow = Instantiate(Arrow, arrowPosition, quaternion);
             newArrow.name = arrowName;
             newArrow.GetComponent<Rigidbody2D>().AddForce(arrowVector * ArrowSpeed, ForceMode2D.Impulse);

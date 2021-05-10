@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using System.Linq;
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -49,10 +49,8 @@ public class PlayerMovement : MonoBehaviour
         movementInputVector = context.ReadValue<Vector2>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         orientation = oldHorizontalOrientation;
 
         state = "idle";
@@ -60,42 +58,36 @@ public class PlayerMovement : MonoBehaviour
         float _prevX = rigidBody.velocity.x;
         float _prevY = rigidBody.velocity.y;
 
-        // IF LEFT RIGHT
-        if (movementInputVector.x < -inputTreshold)
+        float[] list = {Vector3.Angle(movementInputVector , Vector3.left),Vector3.Angle(movementInputVector , Vector3.right),Vector3.Angle(movementInputVector , Vector3.up),Vector3.Angle(movementInputVector , Vector3.down)};
+        string[] orientstrings = {"left", "right", "up", "down"};
+
+        float minValue = list.Min();
+        int index = list.ToList().IndexOf(minValue);
+
+        string computedOrientation = movementInputVector == Vector2.zero ? "none" : orientstrings[index];
+
+        print(computedOrientation);
+
+        if (computedOrientation == "left")
         {
             orientation = oldHorizontalOrientation = "left";
-            if(!playerJump.isJumping) {
-                rigidBody.velocity = new Vector2(-m_speed, _prevY);
-            }
+            if(!playerJump.isJumping) { rigidBody.velocity = new Vector2(-m_speed, _prevY); }
             if(isGrounded) { state = "walking"; }
-            // hasToMoveLeft = false;
         } 
-        if (movementInputVector.x > inputTreshold)
-        { 
+        else if (computedOrientation == "right") { 
             orientation = oldHorizontalOrientation = "right";
-            if(!playerJump.isJumping) {
-                rigidBody.velocity = new Vector2(m_speed, _prevY);
-            }
+            if(!playerJump.isJumping) { rigidBody.velocity = new Vector2(m_speed, _prevY); }
             if(isGrounded) { state = "walking"; }
-            // hasToMoveRight = false;
         }
-        
-        if (movementInputVector.y > inputTreshold)
-        {
-            orientation = "top";
-            // hasToMoveUp = false;
+        else if (computedOrientation == "up") {
+            orientation = "up";
         }
-        
-        if (movementInputVector.y < -inputTreshold)
-        {
-            orientation = "bottom";
-            if(!isGrounded) {
-                rigidBody.velocity = new Vector2(_prevX, _prevY - 0.3f);
-            }
-            // hasToMoveDown = false;
+        else if (computedOrientation == "down") {
+            orientation = "down";
+            if(!isGrounded) { rigidBody.velocity = new Vector2(_prevX, _prevY - 0.3f); }
         }
 
-        if (isGrounded && state == "idle" && prevState == "walking") {
+        if (isGrounded && state == "idle") {
             rigidBody.velocity = new Vector2(0f, _prevY);
         }
         if(!isPlayingSound && state != "idle") {
@@ -105,8 +97,10 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer.flipX = orientation == "left";
 
         prevState = state;
-        
-        // animator.SetFloat("Speed", Mathf.Abs(rigidBody.velocity.x));
+        animator.SetFloat("Speed", Mathf.Abs(rigidBody.velocity.x));
+        animator.SetBool("isFacingUp", orientation == "up");
+        animator.SetBool("isFacingDown", orientation == "down");
+
     }
 
 
@@ -121,16 +115,14 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = isGrounded && collisionTags.Contains(collision.gameObject.tag) ? false : isGrounded;
     }
     void MakeSound() {
-        StartCoroutine(MakeSoundActivation());
-    }
-
-    IEnumerator MakeSoundActivation()
-    {
         if(state == "walking") {
             isPlayingSound = true;
             soundHandler.ChangeTheSound(Random.Range(0, 5));
         }
-        yield return new WaitForSeconds(0.3f);
+        Invoke("MakeSoundActivation", .3f);
+    }
+    void MakeSoundActivation()
+    {
         isPlayingSound = false;
     }
 

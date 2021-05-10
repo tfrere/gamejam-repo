@@ -54,9 +54,9 @@ public class PlayerPunch : MonoBehaviour
         Player.isMakingAnAction = true;
         soundHandler.ChangeTheSound(Random.Range(0, 2));
         if(
-            (PlayerMovement.orientation == "top" && PlayerJump.isJumping) ||
-            (PlayerMovement.orientation == "bottom" && !PlayerMovement.isGrounded)) { 
-            float acceleration = PlayerMovement.orientation == "bottom" ? -accelerationOnPunch : accelerationOnPunch;
+            (PlayerMovement.orientation == "up" && PlayerJump.isJumping) ||
+            (PlayerMovement.orientation == "down" && !PlayerMovement.isGrounded)) { 
+            float acceleration = PlayerMovement.orientation == "down" ? -accelerationOnPunch : accelerationOnPunch;
             PlayerMovement.rigidBody.AddForce(new Vector2(PlayerMovement.rigidBody.velocity.x, acceleration), ForceMode2D.Impulse);
         }
         StartCoroutine(PunchActivation());
@@ -68,14 +68,14 @@ public class PlayerPunch : MonoBehaviour
         if(PlayerMovement.orientation == "left" || PlayerMovement.orientation == "right") {
             Animator.SetTrigger("HorizontalPunch");
         }
-        if(PlayerMovement.orientation == "top" || PlayerMovement.orientation == "bottom") {
+        if(PlayerMovement.orientation == "up" || PlayerMovement.orientation == "down") {
             Animator.SetTrigger("VerticalPunch");
         }
         if(PlayerMovement.orientation == "left" || PlayerMovement.orientation == "right") {
             this.gameObject.transform.localPosition = new Vector2(PlayerMovement.orientation == "left" ? -0.75f : .75f, 0);
         }
-        if(PlayerMovement.orientation == "top" || PlayerMovement.orientation == "bottom") {
-            this.gameObject.transform.localPosition = new Vector2(0, PlayerMovement.orientation == "top" ? 1f : -1f);
+        if(PlayerMovement.orientation == "up" || PlayerMovement.orientation == "down") {
+            this.gameObject.transform.localPosition = new Vector2(0, PlayerMovement.orientation == "up" ? 1f : -1f);
         }
         SpriteRenderer.flipX = PlayerMovement.orientation == "left";
 
