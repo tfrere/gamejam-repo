@@ -19,6 +19,7 @@ public class ScoreMenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameInfo.GameState = "menu";
         if(GameInfo.PlayerOneScore == GameInfo.MaxScore) {
             winText.SetText("Player 1 won");
             // playerOneBox.transform.translate = new Vector3(playerOneBox.transform.translate.x, playerOneBox.transform.translate.y - 1f, playerOneBox.transform.translate.z);

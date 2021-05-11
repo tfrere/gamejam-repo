@@ -19,6 +19,7 @@ public class TestController : MonoBehaviour
 
     void Start()
     {
+        GameInfo.GameState = "game";
         GameInfo.PlayerOneScore = 0;
         GameInfo.PlayerTwoScore = 0;
         playerOneName = PlayerOne.name;

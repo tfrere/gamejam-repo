@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        GameInfo.GameState = "game";
         RoundNumberTextMeshPro = RoundNumberTextGameObject.GetComponent<TextMeshPro>();
         soundHandler = GetComponent<SoundHandler>();
         // Reset scores
@@ -43,7 +44,7 @@ public class GameController : MonoBehaviour
         PlayerTwoScoreText.SetText("" + GameInfo.PlayerTwoScore);
         RoundNumberTextMeshPro.SetText("Round " + roundNumber);
 
-        if(GameInfo.PlayerOneScore == GameInfo.MaxScore || GameInfo.PlayerTwoScore == GameInfo.MaxScore) {
+        if(GameInfo.PlayerOneScore >= GameInfo.MaxScore || GameInfo.PlayerTwoScore >= GameInfo.MaxScore) {
             GoToScore();
         }
 
@@ -71,10 +72,13 @@ public class GameController : MonoBehaviour
     }
 
     void PopPlayers() {
-        GameObject playerOne = Instantiate(PlayerOne, PlayerOneSpawn.transform.position, Quaternion.identity);
-        playerOne.name = playerOneName;
-        GameObject playerTwo = Instantiate(PlayerTwo, PlayerTwoSpawn.transform.position, Quaternion.identity);
-        playerTwo.name = playerTwoName;
+        GameObject.Find("PlayerConfiguration-0").GetComponent<PlayerInstanciationController>().handleInstanciate(0, PlayerOneSpawn.transform.position);
+        GameObject.Find("PlayerConfiguration-1").GetComponent<PlayerInstanciationController>().handleInstanciate(1, PlayerTwoSpawn.transform.position);
+
+        // GameObject playerOne = Instantiate(PlayerOne, PlayerOneSpawn.transform.position, Quaternion.identity);
+        // playerOne.name = playerOneName;
+        // GameObject playerTwo = Instantiate(PlayerTwo, PlayerTwoSpawn.transform.position, Quaternion.identity);
+        // playerTwo.name = playerTwoName;
     }
 
 

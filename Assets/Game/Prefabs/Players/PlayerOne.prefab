@@ -272,8 +272,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 72440171
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -306,7 +306,6 @@ GameObject:
   - component: {fileID: 5525312998359541944}
   - component: {fileID: 1322856646}
   - component: {fileID: 4053502712739869238}
-  - component: {fileID: -6548712538443255496}
   m_Layer: 8
   m_Name: PlayerOne
   m_TagString: Player
@@ -416,7 +415,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0078783035, y: 0.058409095}
+  m_Offset: {x: -0.0078783035, y: 0.074135005}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -427,7 +426,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.988163, y: 1.127635}
+  m_Size: {x: 0.988163, y: 1.0961832}
   m_EdgeRadius: 0
 --- !u!95 &4165121505645880804
 Animator:
@@ -455,15 +454,15 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4165121505645880814}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5443243}
+  m_Offset: {x: 0, y: -0.4875179}
   serializedVersion: 2
-  m_Radius: 0.09165692
+  m_Radius: 0.034850538
 --- !u!114 &342639288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,143 +647,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMakingAnAction: 0
   isInvicible: 0
---- !u!114 &-6548712538443255496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4165121505645880814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 0de9a9b639e594eeeb85b52fd5ceb5c1, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 342639288}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: MoveInputAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 6882d560-b530-4e74-8e6f-9475a85f08fc
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow,/Unknown
-      8Bitdo NES30 Pro/stick]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1322856646}
-        m_TargetAssemblyTypeName: PlayerJump, Assembly-CSharp
-        m_MethodName: JumpInputAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 17052d84-2ccd-4322-8240-43687bd709e6
-    m_ActionName: Player/Jump[/Keyboard/z,/Unknown 8Bitdo NES30 Pro/button2]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5161977215347657786}
-        m_TargetAssemblyTypeName: PlayerThrow, Assembly-CSharp
-        m_MethodName: ThrowInputAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5a7a3b32-fa7f-46eb-a069-42965c50df6b
-    m_ActionName: Player/Throw[/Keyboard/x,/Unknown 8Bitdo NES30 Pro/button4]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1018928615}
-        m_TargetAssemblyTypeName: PlayerPunch, Assembly-CSharp
-        m_MethodName: PunchInputAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 59260981-8036-48c6-babd-90334ae914e2
-    m_ActionName: Player/Punch[/Keyboard/c,/Unknown 8Bitdo NES30 Pro/button5]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 21f95f5d-51ae-45af-a8f5-35a1c34dea5e
-    m_ActionName: UI/Navigate[/Unknown 8Bitdo NES30 Pro/stick/up,/Unknown 8Bitdo
-      NES30 Pro/stick/down,/Unknown 8Bitdo NES30 Pro/stick/left,/Unknown 8Bitdo NES30
-      Pro/stick/right,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1b0f6a5e-5e5b-432d-99e4-3d1f8dae76ab
-    m_ActionName: UI/Submit[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2807131f-75a0-42a4-9791-c5f9accde479
-    m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0c22ad26-99a0-45dd-9bca-7a607d2c7ddf
-    m_ActionName: UI/Point[/Mouse/position,/Pen/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6587c0da-aec4-43b8-96db-d32233de887a
-    m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1e6c691d-a067-4c22-9cf5-20bbfc25915f
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 57e56dec-3ce3-487e-833b-58b374be6a9c
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 00cc4e41-d902-423e-914c-e3d6988ed6c0
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a1b6cd30-dfbe-4c28-a0ad-6601577ce36b
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 87ed7a6b-0562-4655-9278-752a0d0c8985
-    m_ActionName: UI/TrackedDeviceOrientation
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &4515496539891898403
 GameObject:
   m_ObjectHideFlags: 0

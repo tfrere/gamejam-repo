@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193844cb205174178bcf90c39eb209ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: LevelChoosingMenu
+  targetScene: InstanciatePlayers
 --- !u!4 &415033496
 Transform:
   m_ObjectHideFlags: 0

@@ -1,3 +1,5 @@
+using UnityEngine.InputSystem;
+
 public static class GameInfo
 {
     private static int playerOneScore = 0;
@@ -6,9 +8,29 @@ public static class GameInfo
     private static int initialArrows = 3;
     private static int playerOneArrows = initialArrows;
     private static int playerTwoArrows = initialArrows;
+
+    private static PlayerInput playerOneInput;
+    private static PlayerInput playerTwoInput;
     private static int level = 0;
     private static int maxScore = 3;
     public static string sceneToLoad;
+
+    public static string gameState = "menu";
+
+
+    public static string GameState 
+    {
+        get 
+        {
+            return gameState;
+        }
+        set 
+        {
+            gameState = value;
+        }
+    }
+
+
 
 
     public static int InitialArrows 
@@ -16,6 +38,31 @@ public static class GameInfo
         get 
         {
             return initialArrows;
+        }
+    }
+
+
+    public static PlayerInput PlayerOneInput 
+    {
+        get 
+        {
+            return playerOneInput;
+        }
+        set 
+        {
+            playerOneInput = value;
+        }
+    }
+
+    public static PlayerInput PlayerTwoInput 
+    {
+        get 
+        {
+            return playerTwoInput;
+        }
+        set 
+        {
+            playerTwoInput = value;
         }
     }
 
