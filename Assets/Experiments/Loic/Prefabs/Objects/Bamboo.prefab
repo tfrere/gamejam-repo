@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bambooChunk: {fileID: 5729009707452924168, guid: 074f20a6f8966fc468a29046862777a4, type: 3}
-  bambooChunkBody: {fileID: -7688164583921627626, guid: a29f5bc57153d4b9dbe200ef95684635, type: 3}
-  bambooChunkTop: {fileID: 1173672819109715352, guid: a29f5bc57153d4b9dbe200ef95684635, type: 3}
+  bambooChunkBody: {fileID: 3541785599481088897, guid: 8db37bf1883f8bb4e951cbe4cfaebe71, type: 3}
+  bambooChunkTop: {fileID: 1173672819109715352, guid: 8db37bf1883f8bb4e951cbe4cfaebe71, type: 3}
   size: 1
+  minGrowTime: 2
+  maxGrowTime: 20
 --- !u!212 &532537382727315354
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,7 +90,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7688164583921627626, guid: a29f5bc57153d4b9dbe200ef95684635, type: 3}
+  m_Sprite: {fileID: 3541785599481088897, guid: 8db37bf1883f8bb4e951cbe4cfaebe71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

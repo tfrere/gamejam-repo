@@ -4124,6 +4124,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1411527760}
     m_Modifications:
+    - target: {fileID: 5690669827066602143, guid: aa5f054d524d22b4da6deb1c54d98a39, type: 3}
+      propertyPath: bambooChunkBody
+      value: 
+      objectReference: {fileID: 1173672819109715352, guid: a29f5bc57153d4b9dbe200ef95684635, type: 3}
     - target: {fileID: 6485607660136343820, guid: aa5f054d524d22b4da6deb1c54d98a39, type: 3}
       propertyPath: m_Name
       value: Bamboo
