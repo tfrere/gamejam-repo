@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee95a074d18e4ba794eee0ce0336d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInstanciationControllers: []
 --- !u!4 &192372469
 Transform:
   m_ObjectHideFlags: 0
@@ -247,7 +248,15 @@ PrefabInstance:
       objectReference: {fileID: 6200000, guid: 7ee8b6224e14b475d8659ee08b8bbcc8, type: 2}
     - target: {fileID: 5714460809311290164, guid: a5a175194f2a64b2eb7c151d5fffb569, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714460809311290164, guid: a5a175194f2a64b2eb7c151d5fffb569, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.925
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714460809311290164, guid: a5a175194f2a64b2eb7c151d5fffb569, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.843125
       objectReference: {fileID: 0}
     - target: {fileID: 5714460809311290164, guid: a5a175194f2a64b2eb7c151d5fffb569, type: 3}
       propertyPath: m_LocalPosition.x
@@ -255,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5714460809311290164, guid: a5a175194f2a64b2eb7c151d5fffb569, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.0021876
       objectReference: {fileID: 0}
     - target: {fileID: 5714460809311290164, guid: a5a175194f2a64b2eb7c151d5fffb569, type: 3}
       propertyPath: m_LocalPosition.z
@@ -296,6 +305,10 @@ PrefabInstance:
     - target: {fileID: 5714460809311290165, guid: a5a175194f2a64b2eb7c151d5fffb569, type: 3}
       propertyPath: m_TagString
       value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714460809311290166, guid: a5a175194f2a64b2eb7c151d5fffb569, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5a175194f2a64b2eb7c151d5fffb569, type: 3}

@@ -22,8 +22,14 @@ public class InstanciatePlayersController : MonoBehaviour
   public bool isConfigurationFinished = false;
 
     public void HandlePlayerJoin(PlayerInput playerInput) {
+      if(numberOfInstanciatedPlayers == 0 ) {
+        GameObject.Find("PlayerConfiguration-0").GetComponent<PlayerInstanciationController>().handleInstanciate(0);
+      }
+      if(numberOfInstanciatedPlayers == 1 ) {
+        GameObject.Find("PlayerConfiguration-1").GetComponent<PlayerInstanciationController>().handleInstanciate(1);
+      }
       numberOfInstanciatedPlayers ++;
-    }
+     }
 
     void Start()
     {

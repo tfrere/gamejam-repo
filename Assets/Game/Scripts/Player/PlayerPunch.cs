@@ -78,6 +78,7 @@ public class PlayerPunch : MonoBehaviour
             this.gameObject.transform.localPosition = new Vector2(0, PlayerMovement.orientation == "up" ? 1f : -1f);
         }
         SpriteRenderer.flipX = PlayerMovement.orientation == "left";
+        SpriteRenderer.flipY = PlayerMovement.orientation == "down";
 
 
         yield return new WaitForSeconds(.3f);

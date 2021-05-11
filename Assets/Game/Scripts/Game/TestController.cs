@@ -24,6 +24,8 @@ public class TestController : MonoBehaviour
         GameInfo.PlayerTwoScore = 0;
         playerOneName = PlayerOne.name;
         playerTwoName = PlayerTwo.name;
+        GameObject.Find("PlayerConfiguration-0").GetComponent<PlayerInstanciationController>().handleInstanciate(0, PlayerOneSpawn.transform.position);
+        GameObject.Find("PlayerConfiguration-1").GetComponent<PlayerInstanciationController>().handleInstanciate(1, PlayerTwoSpawn.transform.position);
  }
 
     void Update()

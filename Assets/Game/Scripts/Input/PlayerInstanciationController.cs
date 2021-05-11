@@ -26,7 +26,6 @@ public class PlayerInstanciationController : MonoBehaviour
         else if(this.gameObject.name.Contains("1")) {
             playerIndex = 1;
         }
-        handleInstanciate(playerIndex);
     }
 
     public GameObject handleInstanciate(int index, Vector3 spawn) {

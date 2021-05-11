@@ -26,16 +26,7 @@ public class BambooChunk : MonoBehaviour
             DestroyBambooChunk();
         }
     }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag != "Floor")
-        {
-            particleSystem.Play();
-            DestroyBambooChunk();
-        }
-    }
-
+    
     void DestroyBambooChunk() {
         StartCoroutine(DestroyActivation());
     }
