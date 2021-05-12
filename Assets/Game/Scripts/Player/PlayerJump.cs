@@ -8,7 +8,6 @@ public class PlayerJump : MonoBehaviour
 
     public float jumpForce = 1.2f;
     public float wallJumpRepulseForce = 3.0f;
-    private List<string> collisionTags =  new List<string> {"Borders", "Wall"};
 
     // GameObject Internals
     private Player player;
@@ -40,31 +39,28 @@ public class PlayerJump : MonoBehaviour
 
     void Update()
     {
-        if(!playerMovement.isGrounded) {
-            animator.SetBool("isJumping", isJumping);
+        if(hasToJump && !isJumping && !isOnWall) {
+            MakeJump();
         }
+    }
+
+    bool IsCollidingFromTop(Vector3 vector) {
+        if (Vector3.Angle(vector, Vector3.up) <= contactThreshold)
+            return true;
+        return false;
     }
 
     void OnCollisionStay2D(Collision2D collision)
     {
-
-        bool comingFromTop = false;
-        // if collide from top 
-        if (Vector3.Angle(collision.contacts[0].normal, Vector3.up) <= contactThreshold)
-        {
-            comingFromTop = true;
-        }
-
-        isOnWall = !comingFromTop;
-
-        if(hasToJump && !isJumping && (playerMovement.isGrounded || isOnWall)) {
-            MakeJump(collision);            
-        }
+        isOnWall = !IsCollidingFromTop(collision.contacts[0].normal);
+        
+        if(hasToJump && !isJumping && (playerMovement.isGrounded || isOnWall))
+            MakeWallJump(collision);            
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        isOnWall = isOnWall && collisionTags.Contains(collision.gameObject.tag) ? false : isOnWall;
+        isOnWall = false;
     }
 
     public void JumpInputAction(InputAction.CallbackContext context)
@@ -75,38 +71,45 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    void MakeJump(Collision2D collision) {
-        StartCoroutine(MakeJumpActivation(collision));
+    void MakeJump() {
+        StartCoroutine(MakeJumpActivation());
     }
-
-    IEnumerator MakeJumpActivation(Collision2D collision)
+    
+    void MakeWallJump(Collision2D collision) {
+        StartCoroutine(MakeWallJumpActivation(collision));
+    }
+    
+    IEnumerator MakeWallJumpActivation(Collision2D collision)
     {
         isJumping = true;
-        if (isOnWall) {
-
-            Vector2 repulseVector = new Vector2();
-            string orientation = this.gameObject.transform.position.x - collision.contacts[0].point.x > 0 ? "left" : "right";
-
-            if(orientation == "left") { 
-                repulseVector = new Vector2(wallJumpRepulseForce, jumpForce); 
-                playerMovement.oldHorizontalOrientation = "right";
-            }
-            if(orientation == "right") { 
-                repulseVector = new Vector2(-wallJumpRepulseForce, jumpForce); 
-                playerMovement.oldHorizontalOrientation = "left";
-            }
-
-            // rbody.velocity = new Vector2(0,0);
-            rbody.velocity = repulseVector;
+        // animator.SetBool("isJumping", true);
+        Vector2 repulseVector = new Vector2();
+        string orientation = this.gameObject.transform.position.x - collision.contacts[0].point.x > 0 ? "left" : "right";
+        if(orientation == "left") { 
+            repulseVector = new Vector2(wallJumpRepulseForce, jumpForce); 
+            playerMovement.oldHorizontalOrientation = "right";
         }
-        else {
-            rbody.velocity = new Vector2(rbody.velocity.x, jumpForce);
+        if(orientation == "right") { 
+            repulseVector = new Vector2(-wallJumpRepulseForce, jumpForce); 
+            playerMovement.oldHorizontalOrientation = "left";
         }
+        rbody.velocity = repulseVector;
         soundHandler.ChangeTheSound(7);
         yield return new WaitForSeconds(0.3f);
+        // animator.SetBool("isJumping", false);
         isJumping = false;
         hasToJump = false;
     }
-    
 
+    IEnumerator MakeJumpActivation()
+    {
+        isJumping = true;
+        // animator.SetBool("isJumping", true);
+        rbody.velocity = new Vector2(rbody.velocity.x, jumpForce);
+        soundHandler.ChangeTheSound(7);
+        yield return new WaitForSeconds(0.3f);
+        // animator.SetBool("isJumping", false);
+        isJumping = false;
+        hasToJump = false;
+    }
 }

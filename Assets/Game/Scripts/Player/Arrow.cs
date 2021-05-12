@@ -53,8 +53,6 @@ public class Arrow : MonoBehaviour
                 (collision.gameObject.transform.position.x - this.gameObject.transform.position.x) * 3,
                 (collision.gameObject.transform.position.y - this.gameObject.transform.position.y)
                 );
-                // Quaternion quaternion = Quaternion.AngleAxis(180, Vector3.forward);
-                // print("repulseVector " + orientation)
                 this.gameObject.transform.eulerAngles = this.gameObject.transform.eulerAngles + 180f * Vector3.up;
                 rigidBody.velocity = new Vector2(0,0);
                 rigidBody.AddForce(-orientation * 10f, ForceMode2D.Impulse);

@@ -961,6 +961,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BorderLayer
       objectReference: {fileID: 0}
+    - target: {fileID: 5714460809311290166, guid: a5a175194f2a64b2eb7c151d5fffb569, type: 3}
+      propertyPath: m_SortingOrder
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5a175194f2a64b2eb7c151d5fffb569, type: 3}
 --- !u!4 &1361098183 stripped

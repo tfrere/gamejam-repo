@@ -6,43 +6,92 @@ using UnityEngine.SceneManagement;
 
 public class TestController : MonoBehaviour
 {
-    public GameObject PlayerOne;
-    private string playerOneName;
-    public GameObject PlayerTwo;
-    private string playerTwoName;
+    public GameObject fightText;
 
-    public GameObject PlayerOneSpawn;
-    public GameObject PlayerTwoSpawn;
+    public List<GameObject> spawnList;
 
-    public TextMeshPro PlayerOneScoreText;
-    public TextMeshPro PlayerTwoScoreText;
+    public List<TextMeshPro> scoreTextList;
+
+    private bool hasGameStarted = false;
+
+    public SoundHandler soundHandler;
 
     void Start()
     {
-        GameInfo.GameState = "game";
         GameInfo.PlayerOneScore = 0;
         GameInfo.PlayerTwoScore = 0;
-        playerOneName = PlayerOne.name;
-        playerTwoName = PlayerTwo.name;
-        GameObject.Find("PlayerConfiguration-0").GetComponent<PlayerInstanciationController>().handleInstanciate(0, PlayerOneSpawn.transform.position);
-        GameObject.Find("PlayerConfiguration-1").GetComponent<PlayerInstanciationController>().handleInstanciate(1, PlayerTwoSpawn.transform.position);
+        soundHandler = GetComponent<SoundHandler>();
+        StartGame();
  }
+
+    void SpawnPlayer(int index, Vector3 spawnPosition) {
+        GameObject.Find("PlayerConfiguration-" + index).GetComponent<PlayerInstanciationController>().handleInstanciate(index, spawnPosition);
+    }
+
+
+    void SpawnPlayer(int index) {
+        GameObject.Find("PlayerConfiguration-" + index).GetComponent<PlayerInstanciationController>().handleInstanciate(index, GetAvailablePositionToSpawn());
+    }
+
+
+    void StartGame() {
+        StartCoroutine(HandleStartGame());
+    }
+
+    IEnumerator HandleStartGame()
+    {
+        fightText.SetActive(true);
+        soundHandler.ChangeTheSound(0);
+        yield return new WaitForSeconds(2.0f);
+        fightText.SetActive(false);
+        soundHandler.ChangeTheSound(1);
+        SpawnPlayer(0, spawnList[0].transform.position);
+        SpawnPlayer(1, spawnList[1].transform.position);
+        yield return new WaitForSeconds(0.5f);
+        GameInfo.GameState = "game";
+        hasGameStarted = true;
+    }
+
+    Vector3 GetAvailablePositionToSpawn() {
+        int spawnIndex = Random.Range(0, 3);
+        if(!spawnList[spawnIndex].GetComponent<SpawnController>().isAvailableForSpawnPlayer) {
+            spawnIndex = Random.Range(0, 3);
+        }
+        return spawnList[spawnIndex].transform.position;
+    }
+
+    void GoToScore() {
+        StartCoroutine(HandleGoToScore());
+    }
+
+    IEnumerator HandleGoToScore()
+    {
+        Time.timeScale = 0.5f;
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 1;
+        GameInfo.sceneToLoad = "ScoreMenu";
+        SceneManager.LoadScene("LoadingSceneWithTransition");
+    }
 
     void Update()
     {
-        PlayerOneScoreText.SetText("" + GameInfo.PlayerOneScore);
-        PlayerTwoScoreText.SetText("" + GameInfo.PlayerTwoScore);
+        scoreTextList[0].SetText("" + GameInfo.PlayerOneScore);
+        scoreTextList[1].SetText("" + GameInfo.PlayerTwoScore);
+        if(hasGameStarted) {
+            if(GameInfo.PlayerOneScore >= GameInfo.MaxScore || GameInfo.PlayerTwoScore >= GameInfo.MaxScore) {
+                GoToScore();
+            }
 
-        if (GameObject.Find("PlayerOne") == null) {
-            // Destroy(GameObject.Find("PlayerOne"));    
-            GameObject cloneOne = Instantiate(PlayerOne, PlayerOneSpawn.transform.position, Quaternion.identity);
-            cloneOne.name = playerOneName;
+            if (GameObject.Find("PlayerOne") == null) {
+                soundHandler.ChangeTheSound(1);
+                SpawnPlayer(0);
+            }
+            if (GameObject.Find("PlayerTwo") == null) {
+                soundHandler.ChangeTheSound(1);
+                SpawnPlayer(1);
+            }
         }
-        if (GameObject.Find("PlayerTwo") == null) {
-            // Destroy(GameObject.Find("PlayerTwo"));    
-            GameObject cloneTwo = Instantiate(PlayerTwo, PlayerTwoSpawn.transform.position, Quaternion.identity);
-            cloneTwo.name = playerTwoName;
-        }
+
     }
 
 }

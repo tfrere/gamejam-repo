@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2479377588194224496, guid: dc5901534090448d4ab31c30d867628e, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 06e819b21ea384838a667dfc69101890, type: 2}
     - target: {fileID: 2479377588194224497, guid: dc5901534090448d4ab31c30d867628e, type: 3}
       propertyPath: m_Name
       value: BambooChunkTop

@@ -14,7 +14,7 @@ public class PlayerPunch : MonoBehaviour
      private Animator Animator;
      private SoundHandler soundHandler;
 
-     private bool isPunching;
+    public bool isPunching;
     public float accelerationOnPunch = 15.0f; 
     public float punchRepulseForce = 150f;
 

@@ -11,6 +11,7 @@ public class PlayerDeath : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private SoundHandler soundHandler;
     public ParticleSystem particleSystem;
+    private Animator animator;
 
     public bool isDead = false;
 
@@ -20,6 +21,7 @@ public class PlayerDeath : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         soundHandler = GetComponent<SoundHandler>();
     }
 
@@ -71,6 +73,7 @@ public class PlayerDeath : MonoBehaviour
             rigidBody.simulated = false;
             boxCollider.enabled = false;
             spriteRenderer.enabled = false;
+            // animator.SetBool("isDead", true);
             soundHandler.ChangeTheSound(Random.Range(8, 10));
             particleSystem.Play();
             isDead = true;

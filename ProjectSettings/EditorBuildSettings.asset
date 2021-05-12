@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Game/Scenes/UI/LoadingSceneWithTransition.unity
     guid: 5fd8f23aa57c8433abd4ca2f9ccdcf1b
   - enabled: 1
+    path: Assets/Game/Scenes/UI/BackgroundMusic.unity
+    guid: c1991db17d0e04b8f9d3ffb7cdeba3e4
+  - enabled: 1
     path: Assets/Game/Scenes/UI/ScoreMenu.unity
     guid: 87685547d813e465e96a2a1f9498cd3e
   - enabled: 1

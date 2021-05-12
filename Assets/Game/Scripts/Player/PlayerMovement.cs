@@ -38,9 +38,16 @@ public class PlayerMovement : MonoBehaviour
         player = GetComponent<Player>();
         playerJump = GetComponent<PlayerJump>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        oldHorizontalOrientation = spriteRenderer.flipX ? "left" : "right";
         animator = GetComponent<Animator>();
         soundHandler = GetComponent<SoundHandler>();
+        if(this.gameObject.transform.position.x > 0) {
+            spriteRenderer.flipX = true;
+            oldHorizontalOrientation = "left";
+        }
+        else {
+            spriteRenderer.flipX = false;
+            oldHorizontalOrientation = "right";
+        }
     }
 
     public void MoveInputAction(InputAction.CallbackContext context)
@@ -65,8 +72,6 @@ public class PlayerMovement : MonoBehaviour
         int index = list.ToList().IndexOf(minValue);
 
         string computedOrientation = movementInputVector == Vector2.zero ? "none" : orientstrings[index];
-
-        print(computedOrientation);
 
         if (computedOrientation == "left")
         {
@@ -112,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        isGrounded = isGrounded && collisionTags.Contains(collision.gameObject.tag) ? false : isGrounded;
+        isGrounded = false;
     }
     void MakeSound() {
         if(state == "walking") {

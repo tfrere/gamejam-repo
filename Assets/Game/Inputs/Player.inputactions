@@ -251,7 +251,7 @@
                 {
                     "name": "",
                     "id": "42dc4cfc-09cc-44fd-9b91-6a354e333896",
-                    "path": "<XInputController>/buttonNorth",
+                    "path": "<XInputController>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -262,7 +262,7 @@
                 {
                     "name": "",
                     "id": "46de7257-543f-49c4-ab7c-225885b93189",
-                    "path": "<Keyboard>/o",
+                    "path": "<XInputController>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -295,10 +295,10 @@
                 {
                     "name": "",
                     "id": "29b89ae9-8663-4755-a2e2-b203b4071da1",
-                    "path": "<XInputController>/buttonWest",
+                    "path": "<Keyboard>/o",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false

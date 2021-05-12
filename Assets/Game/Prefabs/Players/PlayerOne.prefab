@@ -79,6 +79,7 @@ MonoBehaviour:
   PlayerMovement: {fileID: 342639288}
   PlayerJump: {fileID: 1322856646}
   PlayerDeath: {fileID: 5525312998359541944}
+  isPunching: 0
   accelerationOnPunch: 13
   punchRepulseForce: 3
   oldOrientation: left
@@ -300,9 +301,9 @@ GameObject:
   - component: {fileID: 4165121505645880810}
   - component: {fileID: 4165121505645880804}
   - component: {fileID: 342639294}
-  - component: {fileID: 342639288}
   - component: {fileID: 342639289}
   - component: {fileID: 441099670870309829}
+  - component: {fileID: 342639288}
   - component: {fileID: 5525312998359541944}
   - component: {fileID: 1322856646}
   - component: {fileID: 4053502712739869238}
@@ -460,27 +461,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.4769845}
+  m_Offset: {x: 0, y: -0.4759901}
   serializedVersion: 2
-  m_Radius: 0.024317145
---- !u!114 &342639288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4165121505645880814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f687cc27abbf45b7a1849a87a36bc85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_speed: 5
-  rigidBody: {fileID: 4165121505645880808}
-  orientation: right
-  oldHorizontalOrientation: right
-  state: idle
-  isGrounded: 0
+  m_Radius: 0.023322731
 --- !u!82 &342639289
 AudioSource:
   m_ObjectHideFlags: 0
@@ -602,6 +585,24 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 84e90f8cfa1dd42e8ba222f44c27fd2b, type: 3}
   - {fileID: 8300000, guid: edcf9567bf4ee4eaea7d00ca4e098bc4, type: 3}
   canStackSound: 0
+--- !u!114 &342639288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4165121505645880814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f687cc27abbf45b7a1849a87a36bc85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_speed: 5
+  rigidBody: {fileID: 4165121505645880808}
+  orientation: right
+  oldHorizontalOrientation: right
+  state: idle
+  isGrounded: 0
 --- !u!114 &5525312998359541944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,8 +629,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fa61a0ee52c42a2a9fef45d455958c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 6
-  wallJumpRepulseForce: 3
+  jumpForce: 7
+  wallJumpRepulseForce: 2
   isOnWall: 0
   isJumping: 0
   hasToJump: 0
