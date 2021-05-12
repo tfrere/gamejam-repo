@@ -12,6 +12,8 @@ public class TestController : MonoBehaviour
 
     public List<TextMeshPro> scoreTextList;
 
+    public List<TextMeshPro> arrowTextList;
+
     private bool hasGameStarted = false;
 
     public SoundHandler soundHandler;
@@ -54,7 +56,7 @@ public class TestController : MonoBehaviour
 
     Vector3 GetAvailablePositionToSpawn() {
         int spawnIndex = Random.Range(0, 3);
-        if(!spawnList[spawnIndex].GetComponent<SpawnController>().isAvailableForSpawnPlayer) {
+        while(!spawnList[spawnIndex].GetComponent<SpawnController>().isAvailableForSpawnPlayer) {
             spawnIndex = Random.Range(0, 3);
         }
         return spawnList[spawnIndex].transform.position;
@@ -77,6 +79,10 @@ public class TestController : MonoBehaviour
     {
         scoreTextList[0].SetText("" + GameInfo.PlayerOneScore);
         scoreTextList[1].SetText("" + GameInfo.PlayerTwoScore);
+
+        arrowTextList[0].SetText("" + GameInfo.PlayerOneArrows);
+        arrowTextList[1].SetText("" + GameInfo.PlayerTwoArrows);
+
         if(hasGameStarted) {
             if(GameInfo.PlayerOneScore >= GameInfo.MaxScore || GameInfo.PlayerTwoScore >= GameInfo.MaxScore) {
                 GoToScore();

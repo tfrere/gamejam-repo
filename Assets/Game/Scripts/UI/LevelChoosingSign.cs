@@ -42,7 +42,6 @@ public class LevelChoosingSign : MonoBehaviour
             levelText.transform.position = new Vector3(levelText.transform.position.x, -3f, levelText.transform.position.z);
         }
        if(Input.GetKey("space") && isActive) {
-           print(levelName);
             GameInfo.sceneToLoad = levelName;
             SceneManager.LoadScene("LoadingScene");
         }

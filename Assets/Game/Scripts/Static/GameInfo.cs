@@ -12,7 +12,7 @@ public static class GameInfo
     private static PlayerInput playerOneInput;
     private static PlayerInput playerTwoInput;
     private static int level = 0;
-    private static int maxScore = 3;
+    private static int maxScore = 10;
     public static string sceneToLoad;
 
     public static string gameState = "menu";
