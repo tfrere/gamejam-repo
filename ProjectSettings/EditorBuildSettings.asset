@@ -6,30 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game/Scenes/UI/InstanciatePlayers.unity
-    guid: cc667f951296c421fb3faacb30664c37
+    path: Assets/Game/Scenes/UI/1-SplashScreenMenu.unity
+    guid: b29b04c6cb9ec4b8192076f71a397177
   - enabled: 1
-    path: Assets/Game/Scenes/Levels/Level-desert.unity
-    guid: 641ffe87756914dd9b4cba53e62037de
-  - enabled: 1
-    path: Assets/Game/Scenes/Levels/Level-docks.unity
-    guid: 5490fed9f25d6497892e64eff9bc0332
-  - enabled: 1
-    path: Assets/Game/Scenes/Levels/Level-cavern.unity
-    guid: 3148824249ba44264a59e39c873b59a6
-  - enabled: 1
-    path: Assets/Game/Scenes/UI/LoadingSceneWithTransition.unity
-    guid: 5fd8f23aa57c8433abd4ca2f9ccdcf1b
-  - enabled: 1
-    path: Assets/Game/Scenes/UI/BackgroundMusic.unity
+    path: Assets/Game/Scenes/Generic/BackgroundMusic.unity
     guid: c1991db17d0e04b8f9d3ffb7cdeba3e4
   - enabled: 1
-    path: Assets/Game/Scenes/UI/ScoreMenu.unity
-    guid: 87685547d813e465e96a2a1f9498cd3e
+    path: Assets/Game/Scenes/UI/2-InstanciatePlayers.unity
+    guid: cc667f951296c421fb3faacb30664c37
   - enabled: 1
-    path: Assets/Game/Scenes/UI/LevelChoosingMenu.unity
+    path: Assets/Game/Scenes/UI/3-LevelChoosingMenu.unity
     guid: bbdc9388f8fa042418fd602e0fd23673
   - enabled: 1
-    path: Assets/Game/Scenes/UI/LoadingScene.unity
+    path: Assets/Game/Scenes/Generic/LoadingScene.unity
     guid: 7916381c68f7b0f448db93904e62f14c
+  - enabled: 1
+    path: Assets/Game/Scenes/Generic/LoadingSceneWithTransition.unity
+    guid: 5fd8f23aa57c8433abd4ca2f9ccdcf1b
+  - enabled: 1
+    path: Assets/Game/Scenes/Game/Level-desert.unity
+    guid: 641ffe87756914dd9b4cba53e62037de
+  - enabled: 1
+    path: Assets/Game/Scenes/Game/Level-docks.unity
+    guid: 5490fed9f25d6497892e64eff9bc0332
+  - enabled: 1
+    path: Assets/Game/Scenes/Game/Level-cavern.unity
+    guid: 3148824249ba44264a59e39c873b59a6
+  - enabled: 1
+    path: Assets/Game/Scenes/UI/4-ScoreMenu.unity
+    guid: 87685547d813e465e96a2a1f9498cd3e
   m_configObjects: {}

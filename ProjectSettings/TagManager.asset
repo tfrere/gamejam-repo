@@ -4,11 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
   - Ground
   - Death
-  - Borders
-  - InvisibleBorders
   - Music
   - EventSystem
   - SelfDeath
@@ -17,7 +14,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Wall
+  - 
   - Water
   - UI
   - Arrows
@@ -47,20 +44,20 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: InvisibleBorders
     uniqueID: 3380255345
     locked: 0
-  - name: ' NearBackground'
-    uniqueID: 3561226947
+  - name: FarBackground
+    uniqueID: 475111929
     locked: 0
   - name: MidBackground
     uniqueID: 2070553539
     locked: 0
-  - name: FarBackground
-    uniqueID: 475111929
+  - name: NearBackground
+    uniqueID: 3561226947
+    locked: 0
+  - name: Water
+    uniqueID: 1427989945
     locked: 0
   - name: Details
     uniqueID: 1954799545
@@ -76,4 +73,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1790347853
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
