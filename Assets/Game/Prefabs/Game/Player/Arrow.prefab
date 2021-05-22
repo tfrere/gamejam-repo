@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 2915257465322071710}
   - component: {fileID: 4846913962461864320}
   - component: {fileID: 8136062422326986789}
+  - component: {fileID: 5792192236290632277}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Death
@@ -228,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDestroyed: 0
   isTaping: 0
+  arrowSpeed: 0
 --- !u!82 &4846913962461864320
 AudioSource:
   m_ObjectHideFlags: 0
@@ -340,3 +342,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5b0b89f7fbb8446dbb811bde1f04efd3, type: 3}
   - {fileID: 8300000, guid: 307cd8233c3254c77a1c93b5bf3f34b0, type: 3}
   canStackSound: 0
+--- !u!114 &5792192236290632277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171466926728066902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe7c0ce074144a96b2cedc552741d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

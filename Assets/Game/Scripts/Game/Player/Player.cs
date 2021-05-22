@@ -6,8 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {   
-    [Header("Player index")]
-    public int index;
+    [HideInInspector] public int index;
 
     [Header("Internal States")]
     public bool isMakingAnAction = false;
@@ -103,13 +102,13 @@ public class Player : MonoBehaviour
     }
 
     void FixedUpdate() {
+
         spriteRenderer.flipX = oldHorizontalOrientation == "left";
 
         // slow down falling when stuck on wall
         if(isOnWall && rb.velocity.y < -0.5f) {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.70f);
         }
-
     }
 
     #region Actions
@@ -151,7 +150,6 @@ public class Player : MonoBehaviour
     }
 
     // COLLISIONS
-
     #region Collisions
         bool IsOnWall(Vector3 vector) {
             if (Vector3.Angle(vector, Vector3.left) <= 10)
