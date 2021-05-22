@@ -76,13 +76,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4053502712739869238}
-  playerMovement: {fileID: 342639288}
-  playerOrientation: {fileID: 8957874678084265222}
-  playerJump: {fileID: 1322856646}
-  playerDeath: {fileID: 5525312998359541944}
-  isPunching: 0
-  accelerationOnPunch: 13
-  punchRepulseForce: 3
 --- !u!82 &1018928616
 AudioSource:
   m_ObjectHideFlags: 0
@@ -438,17 +431,17 @@ GameObject:
   - component: {fileID: 4165121505645880809}
   - component: {fileID: 4165121505645880811}
   - component: {fileID: 4165121505645880808}
+  - component: {fileID: 2795239432462475403}
   - component: {fileID: 342639294}
   - component: {fileID: 4165121505645880804}
   - component: {fileID: 342639289}
   - component: {fileID: 441099670870309829}
   - component: {fileID: 342639288}
   - component: {fileID: 8957874678084265222}
-  - component: {fileID: 5525312998359541944}
-  - component: {fileID: 1322856646}
+  - component: {fileID: 3066117888819449243}
+  - component: {fileID: -2888567978667459600}
   - component: {fileID: 4053502712739869238}
   - component: {fileID: 3160834992403753430}
-  - component: {fileID: 2795239432462475403}
   m_Layer: 8
   m_Name: PlayerOne
   m_TagString: Player
@@ -537,15 +530,41 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c2b6fddeeb6454d0694c1b7385da4c5c, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!61 &2795239432462475403
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4165121505645880814}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: c2b6fddeeb6454d0694c1b7385da4c5c, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00016704202, y: -0.01892984}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.82, y: 0.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.49834412, y: 0.91061735}
+  m_EdgeRadius: 0
 --- !u!58 &342639294
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -714,11 +733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f687cc27abbf45b7a1849a87a36bc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 5
-  rigidBody: {fileID: 4165121505645880808}
-  state: idle
-  prevState: idle
-  isGrounded: 0
 --- !u!114 &8957874678084265222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,9 +745,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7aea0da35e1e45348cb83017a427a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentOrientation: none
-  oldHorizontalOrientation: right
---- !u!114 &5525312998359541944
+--- !u!114 &3066117888819449243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4165121505645880814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4fa61a0ee52c42a2a9fef45d455958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2888567978667459600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -746,26 +770,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 3233534731004092976}
-  isDead: 0
---- !u!114 &1322856646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4165121505645880814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4fa61a0ee52c42a2a9fef45d455958c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 11.2
-  wallJumpRepulseForce: 2
-  jumpTime: 0.2
-  isOnWall: 0
-  isJumping: 0
-  hasToJump: 0
-  contactThreshold: 30
 --- !u!114 &4053502712739869238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,6 +784,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMakingAnAction: 0
   isInvicible: 0
+  isGrounded: 0
+  isOnWall: 0
+  isDead: 0
+  currentState: idle
+  currentOrientation: none
+  oldHorizontalOrientation: right
+  moveSpeed: 5
+  jumpForce: 11.2
+  wallJumpRepulseForce: 2
+  jumpTime: 0.2
+  isJumping: 0
+  isPunching: 0
+  accelerationOnPunch: 1
+  punchRepulseForce: 20
+  punchLerpTime: 0.1
+  isThrowing: 0
+  throwSpeed: 50
+  throwObject: {fileID: 9171466926728066902, guid: 13bcba6c74ea94c24b7fb377dd1b5e05, type: 3}
+  rb: {fileID: 0}
 --- !u!114 &3160834992403753430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,32 +844,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!61 &2795239432462475403
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4165121505645880814}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.00016704202, y: -0.029486746}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.82, y: 0.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.49834412, y: 0.93173116}
-  m_EdgeRadius: 0
 --- !u!1 &4515496539891898403
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,10 +890,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4053502712739869238}
-  playerOrientation: {fileID: 8957874678084265222}
-  playerDeath: {fileID: 5525312998359541944}
-  arrow: {fileID: 9171466926728066902, guid: 13bcba6c74ea94c24b7fb377dd1b5e05, type: 3}
-  ArrowSpeed: 30
 --- !u!82 &384190206417997535
 AudioSource:
   m_ObjectHideFlags: 0

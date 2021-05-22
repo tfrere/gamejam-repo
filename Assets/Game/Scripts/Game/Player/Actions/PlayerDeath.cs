@@ -10,11 +10,8 @@ public class PlayerDeath : MonoBehaviour
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
-    private SoundHandler soundHandler;
     public ParticleSystem particleSystem;
-    private Animator animator;
 
-    public bool isDead = false;
 
     void Start()
     {
@@ -22,8 +19,6 @@ public class PlayerDeath : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-        soundHandler = GetComponent<SoundHandler>();
     }
 
 
@@ -70,15 +65,14 @@ public class PlayerDeath : MonoBehaviour
 
     IEnumerator DeathActivation()
     {
-        if(!isDead) {
+        if(!player.isDead) {
             rigidBody.simulated = false;
             boxCollider.enabled = false;
             spriteRenderer.enabled = false;
-            // animator.SetBool("isDead", true);
-            soundHandler.ChangeTheSound(Random.Range(8, 10));
+            // soundHandler.ChangeTheSound(Random.Range(8, 10));
             particleSystem.Play();
-            isDead = true;
-            // Camera shake 
+            player.isDead = true;
+            // Camera shake and slow time
             // TO DO : handle this kind of behavior via an event system
             GameObject.Find("Camera").GetComponent<CameraShake>().shakeDuration = 0.3f;
             Time.timeScale = 0.5f;

@@ -51,6 +51,14 @@ PrefabInstance:
       propertyPath: punchKey
       value: o
       objectReference: {fileID: 0}
+    - target: {fileID: 1018928615, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: playerJump
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018928615, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: playerDeath
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1322856646, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: jumpInput
       value: m
@@ -183,9 +191,15 @@ PrefabInstance:
       propertyPath: throwKey
       value: u
       objectReference: {fileID: 0}
+    - target: {fileID: 5161977215347657786, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+      propertyPath: playerDeath
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8605926532490939886, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5525312998359541944, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
+    - {fileID: 1322856646, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}

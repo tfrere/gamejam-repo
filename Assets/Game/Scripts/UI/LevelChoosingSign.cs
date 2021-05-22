@@ -9,8 +9,6 @@ public class LevelChoosingSign : MonoBehaviour
     public string levelName;
     public GameObject levelStroke;
     private bool isActive;
-    int elapsedFrames = 0;
-
     void Start()
     {
     }

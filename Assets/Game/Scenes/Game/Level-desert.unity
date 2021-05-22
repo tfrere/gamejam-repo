@@ -629,6 +629,7 @@ GameObject:
   - component: {fileID: 1080836340}
   - component: {fileID: 1080836339}
   - component: {fileID: 1080836341}
+  - component: {fileID: 1080836342}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Ground
@@ -1015,11 +1016,30 @@ TilemapCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 06e819b21ea384838a667dfc69101890, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!251 &1080836342
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080836337}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1243979101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,6 +1413,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1670926202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5954647568863133994, guid: 7101e9b118bbc412cbab04a8d20e9536, type: 3}
+  m_PrefabInstance: {fileID: 5954647568864974157}
+  m_PrefabAsset: {fileID: 0}
+--- !u!251 &1670926205
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670926202}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1708315732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,6 +1504,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 830011464}
     m_Modifications:
+    - target: {fileID: 5954647568863133988, guid: 7101e9b118bbc412cbab04a8d20e9536, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5954647568863133989, guid: 7101e9b118bbc412cbab04a8d20e9536, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1517,6 +1565,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 531423580424930435, guid: 31a060d2c234c420890907553e771407, type: 3}
+      propertyPath: shakeAmount
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 5208118133846729201, guid: 31a060d2c234c420890907553e771407, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3

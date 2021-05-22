@@ -23,10 +23,10 @@ public class InstanciatePlayersController : MonoBehaviour
 
     public void HandlePlayerJoin(PlayerInput playerInput) {
       if(numberOfInstanciatedPlayers == 0 ) {
-        GameObject.Find("PlayerConfiguration-0").GetComponent<PlayerInstanciationController>().handleInstanciate(0);
+        GameObject.Find("PlayerConfiguration-0").GetComponent<PlayerInstanciationController>().handleInstanciate(0, new Vector3(0,0,0));
       }
       if(numberOfInstanciatedPlayers == 1 ) {
-        GameObject.Find("PlayerConfiguration-1").GetComponent<PlayerInstanciationController>().handleInstanciate(1);
+        GameObject.Find("PlayerConfiguration-1").GetComponent<PlayerInstanciationController>().handleInstanciate(1, new Vector3(0,0,0));
       }
       numberOfInstanciatedPlayers ++;
      }

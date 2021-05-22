@@ -6,18 +6,10 @@ using UnityEngine.InputSystem;
 public class PlayerPunch : MonoBehaviour
 {
      public Player player;
-     public PlayerMovement playerMovement;
-     public PlayerOrientation playerOrientation;
-     public PlayerJump playerJump;
-     public PlayerDeath playerDeath;
      private Collider2D punchCollider;
      private SpriteRenderer spriteRenderer;
      private Animator animator;
      private SoundHandler soundHandler;
-
-    public bool isPunching;
-    public float accelerationOnPunch = 15.0f; 
-    public float punchRepulseForce = 150f;
 
     void Start()
     {
@@ -28,36 +20,37 @@ public class PlayerPunch : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.name == "PunchHandler") {
+            print("superpunch think");
                 Vector2 orientation = new Vector2(
-                    (this.gameObject.transform.position.x - collision.gameObject.transform.position.x) * 3,
-                    (this.gameObject.transform.position.y - collision.gameObject.transform.position.y) * 3
+                    (this.gameObject.transform.position.x - collision.gameObject.transform.position.x),
+                    (this.gameObject.transform.position.y - collision.gameObject.transform.position.y)
                 );
-                print("repulseVector " + orientation);
-                playerMovement.rigidBody.AddForce(orientation * punchRepulseForce, ForceMode2D.Impulse);
+                player.updateVelocity(orientation * player.punchRepulseForce);
                 soundHandler.ChangeTheSound(2);
         }
     }
     
     public void PunchInputAction(InputAction.CallbackContext context)
     {
-        if(context.performed && !isPunching && !playerDeath.isDead && !player.isMakingAnAction) {
-            print("Punch!");
+        if(context.performed && !player.isDead && !player.isPunching && !player.isMakingAnAction) {
             Punch();
         }
     }
 
 
     void Punch() {
-        // print("Punch !");
-        isPunching = true;
+        player.isPunching = true;
         player.isMakingAnAction = true;
         soundHandler.ChangeTheSound(Random.Range(0, 2));
         // handle move punch super move
         if(
-            (playerOrientation.currentOrientation == "up" && playerJump.isJumping) ||
-            (playerOrientation.currentOrientation == "down" && !playerMovement.isGrounded)) { 
-            float acceleration = playerOrientation.currentOrientation == "down" ? -accelerationOnPunch : accelerationOnPunch;
-            playerMovement.rigidBody.AddForce(new Vector2(playerMovement.rigidBody.velocity.x, acceleration), ForceMode2D.Impulse);
+            (player.currentOrientation == "up" && player.isJumping) ||
+            (player.currentOrientation == "down" && !player.isGrounded)) { 
+            print("superpunch move charge");
+
+            float acceleration = player.currentOrientation == "down" ? -player.accelerationOnPunch : player.accelerationOnPunch;
+            player.AddForce(new Vector2(player.rb.velocity.x, acceleration), ForceMode2D.Impulse);
+            // player.updateVelocity(new Vector2(player.rb.velocity.x, acceleration));
         }
         StartCoroutine(PunchActivation());
     }
@@ -65,26 +58,44 @@ public class PlayerPunch : MonoBehaviour
     IEnumerator PunchActivation()
     {
         punchCollider.enabled = true;
-        if(playerOrientation.currentOrientation == "left" || playerOrientation.currentOrientation == "right") {
-            animator.SetTrigger("HorizontalPunch");
-            this.gameObject.transform.localPosition = new Vector2(playerOrientation.currentOrientation == "left" ? -0.75f : .75f, 0);
-        }
-        else if(playerOrientation.currentOrientation == "up" || playerOrientation.currentOrientation == "down") {
-            animator.SetTrigger("VerticalPunch");
-            this.gameObject.transform.localPosition = new Vector2(0, playerOrientation.currentOrientation == "up" ? 1f : -1f);
-        }
-        else if(playerOrientation.currentOrientation == "none" && (playerOrientation.oldHorizontalOrientation == "left" || playerOrientation.oldHorizontalOrientation == "right")) {
-            animator.SetTrigger("HorizontalPunch");
-            this.gameObject.transform.localPosition = new Vector2(playerOrientation.oldHorizontalOrientation == "left" ? -0.75f : .75f, 0);
-        }
 
-        spriteRenderer.flipX = playerOrientation.currentOrientation == "none" ? playerOrientation.oldHorizontalOrientation == "left" : playerOrientation.currentOrientation == "left";
-        spriteRenderer.flipY = playerOrientation.currentOrientation == "down";
+        // punch left and right
+        if(player.currentOrientation == "left" || player.currentOrientation == "right") {
+            animator.SetTrigger("HorizontalPunch");
+            StartCoroutine(LerpPosition(new Vector2(player.currentOrientation == "left" ? -0.75f : .75f, 0), player.punchLerpTime));
+            spriteRenderer.flipX = player.currentOrientation == "left";
+        }
+        // punch up and down
+        else if(player.currentOrientation == "up" || player.currentOrientation == "down") {
+            animator.SetTrigger("VerticalPunch");
+            StartCoroutine(LerpPosition(new Vector2(0, player.currentOrientation == "up" ? 1f : -1f), player.punchLerpTime));
+            spriteRenderer.flipY = player.currentOrientation == "down";
+        }
+        // without current orientation lets punch in the last horizontal directiion
+        else if(player.currentOrientation == "none" && (player.oldHorizontalOrientation == "left" || player.oldHorizontalOrientation == "right")) {
+            animator.SetTrigger("HorizontalPunch");
+            StartCoroutine(LerpPosition(new Vector2(player.oldHorizontalOrientation == "left" ? -0.75f : .75f, 0), player.punchLerpTime));
+            spriteRenderer.flipX = player.oldHorizontalOrientation == "left";
+        }
 
         yield return new WaitForSeconds(.3f);
         punchCollider.enabled = false;
-        isPunching = false;
+        player.isPunching = false;
         player.isMakingAnAction = false;
+    }
+
+    IEnumerator LerpPosition(Vector2 targetPosition, float duration)
+    {
+        float time = 0;
+        Vector2 startPosition = new Vector2(0,0);
+
+        while (time < duration)
+        {
+            this.gameObject.transform.localPosition = Vector2.Lerp(startPosition, targetPosition, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        this.gameObject.transform.localPosition = targetPosition;
     }
 
 }

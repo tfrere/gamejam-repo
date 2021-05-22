@@ -7,7 +7,7 @@ public class LevelChoosingMenu : MonoBehaviour
 {
     void Start()
     {
-        GameObject.Find("PlayerConfiguration-0").GetComponent<PlayerInstanciationController>().handleInstanciate(0);
+        GameObject.Find("PlayerConfiguration-0").GetComponent<PlayerInstanciationController>().handleInstanciate(0, new Vector3(0,0,0));
     }
 
 }

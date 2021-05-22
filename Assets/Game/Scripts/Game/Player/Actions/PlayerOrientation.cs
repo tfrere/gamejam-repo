@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
-public class PlayerOrientation : MonoBehaviour
+public partial class PlayerOrientation : MonoBehaviour
 {
 
-    public string currentOrientation = "none";
-    public string oldHorizontalOrientation = "right";
+    private Player player;
 
     private Vector2 movementInputVector;
 
@@ -15,11 +14,14 @@ public class PlayerOrientation : MonoBehaviour
 
     void Start()
     {
+        player = this.gameObject.GetComponent<Player>();
+
         // if player is instanciated at the right side of the screen
         if(this.gameObject.transform.position.x > 0)
-            oldHorizontalOrientation = "left";
+            player.oldHorizontalOrientation = "left";
         else
-            oldHorizontalOrientation = "right";
+            player.oldHorizontalOrientation = "right";
+
     }
 
     public void MoveInputAction(InputAction.CallbackContext context)
@@ -29,7 +31,6 @@ public class PlayerOrientation : MonoBehaviour
 
     void FixedUpdate()
     {
-
         float[] list = {
             Vector3.Angle(movementInputVector, Vector3.left),
             Vector3.Angle(movementInputVector, Vector3.right),
@@ -40,12 +41,12 @@ public class PlayerOrientation : MonoBehaviour
         float minValue = list.Min();
         int index = list.ToList().IndexOf(minValue);
 
-        currentOrientation = movementInputVector == Vector2.zero ? "none" : ORIENTATION_NAMES[index];
+        player.currentOrientation = movementInputVector == Vector2.zero ? "none" : ORIENTATION_NAMES[index];
 
-        if (currentOrientation == "left")
-            oldHorizontalOrientation = "left";
-        else if (currentOrientation == "right")
-            oldHorizontalOrientation = "right";
+        if (player.currentOrientation == "left")
+            player.oldHorizontalOrientation = "left";
+        else if (player.currentOrientation == "right")
+            player.oldHorizontalOrientation = "right";
     }
 
 }

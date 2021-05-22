@@ -14,6 +14,17 @@ public class Arrow : MonoBehaviour
     public bool isDestroyed = false;
     public bool isTaping = false;
 
+    public float arrowSpeed = 0f;
+
+    private int numberOfPunches = 0;
+
+    // Interesting solution to keep track of old velocity before collision
+    // private int velocityBeforePhysicsUpdate;
+    // void FixedUpdate()
+    // {
+    //     velocityBeforePhysicsUpdate = rigidbody.velocity;
+    // }
+
     void Start()
     {
         soundHandler = GetComponent<SoundHandler>();
@@ -52,7 +63,8 @@ public class Arrow : MonoBehaviour
             );
             this.gameObject.transform.eulerAngles = this.gameObject.transform.eulerAngles + 180f * Vector3.up;
             rigidBody.velocity = new Vector2(0,0);
-            rigidBody.AddForce(-orientation * 10f, ForceMode2D.Impulse);
+            rigidBody.AddForce(-orientation * (arrowSpeed + numberOfPunches), ForceMode2D.Impulse);
+            numberOfPunches++;
         }
         else if(!isSelfArrow && collisionTags.Contains(collision.gameObject.tag)) {
             Destruction();
@@ -68,7 +80,7 @@ public class Arrow : MonoBehaviour
     {
         isTaping = true;
         soundHandler.ChangeTheSound(1);
-        print("tapp");
+        print("Arroww is taping.");
         yield return new WaitForSeconds(0.3f);
         isTaping = false;
     }

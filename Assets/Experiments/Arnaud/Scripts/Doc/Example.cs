@@ -2,10 +2,7 @@ using UnityEngine;
 
 public class Example : MonoBehaviour
 {
-    public Texture2D tex;
-
     private Rigidbody2D rb2D;
-    private Sprite mySprite;
     private float thrust = 1f;
 
     void Awake()

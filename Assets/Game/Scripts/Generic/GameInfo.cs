@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public static class GameInfo
@@ -5,12 +8,20 @@ public static class GameInfo
     private static int playerOneScore = 0;
     private static int playerTwoScore = 0;
 
-    private static int initialArrows = 3;
+    private static List<int> playerScores;
+
+    private static int initialArrows = 30;
     private static int playerOneArrows = initialArrows;
     private static int playerTwoArrows = initialArrows;
 
+    private static List<int> playerAvailableArrows;
+
+
     private static PlayerInput playerOneInput;
     private static PlayerInput playerTwoInput;
+
+    private static List<PlayerInput> playerInputs;
+
     private static int level = 0;
     private static int maxScore = 10;
     public static string sceneToLoad;
