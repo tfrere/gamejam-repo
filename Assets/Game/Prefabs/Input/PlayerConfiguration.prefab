@@ -161,6 +161,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 87ed7a6b-0562-4655-9278-752a0d0c8985
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8753629700780730592}
+        m_TargetAssemblyTypeName: PlayerInstanciationController, Assembly-CSharp
+        m_MethodName: OnStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9c11a0fa-328d-44a1-ac0f-de66bbb934a0
+    m_ActionName: Player/Start[/Keyboard/anyKey,/XboxGamepadMacOS/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -180,6 +196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefabs:
   - {fileID: 4165121505645880814, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
-  - {fileID: 4708708392311400763, guid: 0d9d4be6d44f642eb9d5efcfb320efac, type: 3}
-  playerOnePrefab: {fileID: 4165121505645880814, guid: b3c2976ca19b1458297d9673647eaf08, type: 3}
-  playerTwoPrefab: {fileID: 4708708392311400763, guid: 0d9d4be6d44f642eb9d5efcfb320efac, type: 3}
+  - {fileID: 5225052815154185549, guid: 0901e5acb825243588e2bc14fb4748e3, type: 3}
+  - {fileID: 2899012357446802469, guid: afc98cbd93f3d4ccba32d57f4e4c168f, type: 3}
+  - {fileID: 996304625962428172, guid: 532f5ea0bc6404e54b3406d65c9379c8, type: 3}

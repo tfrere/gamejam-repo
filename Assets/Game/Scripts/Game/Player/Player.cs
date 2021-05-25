@@ -70,19 +70,16 @@ public class Player : MonoBehaviour
 
     // COMPONENTS
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    private SoundHandler soundHandler;
 
     [HideInInspector] public Rigidbody2D rb;
 
     void Start()
     {
         print(this.gameObject.name + " : instanciation ");
-        if(this.gameObject.name == "PlayerOne") {
-            GameInfo.PlayerOneArrows = GameInfo.InitialArrows;
-        }
-        else if(this.gameObject.name == "PlayerTwo") {
-            GameInfo.PlayerTwoArrows = GameInfo.InitialArrows;
-        }
-
+        GameInfo.playerArrows[index] = GameInfo.initialArrows;
+ 
         playerMove = this.gameObject.GetComponent<PlayerMovement>();
         playerOrientation = this.gameObject.GetComponent<PlayerOrientation>();
         playerJump = this.gameObject.GetComponent<PlayerJump>();
@@ -91,25 +88,50 @@ public class Player : MonoBehaviour
 
         // should be moved in a separate class ?
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        soundHandler = GetComponent<SoundHandler>();
         rb = GetComponent<Rigidbody2D>();
 
-        if(this.gameObject.transform.position.x > 0) {
+        // mirror spriterenderer baed on player orientation
+        if(this.gameObject.transform.position.x > 0)
             spriteRenderer.flipX = true;
-        }
-        else {
+        else
             spriteRenderer.flipX = false;
-        }
     }
 
     void FixedUpdate() {
-
         spriteRenderer.flipX = oldHorizontalOrientation == "left";
+        handleSlowFalling();
+        handleAnimation();
+        handleSound();
+    }
 
+    void handleSlowFalling() {
         // slow down falling when stuck on wall
         if(isOnWall && rb.velocity.y < -0.5f) {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.70f);
         }
     }
+
+    void handleAnimation() {
+        animator.SetBool("isWalking", (rb.velocity.x > 0 && rb.velocity.y == 0));
+        animator.SetBool("isJumping", isJumping);
+        animator.SetBool("isDead", isDead);
+        animator.SetBool("isFacingUp", currentOrientation == "up");
+        animator.SetBool("isFacingDown", currentOrientation == "down");
+    }
+
+    void handleSound() {
+        // soundHandler.ChangeTheSound(2);  ("speed", Mathf.Abs(rb.velocity.x));
+        // soundHandler.ChangeTheSound(2);  ("isJumping", isJumping);
+
+        // death
+        // soundHandler.ChangeTheSound(Random.Range(8, 10));
+
+        // soundHandler.ChangeTheSound(2);  ("isFacingUp", currentOrientation == "up");
+        // soundHandler.ChangeTheSound(2);  ("isFacingDown", currentOrientation == "down");
+    }
+
 
     #region Actions
 

@@ -9,11 +9,17 @@ public class PlayerInstanciationController : MonoBehaviour
     private GameObject playerGameObject;
     private Player playerClass;
 
-    public void handleInstanciate(int index, Vector3 spawn) {
+    public Player handleInstanciate(int index, Vector3 spawn) {
         playerGameObject = Instantiate(playerPrefabs[index], spawn, Quaternion.identity);
         playerGameObject.name = playerGameObject.name.Replace("(Clone)","").Trim();
         playerClass = playerGameObject.GetComponent<Player>();
         playerClass.index = index;
+        return playerClass;
+    }
+
+    public void OnStart(InputAction.CallbackContext context)
+    {
+        print("start");
     }
 
     public void OnJump(InputAction.CallbackContext context)

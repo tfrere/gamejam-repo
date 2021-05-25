@@ -7,32 +7,35 @@ using UnityEngine.SceneManagement;
 public class ScoreMenuController : MonoBehaviour
 {
     public TextMeshPro winText;
+    public List<TextMeshPro> playerTextScores;
+    public List<GameObject> playerPanes;
+    public GameObject paneHolder;
+    public string targetScene;
 
-    public TextMeshPro playerOneScore;
-    public TextMeshPro playerTwoScore;
-
-    public GameObject playerOneBox;
-    public GameObject playerTwoBox;
-
-      public string targetScene;
-
-    // Start is called before the first frame update
     void Start()
     {
-        GameInfo.GameState = "menu";
-        if(GameInfo.PlayerOneScore == GameInfo.MaxScore) {
-            winText.SetText("Player 1 won");
-            // playerOneBox.transform.translate = new Vector3(playerOneBox.transform.translate.x, playerOneBox.transform.translate.y - 1f, playerOneBox.transform.translate.z);
+        GameEvents.current.StartMusicTrigger("menu");
+
+        for(int i = 0; i < GameInfo.numberOfPlayers; i++) {
+            if(GameInfo.playerScores[i] == GameInfo.maxScore) {
+                winText.SetText("Player " + (i + 1) + " won");
+                playerPanes[i].transform.position += new Vector3(0,0.2f,0);
+            }
+            playerTextScores[i].text = GameInfo.playerScores[i] + "";
         }
-        if(GameInfo.PlayerTwoScore == GameInfo.MaxScore) {
-            winText.SetText("Player 2 won");
-            // playerTwoBox.transform.translate = new Vector3(playerTwoBox.transform.translate.x, playerTwoBox.transform.translate.y - 1f, playerTwoBox.transform.translate.z);
+
+        for(int i = GameInfo.numberOfPlayers; i < 4; i++) {
+            playerPanes[i].SetActive(false);
         }
-        playerOneScore.text = GameInfo.PlayerOneScore + "";
-        playerTwoScore.text = GameInfo.PlayerTwoScore + "";
+
+        if(GameInfo.numberOfPlayers == 2) {
+            paneHolder.transform.position += new Vector3(3.6f,0,0);
+        }
+        if(GameInfo.numberOfPlayers == 3) {
+            paneHolder.transform.position += new Vector3(1.75f,0,0);
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKey("space")) {

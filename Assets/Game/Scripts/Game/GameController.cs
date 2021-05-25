@@ -11,18 +11,12 @@ public class GameController : MonoBehaviour
 
     public List<GameObject> spawnList;
 
-    public List<TextMeshPro> scoreTextList;
-
-    public List<TextMeshPro> arrowTextList;
-
     private bool hasGameStarted = false;
 
     public SoundHandler soundHandler;
 
     void Start()
     {
-        GameInfo.PlayerOneScore = 0;
-        GameInfo.PlayerTwoScore = 0;
         soundHandler = GetComponent<SoundHandler>();
         StartGame();
  }
@@ -31,11 +25,9 @@ public class GameController : MonoBehaviour
         GameObject.Find("PlayerConfiguration-" + index).GetComponent<PlayerInstanciationController>().handleInstanciate(index, spawnPosition);
     }
 
-
     void SpawnPlayer(int index) {
         SpawnPlayer(index, GetAvailablePositionToSpawn());
     }
-
 
     void StartGame() {
         StartCoroutine(HandleStartGame());
@@ -48,10 +40,11 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         fightText.SetActive(false);
         soundHandler.ChangeTheSound(1);
-        SpawnPlayer(0, spawnList[0].transform.position);
-        SpawnPlayer(1, spawnList[1].transform.position);
+        for(int i = 0; i < GameInfo.numberOfPlayers; i++) {
+            SpawnPlayer(i, spawnList[i].transform.position);
+        }
         yield return new WaitForSeconds(0.5f);
-        GameInfo.GameState = "game";
+        GameEvents.current.StartMusicTrigger("game");
         hasGameStarted = true;
     }
 
@@ -78,27 +71,16 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        scoreTextList[0].SetText("" + GameInfo.PlayerOneScore);
-        scoreTextList[1].SetText("" + GameInfo.PlayerTwoScore);
-
-        arrowTextList[0].SetText("" + GameInfo.PlayerOneArrows);
-        arrowTextList[1].SetText("" + GameInfo.PlayerTwoArrows);
-
         if(hasGameStarted) {
-            if(GameInfo.PlayerOneScore >= GameInfo.MaxScore || GameInfo.PlayerTwoScore >= GameInfo.MaxScore) {
-                GoToScore();
-            }
-
-            if (GameObject.Find("PlayerOne") == null) {
-                soundHandler.ChangeTheSound(1);
-                SpawnPlayer(0);
-            }
-            if (GameObject.Find("PlayerTwo") == null) {
-                soundHandler.ChangeTheSound(1);
-                SpawnPlayer(1);
+            for(int i = 0; i < GameInfo.numberOfPlayers; i++) {
+                if(GameInfo.playerScores[i] >= GameInfo.maxScore) {
+                    GoToScore();
+                }
+                if(!GameObject.Find("Player-" + (i + 1))) {
+                    SpawnPlayer(i);
+                }
             }
         }
-
     }
 
 }

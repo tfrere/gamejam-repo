@@ -10,7 +10,7 @@ public class SplashScreenMenuController : MonoBehaviour
 
   void Start()
   {
-    SceneManager.LoadScene("BackgroundMusic", LoadSceneMode.Additive);
+    GameEvents.current.StartMusicTrigger("menu");
   }
 
   void Update()

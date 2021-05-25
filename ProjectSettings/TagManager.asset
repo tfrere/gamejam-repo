@@ -10,6 +10,8 @@ TagManager:
   - EventSystem
   - SelfDeath
   - Arrow
+  - Wall
+  - Bamboo
   layers:
   - Default
   - TransparentFX
@@ -21,12 +23,12 @@ TagManager:
   - Ground
   - PlayerOne
   - PlayerTwo
+  - PlayerThree
+  - PlayerFour
   - SwordOne
   - SwordTwo
-  - 
-  - 
-  - 
-  - 
+  - SwordThree
+  - SwordFour
   - 
   - 
   - 

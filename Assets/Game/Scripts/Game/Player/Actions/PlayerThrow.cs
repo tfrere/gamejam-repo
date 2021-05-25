@@ -24,12 +24,9 @@ public class PlayerThrow : MonoBehaviour
     }
 
     void Throw() {
-        if(this.gameObject.transform.parent.gameObject.name == "PlayerOne" && GameInfo.PlayerOneArrows > 0) {
-            GameInfo.PlayerOneArrows--;
-            ThrowHandle();
-        }
-        else if(this.gameObject.transform.parent.gameObject.name == "PlayerTwo" && GameInfo.PlayerTwoArrows > 0) {
-            GameInfo.PlayerTwoArrows--;
+
+        if(GameInfo.playerArrows[player.index] > 0) {
+            GameInfo.playerArrows[player.index]--;
             ThrowHandle();
         }
         else {

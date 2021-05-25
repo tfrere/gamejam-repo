@@ -14,10 +14,9 @@ public class TeleType : MonoBehaviour {
 
   public AudioSource TeletypeSound;
 
-
+  private int counter = 0;
 
   IEnumerator StartCountdown() {
-    int counter = 0;
     while(counter <= textToPrint.Length) {
       TeletypeSound.Play();
       m_textMeshPro.text = textToPrint.Substring(0, counter);
@@ -33,6 +32,13 @@ public class TeleType : MonoBehaviour {
     m_textMeshPro = gameObject.GetComponent<TextMeshPro>();
     textToPrint = m_textMeshPro.text;
     StartCoroutine(StartCountdown());
+  }
+
+  public void Interruption() {
+    counter = textToPrint.Length;
+    TeletypeSound.Play();
+    m_textMeshPro.text = textToPrint.Substring(0, counter);
+    m_textMeshPro.ForceMeshUpdate();
   }
 
 }

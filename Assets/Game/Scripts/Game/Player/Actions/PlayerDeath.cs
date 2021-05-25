@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,11 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-
     private Player player;
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
-    public ParticleSystem particleSystem;
-
+    private ParticleSystem particleSystem;
 
     void Start()
     {
@@ -19,41 +18,49 @@ public class PlayerDeath : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        particleSystem = GetComponent<ParticleSystem>();
     }
-
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        handleDeath(collision.gameObject);
+        handleDeath(collision);
     }
 
-    void handleDeath(GameObject gameObject) {
-        // print("player death collide with -> " + collision.gameObject.name + " with tag : " + collision.gameObject.tag + " from : " + this.gameObject.name);
-        bool isSelfPunch = gameObject.transform.parent && gameObject.transform.parent.name == this.gameObject.name;
-        bool isSelfArrow = gameObject.name.Contains("Arrow") && gameObject.name.Contains(this.gameObject.name);
-        bool isPickableArrow = gameObject.name == "Arrow-pickable";
+    int getKillerIndex(string name) {
+        return (int)Char.GetNumericValue(name[name.Length - 1]);
+    }
 
-        // print("isSelfPunch " + isSelfPunch);
-        // print("isSelfArrow " + isSelfArrow);
-        // print("tag " + gameObject.tag);
+    void handleDeath(Collision2D collision) {
+        // print("player death collide with -> " + collision.gameObject.name + " with tag : " + collision.gameObject.tag + " from : " + this.gameObject.name);
+        bool isSelfPunch = collision.gameObject.transform.parent && collision.gameObject.transform.parent.name == this.gameObject.name;
+        bool isSelfArrow = collision.gameObject.name.Contains("Arrow") && collision.gameObject.name.Contains(this.gameObject.name);
+
+        print("self punch " + isSelfPunch);
+        print("self arrow " + isSelfArrow);
+
+        int killerIndex = 0;
+        // if it's an arrow
+        if(collision.gameObject.name.Contains("Arrow")) {
+            killerIndex = getKillerIndex(collision.gameObject.name);
+        }
+        // if it's a sword
+        if(collision.gameObject.name.Contains("Punch")) {
+            killerIndex = getKillerIndex(collision.gameObject.transform.parent.name);
+        }
+
+        // print(killerIndex);
+        // print(gameObject.tag);
+
         if(!player.isInvicible) {
-            if( gameObject.tag == "Death"   
-                && (!isSelfPunch && !isSelfArrow && !isPickableArrow)) {
-                if(this.gameObject.name.Contains("PlayerOne")) {
-                    GameInfo.PlayerTwoScore++;
-                }
-                else if(this.gameObject.name.Contains("PlayerTwo")) {
-                    GameInfo.PlayerOneScore++;
-                }
+            if( collision.gameObject.tag == "Death" && (!isSelfPunch && !isSelfArrow)) {
+                // if(this.gameObject.name.Contains("Player")) {
+                    GameInfo.playerScores[killerIndex - 1]++;
+                // }
+                print("hastodeath");
                 Death();
             }
-            else if(gameObject.tag == "SelfDeath") {
-                if(this.gameObject.name.Contains("PlayerOne")) {
-                    GameInfo.PlayerOneScore--;
-                }
-                else if(this.gameObject.name.Contains("PlayerTwo")) {
-                    GameInfo.PlayerTwoScore--;
-                }
+            else if(collision.gameObject.tag == "SelfDeath") {
+                GameInfo.playerScores[player.index]--;
                 Death();
             }
         }
@@ -69,9 +76,8 @@ public class PlayerDeath : MonoBehaviour
             rigidBody.simulated = false;
             boxCollider.enabled = false;
             spriteRenderer.enabled = false;
-            // soundHandler.ChangeTheSound(Random.Range(8, 10));
-            particleSystem.Play();
             player.isDead = true;
+            particleSystem.Play();
             // Camera shake and slow time
             // TO DO : handle this kind of behavior via an event system
             GameObject.Find("Camera").GetComponent<CameraShake>().shakeDuration = 0.3f;

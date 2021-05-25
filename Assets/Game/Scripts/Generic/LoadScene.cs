@@ -11,7 +11,9 @@ public class LoadScene : MonoBehaviour
 {
     public float delay = 5.0f;
     public bool isCoroutineExecuting = false;
+    public bool hasToBeInterrupted = false;
     public TextMeshPro textArea;
+    public TeleType teletype;
 
     void Start()
     {
@@ -19,6 +21,27 @@ public class LoadScene : MonoBehaviour
       StartCoroutine(ExecuteAfterTime(delay, () => {
         SceneManager.LoadSceneAsync(GameInfo.sceneToLoad);
       }));
+    }
+
+    void Update() {
+      if(Input.GetKey("space")) {
+        teletype.Interruption();
+        StartCoroutine(InterruptAfterTime(1f, () => {
+          SceneManager.LoadSceneAsync(GameInfo.sceneToLoad);
+        }));
+      }
+    }
+
+    // This part has to be entirely re-written :]
+
+    IEnumerator InterruptAfterTime(float time, Action task)
+    {
+        if (hasToBeInterrupted)
+            yield break;
+        hasToBeInterrupted = true;
+        yield return new WaitForSeconds(time);
+        task();
+        hasToBeInterrupted = false;
     }
 
     IEnumerator ExecuteAfterTime(float time, Action task)
