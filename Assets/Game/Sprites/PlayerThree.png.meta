@@ -50,6 +50,9 @@ TextureImporter:
   - first:
       213: -7098408443193035620
     second: PlayerThree 15
+  - first:
+      213: -8616710209936452223
+    second: PlayerThree 16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -458,6 +461,27 @@ TextureImporter:
       bones: []
       spriteID: c9478d041236d7d90800000000000000
       internalID: -7098408443193035620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerThree 16
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1859144a7bb4b6880800000000000000
+      internalID: -8616710209936452223
       vertices: []
       indices: 
       edges: []

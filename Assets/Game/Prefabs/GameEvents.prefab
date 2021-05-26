@@ -45,13 +45,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.03
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 136
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -159,6 +159,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6e4623f78465141dcae9e8aa63ad899b, type: 3}
   - {fileID: 8300000, guid: 73562bd7f2c9a48d5b79474bcb1645d8, type: 3}
   canStackSound: 0
+  soundType: music
 --- !u!1 &8172864281339076433
 GameObject:
   m_ObjectHideFlags: 0

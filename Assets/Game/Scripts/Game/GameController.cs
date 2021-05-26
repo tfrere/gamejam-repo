@@ -19,44 +19,53 @@ public class GameController : MonoBehaviour
     {
         soundHandler = GetComponent<SoundHandler>();
         StartGame();
- }
+    }
 
-    void SpawnPlayer(int index, Vector3 spawnPosition) {
+    void SpawnPlayer(int index, Vector3 spawnPosition)
+    {
         GameObject.Find("PlayerConfiguration-" + index).GetComponent<PlayerInstanciationController>().handleInstanciate(index, spawnPosition);
     }
 
-    void SpawnPlayer(int index) {
+    void SpawnPlayer(int index)
+    {
         SpawnPlayer(index, GetAvailablePositionToSpawn());
     }
 
-    void StartGame() {
+    void StartGame()
+    {
         StartCoroutine(HandleStartGame());
     }
 
     IEnumerator HandleStartGame()
     {
+        GameEvents.current.StartMusicTrigger("game");
+        GameEvents.current.ChangeInputSchemeTrigger("Player");
         fightText.SetActive(true);
         soundHandler.ChangeTheSound(0);
         yield return new WaitForSeconds(2.0f);
         fightText.SetActive(false);
         soundHandler.ChangeTheSound(1);
-        for(int i = 0; i < GameInfo.numberOfPlayers; i++) {
+        for (int i = 0; i < GameInfo.numberOfPlayers; i++)
+        {
             SpawnPlayer(i, spawnList[i].transform.position);
         }
         yield return new WaitForSeconds(0.5f);
-        GameEvents.current.StartMusicTrigger("game");
         hasGameStarted = true;
     }
 
-    Vector3 GetAvailablePositionToSpawn() {
+    Vector3 GetAvailablePositionToSpawn()
+    {
         int spawnIndex = Random.Range(0, 3);
-        while(!spawnList[spawnIndex].GetComponent<SpawnController>().isAvailableForSpawnPlayer) {
+        print("spawn index " + spawnIndex);
+        while (!spawnList[spawnIndex].GetComponent<SpawnController>().isAvailableForSpawnPlayer)
+        {
             spawnIndex = Random.Range(0, 3);
         }
         return spawnList[spawnIndex].transform.position;
     }
 
-    void GoToScore() {
+    void GoToScore()
+    {
         StartCoroutine(HandleGoToScore());
     }
 
@@ -71,12 +80,16 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if(hasGameStarted) {
-            for(int i = 0; i < GameInfo.numberOfPlayers; i++) {
-                if(GameInfo.playerScores[i] >= GameInfo.maxScore) {
+        if (hasGameStarted)
+        {
+            for (int i = 0; i < GameInfo.numberOfPlayers; i++)
+            {
+                if (GameInfo.playerScores[i] >= GameInfo.maxScore)
+                {
                     GoToScore();
                 }
-                if(!GameObject.Find("Player-" + (i + 1))) {
+                if (!GameObject.Find("Player-" + (i + 1)))
+                {
                     SpawnPlayer(i);
                 }
             }

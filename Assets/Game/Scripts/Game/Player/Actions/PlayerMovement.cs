@@ -21,18 +21,12 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-
         player.currentState = "idle";
-
         float _prevX = player.rb.velocity.x;
         float _prevY = player.rb.velocity.y;
 
         if (!player.isJumping &&
-            (player.currentOrientation == "left"
-            || player.currentOrientation == "right")
-            )
-        {
-            // if(!player.isJumping) { updateVelocity(new Vector2(-player.moveSpeed, _prevY)); }
+            (player.currentOrientation == "left" || player.currentOrientation == "right")) {
             float direction = player.currentOrientation == "left" ? -player.moveSpeed : player.moveSpeed;
             player.updateVelocity(new Vector2(direction, _prevY));
             if(player.isGrounded) { player.currentState = "walking"; }
@@ -40,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
         if (player.currentOrientation == "down") {
             if(!player.isGrounded) { player.updateVelocity(new Vector2(_prevX, _prevY - 0.3f)); }
         }
-
     }
 
 }

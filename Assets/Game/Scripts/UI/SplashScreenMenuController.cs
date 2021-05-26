@@ -5,20 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class SplashScreenMenuController : MonoBehaviour
 {
+    public string targetScene;
 
-  public string targetScene;
-
-  void Start()
-  {
-    GameEvents.current.StartMusicTrigger("menu");
-  }
-
-  void Update()
-  {
-    if(Input.GetKey("space")) {
-      GameInfo.sceneToLoad = targetScene;
-      SceneManager.LoadScene("LoadingSceneWithTransition");
+    void Start()
+    {
+      GameEvents.current.StartMusicTrigger("menu");
     }
-  }
-  
+    void OnEnable() {
+        GameEvents.current.OnUISubmit += LoadNextScene;
+    }
+    void OnDisable() {
+        GameEvents.current.OnUISubmit -= LoadNextScene;
+    }
+    void LoadNextScene() {
+        GameInfo.sceneToLoad = targetScene;
+        SceneManager.LoadScene("LoadingSceneWithTransition");
+    }
+
 }

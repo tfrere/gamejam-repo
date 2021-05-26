@@ -19,8 +19,8 @@ public class BackgroundMusic : MonoBehaviour
         if(name == "menu") {
             soundHandler.ChangeTheSound(0);
         }
-        if(name=="game") {
-            soundHandler.ChangeTheSound(Random.Range(0, 3));
+        if(name == "game") {
+            soundHandler.ChangeTheSound(Random.Range(1, 3));
         }
     }
 

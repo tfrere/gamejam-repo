@@ -50,6 +50,9 @@ TextureImporter:
   - first:
       213: 4154515443540673482
     second: PlayerTwo 15
+  - first:
+      213: -7340138823817359564
+    second: PlayerTwo 16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -458,6 +461,27 @@ TextureImporter:
       bones: []
       spriteID: ac3cd1ac8cdc7a930800000000000000
       internalID: 4154515443540673482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerTwo 16
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43f005421a6922a90800000000000000
+      internalID: -7340138823817359564
       vertices: []
       indices: 
       edges: []

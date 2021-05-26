@@ -10,7 +10,7 @@ public class Arrow : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private SoundHandler soundHandler;
 
-    private List<string> collisionTags =  new List<string> {"Ground", "Borders", "Wall"};
+    private List<string> collisionTags =  new List<string> {"Ground", "Player"};
     public bool isDestroyed = false;
     public bool isTaping = false;
 
@@ -35,52 +35,43 @@ public class Arrow : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision) {
 
-        bool isSelfArrow = collision.gameObject.tag == "Player" && this.gameObject.name.Contains(collision.gameObject.tag);
-        print("arrow collision");
+        // bool isSelfArrow = collision.gameObject.tag == "Player" && this.gameObject.name.Contains(collision.gameObject.tag);
 
         if(collision.gameObject.name.Contains("Arrow")) {
             if(!isTaping) {
-                TapSound();
+               Destruction("tching");
             }
         }
         else if(collision.gameObject.name == "PunchHandler") {
             this.gameObject.name = "Arrow-" + collision.gameObject.transform.parent.name; 
+            this.gameObject.layer = collision.gameObject.transform.parent.GetComponent<Player>().index + 8;
             Vector2 orientation = new Vector2(
                 (collision.gameObject.transform.position.x - this.gameObject.transform.position.x) * 3,
                 (collision.gameObject.transform.position.y - this.gameObject.transform.position.y)
             );
             this.gameObject.transform.eulerAngles = this.gameObject.transform.eulerAngles + 180f * Vector3.up;
             rigidBody.velocity = new Vector2(0,0);
-            rigidBody.AddForce(-orientation * (arrowSpeed + numberOfPunches), ForceMode2D.Impulse);
+            // rigidBody.AddForce(-orientation, ForceMode2D.Impulse);
+            rigidBody.AddForce(-orientation * (arrowSpeed + (numberOfPunches / 2)), ForceMode2D.Impulse);
             numberOfPunches++;
         }
-        else if(!isSelfArrow && collisionTags.Contains(collision.gameObject.tag)) {
-            Destruction();
+        if(collisionTags.Contains(collision.gameObject.tag)) {
+            Destruction("tap");
         }
 
     }
 
-    void TapSound() {
-        StartCoroutine(TapSoundActivation());
+    void Destruction(string soundName) {
+        StartCoroutine(DestructionActivation(soundName));
     }
 
-    IEnumerator TapSoundActivation()
-    {
-        isTaping = true;
-        soundHandler.ChangeTheSound(1);
-        print("Arrow is taping.");
-        yield return new WaitForSeconds(0.3f);
-        isTaping = false;
-    }
-
-    void Destruction() {
-        StartCoroutine(DestructionActivation());
-    }
-
-    IEnumerator DestructionActivation()
+    IEnumerator DestructionActivation(string soundName)
     {
         if(!isDestroyed) {
-            soundHandler.ChangeTheSound(0);
+            if(soundName=="tap")
+                soundHandler.ChangeTheSound(0);
+            if(soundName=="tching")
+                soundHandler.ChangeTheSound(1);
             rigidBody.velocity = new Vector2(0,0);
             rigidBody.simulated = false;
             boxCollider.enabled = false;
@@ -88,6 +79,5 @@ public class Arrow : MonoBehaviour
         }
         yield return new WaitForSeconds(0.3f);
         Destroy(this.gameObject);
-        // this.gameObject.name = "Arrow-pickable"; 
     }
 }

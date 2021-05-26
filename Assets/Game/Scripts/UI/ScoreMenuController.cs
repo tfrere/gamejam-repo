@@ -16,31 +16,50 @@ public class ScoreMenuController : MonoBehaviour
     {
         GameEvents.current.StartMusicTrigger("menu");
 
-        for(int i = 0; i < GameInfo.numberOfPlayers; i++) {
-            if(GameInfo.playerScores[i] == GameInfo.maxScore) {
+        for (int i = 0; i < GameInfo.numberOfPlayers; i++)
+        {
+            if (GameInfo.playerScores[i] == GameInfo.maxScore)
+            {
                 winText.SetText("Player " + (i + 1) + " won");
-                playerPanes[i].transform.position += new Vector3(0,0.2f,0);
+                playerPanes[i].transform.position += new Vector3(0, 0.2f, 0);
             }
             playerTextScores[i].text = GameInfo.playerScores[i] + "";
         }
 
-        for(int i = GameInfo.numberOfPlayers; i < 4; i++) {
+        for (int i = GameInfo.numberOfPlayers; i < 4; i++)
+        {
             playerPanes[i].SetActive(false);
         }
 
-        if(GameInfo.numberOfPlayers == 2) {
-            paneHolder.transform.position += new Vector3(3.6f,0,0);
+        if (GameInfo.numberOfPlayers == 2)
+        {
+            paneHolder.transform.position += new Vector3(3.6f, 0, 0);
         }
-        if(GameInfo.numberOfPlayers == 3) {
-            paneHolder.transform.position += new Vector3(1.75f,0,0);
+        if (GameInfo.numberOfPlayers == 3)
+        {
+            paneHolder.transform.position += new Vector3(1.75f, 0, 0);
         }
+
+        StartCoroutine(HandleChangeInputScheme());
     }
 
-    void Update()
+    void OnEnable()
     {
-        if(Input.GetKey("space")) {
-            GameInfo.sceneToLoad = targetScene;
-            SceneManager.LoadScene("LoadingSceneWithTransition");
-        }
+        GameEvents.current.OnUISubmit += LoadNextScene;
+    }
+    void OnDisable()
+    {
+        GameEvents.current.OnUISubmit -= LoadNextScene;
+    }
+
+    IEnumerator HandleChangeInputScheme()
+    {
+        yield return new WaitForSeconds(.1f);
+        GameEvents.current.ChangeInputSchemeTrigger("UI");
+    }
+    void LoadNextScene()
+    {
+        GameInfo.sceneToLoad = targetScene;
+        SceneManager.LoadScene("LoadingSceneWithTransition");
     }
 }

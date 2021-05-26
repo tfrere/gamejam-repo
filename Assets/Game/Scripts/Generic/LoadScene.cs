@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using TMPro;
-using Random=UnityEngine.Random;
+using Random = UnityEngine.Random;
 
 public class LoadScene : MonoBehaviour
 {
@@ -17,19 +17,29 @@ public class LoadScene : MonoBehaviour
 
     void Start()
     {
-      textArea.SetText(getHaiku());
-      StartCoroutine(ExecuteAfterTime(delay, () => {
-        SceneManager.LoadSceneAsync(GameInfo.sceneToLoad);
-      }));
+        textArea.SetText(getHaiku());
+        StartCoroutine(ExecuteAfterTime(delay, () =>
+        {
+            SceneManager.LoadSceneAsync(GameInfo.sceneToLoad);
+        }));
     }
 
-    void Update() {
-      if(Input.GetKey("space")) {
+    void OnEnable()
+    {
+        GameEvents.current.OnUISubmit += LoadNextScene;
+    }
+    void OnDisable()
+    {
+        GameEvents.current.OnUISubmit -= LoadNextScene;
+    }
+
+    void LoadNextScene()
+    {
         teletype.Interruption();
-        StartCoroutine(InterruptAfterTime(1f, () => {
-          SceneManager.LoadSceneAsync(GameInfo.sceneToLoad);
+        StartCoroutine(InterruptAfterTime(1f, () =>
+        {
+            SceneManager.LoadSceneAsync(GameInfo.sceneToLoad);
         }));
-      }
     }
 
     // This part has to be entirely re-written :]
@@ -56,12 +66,12 @@ public class LoadScene : MonoBehaviour
 
     String getHaiku()
     {
-      String[] haikus = {
+        String[] haikus = {
         "Ground squirrel.\nbalancing its tomato.\non the garden fence...\n\n- Don Eulert",
         "From across the lake,\nPast the black winter trees,\nFaint sounds of a flute...\n\n- Richard Wright",
         "A little boy sings\non a terrace, eyes aglow.\nRidge spills upward...\n\n- Robert Yehling",
       };
 
-      return haikus[Random.Range(0, 3)];
+        return haikus[Random.Range(0, 3)];
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BambooChunk : MonoBehaviour
 {
-    public ParticleSystem particleSystem;
+    public ParticleSystem particleSystemComponent;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
     private SoundHandler soundHandler;
@@ -16,27 +16,29 @@ public class BambooChunk : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         soundHandler = GetComponent<SoundHandler>();
     }
-    
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         print(collision.gameObject.tag);
         if (collision.gameObject.tag == "Death")
         {
-            particleSystem.Play();
+            particleSystemComponent.Play();
             DestroyBambooChunk();
         }
     }
-    
-    void DestroyBambooChunk() {
+
+    void DestroyBambooChunk()
+    {
         StartCoroutine(DestroyActivation());
     }
     IEnumerator DestroyActivation()
     {
-        if(!isDetroyed) {
+        if (!isDetroyed)
+        {
             boxCollider.enabled = false;
             spriteRenderer.enabled = false;
             soundHandler.ChangeTheSound(0);
-            particleSystem.Play();
+            particleSystemComponent.Play();
             isDetroyed = true;
         }
         yield return new WaitForSeconds(0.3f);

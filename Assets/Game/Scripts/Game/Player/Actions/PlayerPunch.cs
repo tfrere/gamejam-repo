@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// TO REFACTOR 
 public class PlayerPunch : MonoBehaviour
 {
      public Player player;
@@ -49,8 +50,8 @@ public class PlayerPunch : MonoBehaviour
             print("superpunch move charge");
 
             float acceleration = player.currentOrientation == "down" ? -player.accelerationOnPunch : player.accelerationOnPunch;
-            player.AddForce(new Vector2(player.rb.velocity.x, acceleration), ForceMode2D.Impulse);
-            // player.updateVelocity(new Vector2(player.rb.velocity.x, acceleration));
+            // player.AddForce(new Vector2(player.rb.velocity.x, acceleration), ForceMode2D.Impulse);
+            player.updateVelocity(new Vector2(player.rb.velocity.x, acceleration));
         }
         StartCoroutine(PunchActivation());
     }

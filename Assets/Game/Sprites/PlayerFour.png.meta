@@ -50,6 +50,9 @@ TextureImporter:
   - first:
       213: -5983529701577749225
     second: PlayerFour 15
+  - first:
+      213: -3290105587617555367
+    second: PlayerFour 16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -458,6 +461,27 @@ TextureImporter:
       bones: []
       spriteID: 71d8572407b36fca0800000000000000
       internalID: -5983529701577749225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerFour 16
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95c178856623752d0800000000000000
+      internalID: -3290105587617555367
       vertices: []
       indices: 
       edges: []

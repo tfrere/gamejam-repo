@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 1946952931365692300}
   - component: {fileID: 5397846661079466591}
   - component: {fileID: 5559910334262994839}
+  - component: {fileID: 1445539880}
   m_Layer: 0
   m_Name: InvisibleBorders
   m_TagString: Ground
@@ -70,7 +71,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2242560268862087824}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
   m_LocalScale: {x: 0.9123575, y: 0.839375, z: 1}
   m_Children: []
   m_Father: {fileID: 699019366}
@@ -797,11 +798,30 @@ TilemapCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 06e819b21ea384838a667dfc69101890, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!251 &1445539880
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242560268862087824}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &5321941874469438955
 GameObject:
   m_ObjectHideFlags: 0

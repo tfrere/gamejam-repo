@@ -50,6 +50,9 @@ TextureImporter:
   - first:
       213: -8671595187695622064
     second: PlayerOne 15
+  - first:
+      213: 3784835520475701342
+    second: PlayerOne 16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -458,6 +461,27 @@ TextureImporter:
       bones: []
       spriteID: 0586a61fe1e48a780800000000000000
       internalID: -8671595187695622064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerOne 16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e502c3b5adf668430800000000000000
+      internalID: 3784835520475701342
       vertices: []
       indices: 
       edges: []
