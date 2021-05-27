@@ -54,7 +54,7 @@ public class PlayerThrow : MonoBehaviour
 
         if (normalizedOrientation == "left" || normalizedOrientation == "right")
         {
-            float positionOffset = normalizedOrientation == "left" ? -1f : 1f;
+            float positionOffset = normalizedOrientation == "left" ? -0f : 0f;
             Vector3 arrowVector = normalizedOrientation == "left" ? Vector3.left : Vector3.right;
             Vector3 arrowPosition = new Vector3(this.transform.position.x + positionOffset, this.transform.position.y, this.transform.position.z);
             Quaternion quaternion = normalizedOrientation == "left" ? Quaternion.AngleAxis(180, Vector3.forward) : Quaternion.AngleAxis(0, Vector3.forward);
@@ -62,7 +62,7 @@ public class PlayerThrow : MonoBehaviour
         }
         if (normalizedOrientation == "up" || normalizedOrientation == "down")
         {
-            float positionOffset = normalizedOrientation == "up" ? 1f : -1f;
+            float positionOffset = normalizedOrientation == "up" ? 0f : -0f;
             Vector3 arrowVector = normalizedOrientation == "up" ? Vector3.up : Vector3.down;
             Vector3 arrowPosition = new Vector3(this.transform.position.x, this.transform.position.y + positionOffset, this.transform.position.z);
             Quaternion quaternion = normalizedOrientation == "up" ? Quaternion.AngleAxis(90, Vector3.forward) : Quaternion.AngleAxis(-90, Vector3.forward);

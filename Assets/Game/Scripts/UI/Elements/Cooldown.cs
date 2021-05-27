@@ -7,45 +7,40 @@ using TMPro;
 public class Cooldown : MonoBehaviour
 {
 
-  public int timeToWait;
-  private TextMeshPro text;
+    public int timeToWait;
+    private TextMeshPro text;
+    private float currCountdownValue;
+    private bool hasStarted = false;
 
-  private float currCountdownValue;
+    public IEnumerator Countdown(float timeToWait)
+    {
+        hasStarted = true;
+        //   EventParam param = new EventParam();
+        currCountdownValue = timeToWait;
+        while (currCountdownValue >= 0)
+        {
+            text.SetText("{0}", currCountdownValue);
+            yield return new WaitForSeconds(1.0f);
+            currCountdownValue--;
+        }
+    }
 
-  private IEnumerator coroutine;
-
-  public IEnumerator Countdown(float countdownValue)
-  {
-    //   EventParam param = new EventParam();
-      text.color = new Color32(255, 255, 255, 255);
-      currCountdownValue = countdownValue;
-      while (currCountdownValue >= 0)
-      {
-          text.SetText("{0}", currCountdownValue);
-          yield return new WaitForSeconds(1.0f);
-          currCountdownValue--;
-          if(currCountdownValue == 0) {
-            // EventManager.TriggerEvent ("CooldownFinished", param);
-          }
-      }
-  }
-
-  public void StartCooldown(float time) {
-    StopCoroutine(coroutine);
-    currCountdownValue = time;
-    StartCoroutine(coroutine);
-  }
+    public void StartCooldown(float time)
+    {
+        if (!hasStarted)
+        {
+            StartCoroutine(Countdown(time));
+        }
+    }
 
 
-  void Start()
-  {
-    text = gameObject.GetComponent<TextMeshPro>();
-    text.color = new Color32(255, 255, 255, 0);
-    coroutine = Countdown(timeToWait);
-  }
+    void Start()
+    {
+        text = gameObject.GetComponent<TextMeshPro>();
+    }
 
-  void Update()
-  {
-  }
+    void Update()
+    {
+    }
 
 }

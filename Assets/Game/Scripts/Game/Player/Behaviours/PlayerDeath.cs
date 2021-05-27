@@ -11,7 +11,7 @@ public class PlayerDeath : MonoBehaviour
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
     private SoundHandler soundHandler;
-    private ParticleSystem particleSystemComponent;
+    public ParticleSystem particleSystemComponent;
 
     void Start()
     {
@@ -20,7 +20,6 @@ public class PlayerDeath : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         soundHandler = GetComponent<SoundHandler>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        particleSystemComponent = GetComponent<ParticleSystem>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -57,6 +56,13 @@ public class PlayerDeath : MonoBehaviour
             if (collision.gameObject.tag == "Death" && (!isSelfPunch && !isSelfArrow))
             {
                 GameInfo.playerScores[killerIndex - 1]++;
+
+                var shape = particleSystemComponent.shape;
+                Vector3 targetDirection = collision.gameObject.transform.position - this.gameObject.transform.position;
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, 360f, 0.0f);
+                // Debug.DrawRay(transform.position, newDirection, Color.red);
+                particleSystemComponent.transform.rotation = Quaternion.LookRotation(newDirection * -1);
+
                 Death();
             }
             else if (collision.gameObject.tag == "SelfDeath")
@@ -80,10 +86,12 @@ public class PlayerDeath : MonoBehaviour
         spriteRenderer.enabled = false;
         particleSystemComponent.Play();
         soundHandler.ChangeTheSound(UnityEngine.Random.Range(8, 10));
+        // Time.timeScale = 0f;
         // Camera shake
         // TO DO : handle this kind of behavior via an event system
-        GameObject.Find("Camera").GetComponent<CameraShake>().shakeDuration = 0.3f;
+        GameObject.Find("Camera").GetComponent<CameraShake>().shakeDuration = 0.15f;
         yield return new WaitForSeconds(1f);
+        // Time.timeScale = 0f;
         Destroy(this.gameObject.gameObject);
     }
 }

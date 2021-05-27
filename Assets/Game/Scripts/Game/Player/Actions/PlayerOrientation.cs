@@ -15,7 +15,7 @@ public partial class PlayerOrientation : MonoBehaviour
         player = this.gameObject.GetComponent<Player>();
 
         // if player is instanciated at the right side of the screen
-        if(this.gameObject.transform.position.x > 0)
+        if (this.gameObject.transform.position.x > 0)
             player.oldHorizontalOrientation = "left";
         else
             player.oldHorizontalOrientation = "right";
@@ -25,6 +25,11 @@ public partial class PlayerOrientation : MonoBehaviour
     public void MoveInputAction(InputAction.CallbackContext context)
     {
         movementInputVector = context.ReadValue<Vector2>();
+        // joystick sensitivity prevent
+        movementInputVector = new Vector2(
+            Mathf.Abs(movementInputVector.x) < 0.18 ? 0f : movementInputVector.x,
+            Mathf.Abs(movementInputVector.y) < 0.18 ? 0f : movementInputVector.y);
+
     }
 
     void FixedUpdate()

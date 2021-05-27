@@ -10,7 +10,6 @@ public class LevelChoosingMenuController : MonoBehaviour
 {
     public List<LevelConfig> levelList;
     public int currentLevelIndex = 0;
-    public TextMeshPro currentLevelName;
     public SpriteRenderer currentLevelSpriteRenderer;
     private bool isChangingLevel = false;
 
@@ -30,7 +29,6 @@ public class LevelChoosingMenuController : MonoBehaviour
         GameEvents.current.OnUINavigation -= ChangeLevel;
         GameEvents.current.OnUISubmit -= SubmitLevel;
     }
-
 
     void ChangeLevel(string orientation)
     {
@@ -58,11 +56,9 @@ public class LevelChoosingMenuController : MonoBehaviour
         }
     }
 
-
     IEnumerator UpdateCurrentLevel()
     {
         isChangingLevel = true;
-        currentLevelName.text = levelList[currentLevelIndex].levelTitle;
         currentLevelSpriteRenderer.sprite = levelList[currentLevelIndex].levelImage;
         yield return new WaitForSeconds(.1f);
         isChangingLevel = false;

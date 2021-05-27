@@ -70,6 +70,7 @@ public class Player : MonoBehaviour
 
     // COMPONENTS
     private SpriteRenderer spriteRenderer;
+
     private Animator animator;
     private SoundHandler soundHandler;
 
@@ -133,14 +134,14 @@ public class Player : MonoBehaviour
     void handleSound()
     {
 
-        if (isJumping && !isOnWall)
-        {
-            soundHandler.ChangeTheSound(7);
-        }
-        else if (!isOnWall && currentState == "walking")
-        {
-            soundHandler.ChangeTheSound(Random.Range(0, 5));
-        }
+        // if (isJumping && !isOnWall)
+        // {
+        //     soundHandler.ChangeTheSound(7);
+        // }
+        // else if (!isOnWall && currentState == "walking")
+        // {
+        //     soundHandler.ChangeTheSound(Random.Range(0, 5));
+        // }
     }
 
 

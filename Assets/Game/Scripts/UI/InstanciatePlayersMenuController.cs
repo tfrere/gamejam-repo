@@ -12,10 +12,9 @@ public class InstanciatePlayersMenuController : MonoBehaviour
     public string targetScene;
     private bool isReadyToPlay = false;
     public int numberOfInstanciatedPlayers = 0;
-    public bool isConfigurationFinished = false;
     public List<GameObject> playerSpawnPoints;
     public List<TextMeshPro> playerSpawnTexts;
-    public TextMeshPro startText;
+    public Cooldown cooldown;
 
 
     public void HandlePlayerJoin(PlayerInput playerInput)
@@ -35,43 +34,38 @@ public class InstanciatePlayersMenuController : MonoBehaviour
 
     void Start()
     {
-        startText.text = "";
     }
 
     void OnEnable()
     {
-        GameEvents.current.OnUIStart += LoadNextScene;
+        GameEvents.current.OnUIStart += LaunchCooldown;
     }
     void OnDisable()
     {
-        GameEvents.current.OnUIStart -= LoadNextScene;
+        GameEvents.current.OnUIStart -= LaunchCooldown;
+    }
+
+    void LaunchCooldown()
+    {
+        if (numberOfInstanciatedPlayers >= 2)
+        {
+            Invoke("UpdateReadyState", 5f);
+            cooldown.StartCooldown(5f);
+        }
     }
 
     void UpdateReadyState()
     {
-        if (!isReadyToPlay)
-        {
-            isReadyToPlay = true;
-            startText.text = "Press [space or start] to begin";
-        }
-    }
-
-    void LoadNextScene()
-    {
-        if (isReadyToPlay)
-        {
-            isConfigurationFinished = true;
-            GameInfo.sceneToLoad = targetScene;
-            GameInfo.numberOfPlayers = numberOfInstanciatedPlayers;
-            SceneManager.LoadScene("LoadingSceneWithTransition");
-        }
+        isReadyToPlay = true;
     }
 
     void Update()
     {
-        if (!isConfigurationFinished && numberOfInstanciatedPlayers >= 2)
+        if (isReadyToPlay)
         {
-            Invoke("UpdateReadyState", .5f);
+            GameInfo.sceneToLoad = targetScene;
+            GameInfo.numberOfPlayers = numberOfInstanciatedPlayers;
+            SceneManager.LoadScene("LoadingSceneWithTransition");
         }
     }
 }

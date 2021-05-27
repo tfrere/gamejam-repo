@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 169684551}
   - component: {fileID: 169684550}
   - component: {fileID: 169684549}
-  - component: {fileID: 169684548}
+  - component: {fileID: 169684552}
   m_Layer: 0
   m_Name: StartText
   m_TagString: Untagged
@@ -328,19 +328,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &169684548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169684547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 166a14a5da9da4970938429747ba2d88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _haveToBlink: 1
 --- !u!114 &169684549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,7 +348,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press [space or start] to Begin
+  m_text: 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 215fb1c3003524a2a91f4aefa7d971c3, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 96ef5338fc2c54f54bed66d69a836be4, type: 2}
@@ -388,8 +375,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3.89
-  m_fontSizeBase: 3.89
+  m_fontSize: 15.12
+  m_fontSizeBase: 15.12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -493,6 +480,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0.20999998, y: -0.25}
   m_SizeDelta: {x: 19.227, y: 2.2478}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &169684552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169684547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f340b77c33f4fb684f2ac7d7896552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToWait: 5
 --- !u!1 &192372467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2244,6 +2244,10 @@ PrefabInstance:
       propertyPath: title
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 603609168, guid: 58d6d9aca6f014665806b0a9921785b8, type: 3}
+      propertyPath: cooldown
+      value: 
+      objectReference: {fileID: 169684552}
     - target: {fileID: 603609168, guid: 58d6d9aca6f014665806b0a9921785b8, type: 3}
       propertyPath: startText
       value: 
