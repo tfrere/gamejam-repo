@@ -69,7 +69,14 @@ public class GameEvents : MonoBehaviour
         }
     }
 
-
-
+    public event Action<string> OnUISound;
+    public void UISoundTrigger(string name)
+    {
+        print("Event : start tiggered ");
+        if (OnUISound != null)
+        {
+            OnUISound(name);
+        }
+    }
 
 }

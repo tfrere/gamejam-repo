@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random=UnityEngine.Random;
+using Random = UnityEngine.Random;
 
 public class BackgroundMusic : MonoBehaviour
 {
@@ -15,11 +15,14 @@ public class BackgroundMusic : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    void StartMusic(string name) {
-        if(name == "menu") {
+    void StartMusic(string name)
+    {
+        if (name == "menu")
+        {
             soundHandler.ChangeTheSound(0);
         }
-        if(name == "game") {
+        if (name == "game")
+        {
             soundHandler.ChangeTheSound(Random.Range(1, 3));
         }
     }
@@ -30,5 +33,4 @@ public class BackgroundMusic : MonoBehaviour
         GameEvents.current.OnStartMusic += StartMusic;
     }
 
-
-}   
+}

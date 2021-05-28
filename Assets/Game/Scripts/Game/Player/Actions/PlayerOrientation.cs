@@ -7,7 +7,6 @@ public partial class PlayerOrientation : MonoBehaviour
 {
 
     private Player player;
-
     private Vector2 movementInputVector;
 
     void Start()

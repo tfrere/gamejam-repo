@@ -9,16 +9,26 @@ public class SplashScreenMenuController : MonoBehaviour
 
     void Start()
     {
-      GameEvents.current.StartMusicTrigger("menu");
+        GameEvents.current.StartMusicTrigger("menu");
     }
-    void OnEnable() {
+    void OnEnable()
+    {
         GameEvents.current.OnUISubmit += LoadNextScene;
     }
-    void OnDisable() {
+    void OnDisable()
+    {
         GameEvents.current.OnUISubmit -= LoadNextScene;
     }
-    void LoadNextScene() {
+    void LoadNextScene()
+    {
         GameInfo.sceneToLoad = targetScene;
+        StartCoroutine(HandleLoadNextScene());
+    }
+
+    IEnumerator HandleLoadNextScene()
+    {
+        GameEvents.current.UISoundTrigger("validate");
+        yield return new WaitForSeconds(.3f);
         SceneManager.LoadScene("LoadingSceneWithTransition");
     }
 

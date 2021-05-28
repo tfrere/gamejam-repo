@@ -11,10 +11,11 @@ public static class GameInfo
     public static string sceneToLoad;
     public static string gameState = "menu";
     public static string inputSchemeState = "game";
-    public static int initialArrows = 3;
+    public static int initialArrows = 300;
     public static int maxScore = 10;
-    public static float musicSoundLevel = 0.03f;
+    public static float musicSoundLevel = 0.01f;
     public static float gameSoundLevel = 0.1f;
+    public static float UISoundLevel = 0.1f;
 
     public static void resetScores()
     {

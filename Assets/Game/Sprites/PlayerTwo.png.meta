@@ -53,6 +53,24 @@ TextureImporter:
   - first:
       213: -7340138823817359564
     second: PlayerTwo 16
+  - first:
+      213: 6014831147184750786
+    second: PlayerTwo 17
+  - first:
+      213: 8658881389738170089
+    second: PlayerTwo 18
+  - first:
+      213: 951755835862474613
+    second: PlayerTwo 19
+  - first:
+      213: 2988960392104071594
+    second: PlayerTwo 20
+  - first:
+      213: 2701220612585367167
+    second: PlayerTwo 21
+  - first:
+      213: 8243578348482575284
+    second: PlayerTwo 22
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -134,7 +152,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -155,7 +173,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -175,8 +193,8 @@ TextureImporter:
       name: PlayerTwo 2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -196,8 +214,8 @@ TextureImporter:
       name: PlayerTwo 3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -217,8 +235,8 @@ TextureImporter:
       name: PlayerTwo 4
       rect:
         serializedVersion: 2
-        x: 48
-        y: 32
+        x: 0
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -238,8 +256,8 @@ TextureImporter:
       name: PlayerTwo 5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
+        x: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -259,8 +277,8 @@ TextureImporter:
       name: PlayerTwo 6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
+        x: 48
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -280,8 +298,8 @@ TextureImporter:
       name: PlayerTwo 7
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
+        x: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -301,8 +319,8 @@ TextureImporter:
       name: PlayerTwo 8
       rect:
         serializedVersion: 2
-        x: 32
-        y: 16
+        x: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -322,8 +340,8 @@ TextureImporter:
       name: PlayerTwo 9
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
+        x: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -343,8 +361,8 @@ TextureImporter:
       name: PlayerTwo 10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
+        x: 32
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -364,8 +382,8 @@ TextureImporter:
       name: PlayerTwo 11
       rect:
         serializedVersion: 2
-        x: 48
-        y: 16
+        x: 32
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -385,8 +403,8 @@ TextureImporter:
       name: PlayerTwo 12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 48
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -407,7 +425,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -427,8 +445,8 @@ TextureImporter:
       name: PlayerTwo 14
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
+        x: 48
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -449,7 +467,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -469,8 +487,8 @@ TextureImporter:
       name: PlayerTwo 16
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
+        x: 16
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -482,6 +500,132 @@ TextureImporter:
       bones: []
       spriteID: 43f005421a6922a90800000000000000
       internalID: -7340138823817359564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerTwo 17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c007e77f09f87350800000000000000
+      internalID: 6014831147184750786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerTwo 18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e6959b4fb68a2870800000000000000
+      internalID: 8658881389738170089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerTwo 19
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57fdc7dd3e0553d00800000000000000
+      internalID: 951755835862474613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerTwo 20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa15313f3abea7920800000000000000
+      internalID: 2988960392104071594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerTwo 21
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f762d11e5d9ac7520800000000000000
+      internalID: 2701220612585367167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerTwo 22
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bbb763e4d2176270800000000000000
+      internalID: 8243578348482575284
       vertices: []
       indices: 
       edges: []

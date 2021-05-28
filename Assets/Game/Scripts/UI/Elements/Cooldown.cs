@@ -20,6 +20,7 @@ public class Cooldown : MonoBehaviour
         while (currCountdownValue >= 0)
         {
             text.SetText("{0}", currCountdownValue);
+            GameEvents.current.UISoundTrigger("countdown");
             yield return new WaitForSeconds(1.0f);
             currCountdownValue--;
         }

@@ -16,7 +16,6 @@ public class InstanciatePlayersMenuController : MonoBehaviour
     public List<TextMeshPro> playerSpawnTexts;
     public Cooldown cooldown;
 
-
     public void HandlePlayerJoin(PlayerInput playerInput)
     {
         Player player = GameObject.Find("PlayerConfiguration-" + numberOfInstanciatedPlayers).GetComponent<PlayerInstanciationController>().handleInstanciate(numberOfInstanciatedPlayers, playerSpawnPoints[numberOfInstanciatedPlayers].transform.position);
@@ -31,11 +30,6 @@ public class InstanciatePlayersMenuController : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         GameEvents.current.ChangeInputSchemeTrigger("Player");
     }
-
-    void Start()
-    {
-    }
-
     void OnEnable()
     {
         GameEvents.current.OnUIStart += LaunchCooldown;
@@ -63,6 +57,7 @@ public class InstanciatePlayersMenuController : MonoBehaviour
     {
         if (isReadyToPlay)
         {
+            GameEvents.current.UISoundTrigger("validate");
             GameInfo.sceneToLoad = targetScene;
             GameInfo.numberOfPlayers = numberOfInstanciatedPlayers;
             SceneManager.LoadScene("LoadingSceneWithTransition");

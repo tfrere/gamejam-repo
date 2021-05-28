@@ -9,6 +9,8 @@ using TMPro;
 public class LevelChoosingMenuController : MonoBehaviour
 {
     public List<LevelConfig> levelList;
+    public Animator arrowLeft;
+    public Animator arrowRight;
     public int currentLevelIndex = 0;
     public SpriteRenderer currentLevelSpriteRenderer;
     private bool isChangingLevel = false;
@@ -16,7 +18,7 @@ public class LevelChoosingMenuController : MonoBehaviour
     void Start()
     {
         StartCoroutine(HandleChangeInputScheme());
-        StartCoroutine(UpdateCurrentLevel());
+        StartCoroutine(UpdateCurrentLevel(false));
     }
 
     void OnEnable()
@@ -32,7 +34,7 @@ public class LevelChoosingMenuController : MonoBehaviour
 
     void ChangeLevel(string orientation)
     {
-        print("have to update currernt level " + orientation);
+        print("Have to update current level " + orientation);
         if (!isChangingLevel)
         {
             if (orientation == "left")
@@ -42,7 +44,8 @@ public class LevelChoosingMenuController : MonoBehaviour
                 {
                     currentLevelIndex = levelList.Count - 1;
                 }
-                StartCoroutine(UpdateCurrentLevel());
+                arrowLeft.SetTrigger("IsMoving");
+                StartCoroutine(UpdateCurrentLevel(true));
             }
             if (orientation == "right")
             {
@@ -51,13 +54,18 @@ public class LevelChoosingMenuController : MonoBehaviour
                 {
                     currentLevelIndex = 0;
                 }
-                StartCoroutine(UpdateCurrentLevel());
+                arrowRight.SetTrigger("IsMoving");
+                StartCoroutine(UpdateCurrentLevel(true));
             }
         }
     }
 
-    IEnumerator UpdateCurrentLevel()
+    IEnumerator UpdateCurrentLevel(bool haveToPlaySound)
     {
+        if (haveToPlaySound)
+        {
+            GameEvents.current.UISoundTrigger("navigate");
+        }
         isChangingLevel = true;
         currentLevelSpriteRenderer.sprite = levelList[currentLevelIndex].levelImage;
         yield return new WaitForSeconds(.1f);
@@ -72,6 +80,7 @@ public class LevelChoosingMenuController : MonoBehaviour
 
     void SubmitLevel()
     {
+        GameEvents.current.UISoundTrigger("validate");
         GameInfo.sceneToLoad = levelList[currentLevelIndex].levelSceneName;
         SceneManager.LoadScene("LoadingScene");
     }

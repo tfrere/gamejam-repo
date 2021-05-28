@@ -53,6 +53,24 @@ TextureImporter:
   - first:
       213: -8616710209936452223
     second: PlayerThree 16
+  - first:
+      213: 5250822862582810913
+    second: PlayerThree 17
+  - first:
+      213: -169952035790141193
+    second: PlayerThree 18
+  - first:
+      213: -9040515325577989679
+    second: PlayerThree 19
+  - first:
+      213: -6482450302950639074
+    second: PlayerThree 20
+  - first:
+      213: 4447715242950771421
+    second: PlayerThree 21
+  - first:
+      213: -5686247730979930996
+    second: PlayerThree 22
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -134,7 +152,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -155,7 +173,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -175,8 +193,8 @@ TextureImporter:
       name: PlayerThree 2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -196,8 +214,8 @@ TextureImporter:
       name: PlayerThree 3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -217,8 +235,8 @@ TextureImporter:
       name: PlayerThree 4
       rect:
         serializedVersion: 2
-        x: 48
-        y: 32
+        x: 0
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -238,8 +256,8 @@ TextureImporter:
       name: PlayerThree 5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
+        x: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -259,8 +277,8 @@ TextureImporter:
       name: PlayerThree 6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
+        x: 48
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -280,8 +298,8 @@ TextureImporter:
       name: PlayerThree 7
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
+        x: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -301,8 +319,8 @@ TextureImporter:
       name: PlayerThree 8
       rect:
         serializedVersion: 2
-        x: 32
-        y: 16
+        x: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -322,8 +340,8 @@ TextureImporter:
       name: PlayerThree 9
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
+        x: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -343,8 +361,8 @@ TextureImporter:
       name: PlayerThree 10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
+        x: 32
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -364,8 +382,8 @@ TextureImporter:
       name: PlayerThree 11
       rect:
         serializedVersion: 2
-        x: 48
-        y: 16
+        x: 32
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -385,8 +403,8 @@ TextureImporter:
       name: PlayerThree 12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 48
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -407,7 +425,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -427,8 +445,8 @@ TextureImporter:
       name: PlayerThree 14
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
+        x: 48
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -449,7 +467,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -469,8 +487,8 @@ TextureImporter:
       name: PlayerThree 16
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
+        x: 16
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -482,6 +500,132 @@ TextureImporter:
       bones: []
       spriteID: 1859144a7bb4b6880800000000000000
       internalID: -8616710209936452223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerThree 17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1298fbec29baed840800000000000000
+      internalID: 5250822862582810913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerThree 18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f8cfdd168534adf0800000000000000
+      internalID: -169952035790141193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerThree 19
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d1f278c533a98280800000000000000
+      internalID: -9040515325577989679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerThree 20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1af0828bc5b906a0800000000000000
+      internalID: -6482450302950639074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerThree 21
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd2cb2ec27579bd30800000000000000
+      internalID: 4447715242950771421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerThree 22
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8cf112d0d36611b0800000000000000
+      internalID: -5686247730979930996
       vertices: []
       indices: 
       edges: []

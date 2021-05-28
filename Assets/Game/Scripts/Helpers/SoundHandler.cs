@@ -19,6 +19,10 @@ public class SoundHandler : MonoBehaviour
         {
             audioSource.volume = GameInfo.musicSoundLevel;
         }
+        if (soundType == "UI")
+        {
+            audioSource.volume = GameInfo.UISoundLevel;
+        }
     }
     public void ChangeTheSound(int clipIndex) // the index of the sound, 0 for first sound, 1 for the 2nd..etc
     {

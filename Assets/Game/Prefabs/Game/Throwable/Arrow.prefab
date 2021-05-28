@@ -108,7 +108,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &5645042826436104822
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -262,6 +262,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5b0b89f7fbb8446dbb811bde1f04efd3, type: 3}
   - {fileID: 8300000, guid: 307cd8233c3254c77a1c93b5bf3f34b0, type: 3}
   canStackSound: 0
+  soundType: game
 --- !u!114 &5792192236290632277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,3 +275,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe7c0ce074144a96b2cedc552741d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTeleportEnabled: 1

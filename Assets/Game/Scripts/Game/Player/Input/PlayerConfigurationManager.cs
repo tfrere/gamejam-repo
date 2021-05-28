@@ -9,14 +9,12 @@ public class PlayerConfigurationManager : MonoBehaviour
 {
     public List<PlayerConfiguration> playerConfigs;
     [SerializeField]
-
     public List<GameObject> playerInstanciationControllers;
-
     public static PlayerConfigurationManager Instance { get; private set; }
 
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Debug.Log("[Singleton] Trying to instantiate a seccond instance of a singleton class.");
         }
@@ -32,11 +30,12 @@ public class PlayerConfigurationManager : MonoBehaviour
     {
         Debug.Log("player joined " + pi.playerIndex);
         pi.transform.SetParent(transform);
-        pi.name = pi.name.Replace("(Clone)","").Trim();
-        pi.name += "-" + pi.playerIndex; 
+        pi.name = pi.name.Replace("(Clone)", "").Trim();
+        pi.name += "-" + pi.playerIndex;
 
-        if(!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
+        if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
         {
+            GameEvents.current.UISoundTrigger("validate");
             playerConfigs.Add(new PlayerConfiguration(pi));
         }
     }

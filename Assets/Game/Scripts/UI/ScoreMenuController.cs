@@ -59,6 +59,7 @@ public class ScoreMenuController : MonoBehaviour
     }
     void LoadNextScene()
     {
+        GameEvents.current.UISoundTrigger("validate");
         GameInfo.sceneToLoad = targetScene;
         SceneManager.LoadScene("LoadingSceneWithTransition");
     }
