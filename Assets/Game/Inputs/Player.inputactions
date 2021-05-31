@@ -196,7 +196,7 @@
                     "path": "<HID::Unknown 8Bitdo NES30 Pro>/button2",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "Joystick",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -229,7 +229,7 @@
                     "path": "<HID::Unknown 8Bitdo NES30 Pro>/button4",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "Joystick",
                     "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -251,7 +251,7 @@
                     "path": "<HID::Unknown 8Bitdo NES30 Pro>/button5",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "Joystick",
                     "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
